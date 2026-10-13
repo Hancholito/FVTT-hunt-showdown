@@ -9,6 +9,7 @@ import { registerDamageHooks } from "./damage.js";
 import { registerExplosiveHooks } from "./explosives.js";
 import { registerLoadoutHooks } from "./loadout.js";
 import { openHunterCreator, decorateHunterSheet } from "./creator.js";
+import { sideBySideBio } from "./layout.js";
 import { createBestiary, rebuildBestiary, openCreator, decorateMonsterSheet } from "./monsters.js";
 
 const MODULE_ID = "hunt-showdown-fco";
@@ -203,6 +204,7 @@ Hooks.on("preCreateChatMessage", (message, data) => {
 // Weapon tools and the monster banner on Fate Core Official character sheets.
 Hooks.on("renderfcoCharacter", decorateSheet);
 Hooks.on("renderfcoCharacter", decorateMonsterSheet);
+Hooks.on("renderfcoCharacter", sideBySideBio);
 Hooks.on("renderfcoCharacter", (app, html) => {
     try { decorateHunterSheet(app, html); } catch (e) { console.error("Hunt: hunter banner", e); }
 });

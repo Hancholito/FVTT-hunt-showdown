@@ -144,3 +144,18 @@
 .hunt-hcreator .hunt-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
 .hunt-hcreator .hunt-span2 { grid-column: span 2; }
 .hunt-hcreator .hunt-grid2 input[type="text"] { flex: 1; }
+
+/* ---------------------------------------------------------------- biography tab: description | biography, then Arsenal */
+.mfate-sheet .hunt-bio-row {
+  display: flex; flex-direction: row; align-items: stretch; gap: 10px;
+  height: 32%; min-height: 10rem; margin-bottom: 10px; flex: 0 0 auto;
+}
+.mfate-sheet .hunt-bio-row--collapsed { height: auto; min-height: 0; }
+.mfate-sheet .hunt-bio-row > .mfate-description,
+.mfate-sheet .hunt-bio-row > .mfate-biography {
+  flex: 1 1 0; min-width: 0; height: auto; margin-bottom: 0;
+}
+.mfate-sheet .hunt-bio-row > .mfate-description-collapsed,
+.mfate-sheet .hunt-bio-row > .mfate-biography-collapsed {
+  flex: 1 1 0; min-width: 0; align-self: flex-start;
+}

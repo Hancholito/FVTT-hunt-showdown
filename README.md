@@ -11,14 +11,14 @@ Unofficial tabletop adaptation of Hunt: Showdown for Foundry VTT v14, built on t
 
 The install can be rerun at any time from **Game Settings → Hunt rules → Install / reinstall**.
 
-## What it sets up (v0.9.0)
+## What it sets up (v0.9.1)
 
 - **18 skills**: Athletics, Burglary, Crafts, Deceive, Empathy, Fight, Heal, Investigate, Lore, Notice, Physique, Provoke, Rapport, Resources, Shoot, Stealth, Throw, Will. Skill pyramid of 20 points, column rule enforced.
 - **Tracks**: Health (6 boxes in 3 chunks), Burned (3), Dread (3), Mild / Moderate / Severe consequences, extra Mild at Physique Great (+4).
 - **Conditions**: Bleeding, Heavy Bleeding, Burning, Poisoned, Pinned, Blinded, Shaken, Downed.
 - **Aspects**: High Concept, Trouble, Archetype, Bloodline.
 - **Stunts**: the seven archetype signature stunts.
-- **Theme**: dark brown, parchment and brass sheet colours.
+- **Theme**: dark brown, parchment and brass sheet colours. On the Biography tab, Description and Biography sit side by side above the **Arsenal** (the Extras panel, renamed).
 - **Weapons and explosives**: seven sample weapons and seven explosives in the Items directory (Hunt Arsenal folder).
 - **Bestiary**: 12 Stillwater monsters in the Actors directory (Hunt Bestiary folder).
 - **Traits**: 45 trait cards in three decks, a hand for each player, and two piles (Cards directory, Hunt Traits folder).

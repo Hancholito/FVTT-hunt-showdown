@@ -27,5 +27,7 @@
   "HUNT.Bestiary.Rebuild": "Rebuild all",
   "HUNT.Bestiary.Rebalance": "This update rebalances the five bosses (Fight 3, lower attack power) so they no longer down a hunter in one hit. Replace the bosses in the Hunt Bestiary folder with the new stats?",
   "HUNT.Bestiary.Fire": "This update adds fire: fire bombs and Burning kill ordinary monsters outright. The Meathead becomes fireproof and the Butcher's Fire Breath becomes a cone attack. Replace the Meathead and the Butcher in the Hunt Bestiary folder?",
-  "HUNT.Hunter.Button": "Hunter Creator"
+  "HUNT.Hunter.Button": "Hunter Creator",
+  "fate-core-official.Extras": "Arsenal",
+  "fate-core-official.BiographyAndExtras": "Description, Biography and Arsenal"
 }

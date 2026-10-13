@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.1
+- Biography tab: Description and Biography side by side, so the Arsenal panel gets more room.
+- The Extras panel is renamed Arsenal.
+
 ## 0.9.0
 - Hunter Creator: name, archetype or Custom, skill pyramid with the archetype's Great and Good skills fixed, aspects, signature stunt, starting trait dealt from the deck into the player's hand. From the Actors directory (new hunter) or a hunter sheet banner (rebuild).
 
