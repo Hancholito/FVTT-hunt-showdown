@@ -1,0 +1,454 @@
+[
+  {
+    "name": "Grunt",
+    "category": "grunt",
+    "aspect": "Shambling Husk Drawn to Noise",
+    "description": "The bayou's walking dead. Slow, stupid, and never alone.",
+    "skills": {
+      "Fight": 1,
+      "Athletics": 0,
+      "Notice": 1,
+      "Will": 0
+    },
+    "health": 2,
+    "dread": 1,
+    "attacks": [
+      {
+        "name": "Claws",
+        "skill": "Fight",
+        "power": 2,
+        "range": [
+          "Close"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Horde",
+        "text": "Grunts come in groups: each extra Grunt in the zone gives the others +1 to attack (max +2)."
+      }
+    ]
+  },
+  {
+    "name": "Hive",
+    "category": "elite",
+    "aspect": "Swarm-Ridden Matron",
+    "description": "A shambling host for a cloud of stinging insects.",
+    "skills": {
+      "Fight": 1,
+      "Shoot": 2,
+      "Athletics": 1,
+      "Notice": 2,
+      "Will": 2
+    },
+    "health": 4,
+    "dread": 2,
+    "vitalKills": true,
+    "attacks": [
+      {
+        "name": "Swarm",
+        "skill": "Shoot",
+        "power": 1,
+        "range": [
+          "Close",
+          "Medium"
+        ],
+        "conditions": [
+          "Poisoned"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Headshot",
+        "text": "A Vital hit kills the Hive outright."
+      }
+    ]
+  },
+  {
+    "name": "Armored",
+    "category": "elite",
+    "aspect": "Plated in Its Own Grave",
+    "description": "A brute wrapped in a shell of hardened filth and scrap.",
+    "skills": {
+      "Fight": 2,
+      "Physique": 3,
+      "Athletics": 0,
+      "Notice": 1,
+      "Will": 2
+    },
+    "health": 5,
+    "armor": 2,
+    "dread": 2,
+    "vitalKills": true,
+    "attacks": [
+      {
+        "name": "Crushing Blow",
+        "skill": "Fight",
+        "power": 3,
+        "range": [
+          "Close"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Shell",
+        "text": "Armour 2 against every hit that isn't Vital. A Vital hit kills it outright."
+      }
+    ]
+  },
+  {
+    "name": "Meathead",
+    "category": "elite",
+    "aspect": "Blind Mountain of Leeches",
+    "description": "Huge, blind, and hunting by sound. Leeches crawl off it to find you.",
+    "skills": {
+      "Fight": 3,
+      "Physique": 4,
+      "Athletics": 0,
+      "Notice": 2,
+      "Will": 2
+    },
+    "health": 8,
+    "dread": 3,
+    "attacks": [
+      {
+        "name": "Hook Arm",
+        "skill": "Fight",
+        "power": 3,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Bleeding"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Blind",
+        "text": "It only notices what it hears: Stealth against it gets +2."
+      },
+      {
+        "name": "Leeches",
+        "text": "Each exchange a hunter spends in its zone, roll 1dF: on a −, a leech bites (1 damage)."
+      }
+    ],
+    "fireproof": true
+  },
+  {
+    "name": "Immolator",
+    "category": "elite",
+    "aspect": "A Pyre That Walks",
+    "description": "A burning husk. Shoot it wrong and it bursts into flame.",
+    "skills": {
+      "Fight": 2,
+      "Athletics": 1,
+      "Notice": 1,
+      "Will": 1
+    },
+    "health": 4,
+    "dread": 2,
+    "vitalKills": true,
+    "immune": [
+      "Burning"
+    ],
+    "attacks": [
+      {
+        "name": "Burning Embrace",
+        "skill": "Fight",
+        "power": 2,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Burning"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Ignite",
+        "text": "A hit that isn't Vital sets it ablaze: its zone gains Burning Ground until the scene ends. A Vital hit kills it cleanly."
+      }
+    ]
+  },
+  {
+    "name": "Hellhound",
+    "category": "elite",
+    "aspect": "Starved Hound of the Pit",
+    "description": "Fast, quiet until the howl, and never far from its pack.",
+    "skills": {
+      "Fight": 2,
+      "Athletics": 3,
+      "Notice": 3,
+      "Stealth": 1
+    },
+    "health": 3,
+    "dread": 2,
+    "attacks": [
+      {
+        "name": "Bite",
+        "skill": "Fight",
+        "power": 2,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Bleeding"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Pack Hunter",
+        "text": "Moves two zones per exchange. Each other Hellhound in the zone gives +1 to attack."
+      }
+    ]
+  },
+  {
+    "name": "Water Devil",
+    "category": "elite",
+    "aspect": "Something Under the Water",
+    "description": "It waits in deep water and drags the unwary under.",
+    "skills": {
+      "Fight": 3,
+      "Athletics": 2,
+      "Stealth": 3,
+      "Notice": 2
+    },
+    "health": 4,
+    "dread": 2,
+    "attacks": [
+      {
+        "name": "Drag Under",
+        "skill": "Fight",
+        "power": 3,
+        "range": [
+          "Close"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Submerged",
+        "text": "Only found in Deep Water zones. While submerged it can't be targeted; it surfaces to attack."
+      }
+    ]
+  },
+  {
+    "name": "The Butcher",
+    "category": "boss",
+    "aspect": "The Flayer of Stillwater",
+    "description": "A pig-faced giant with a burning hammer and a meat hook.",
+    "skills": {
+      "Fight": 3,
+      "Physique": 4,
+      "Athletics": 1,
+      "Notice": 2,
+      "Will": 3,
+      "Provoke": 3
+    },
+    "health": 10,
+    "consequences": true,
+    "dread": 4,
+    "attacks": [
+      {
+        "name": "Meat Hook",
+        "skill": "Fight",
+        "power": 2,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Bleeding"
+        ]
+      },
+      {
+        "name": "Burning Hammer",
+        "skill": "Fight",
+        "power": 1,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Burning"
+        ]
+      },
+      {
+        "name": "Fire Breath",
+        "skill": "Fight",
+        "power": 1,
+        "range": [
+          "Close"
+        ],
+        "shape": "cone",
+        "conditions": [
+          "Burning"
+        ],
+        "text": "Everyone in front of it in its zone defends with Athletics."
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Fireproof Hide",
+        "text": "Fire never kills it outright."
+      }
+    ]
+  },
+  {
+    "name": "The Spider",
+    "category": "boss",
+    "aspect": "Many-Legged Queen of the Walls",
+    "description": "It moves on walls and ceilings and spits poison from the dark.",
+    "skills": {
+      "Fight": 3,
+      "Shoot": 3,
+      "Athletics": 4,
+      "Stealth": 3,
+      "Notice": 3,
+      "Will": 2
+    },
+    "health": 8,
+    "consequences": true,
+    "dread": 4,
+    "immune": [
+      "Poisoned"
+    ],
+    "attacks": [
+      {
+        "name": "Fangs",
+        "skill": "Fight",
+        "power": 2,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Poisoned"
+        ]
+      },
+      {
+        "name": "Poison Spit",
+        "skill": "Shoot",
+        "power": 1,
+        "range": [
+          "Medium",
+          "Close"
+        ],
+        "conditions": [
+          "Poisoned"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Wall Crawler",
+        "text": "Ignores terrain aspects and moves two zones per exchange, including over walls and roofs."
+      }
+    ]
+  },
+  {
+    "name": "The Assassin",
+    "category": "boss",
+    "aspect": "The Thing That Is Many",
+    "description": "A shape of swarming insects that splits into copies of itself.",
+    "skills": {
+      "Fight": 3,
+      "Athletics": 3,
+      "Stealth": 4,
+      "Notice": 3,
+      "Will": 3
+    },
+    "health": 8,
+    "consequences": true,
+    "dread": 4,
+    "attacks": [
+      {
+        "name": "Blade Claws",
+        "skill": "Fight",
+        "power": 2,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Bleeding"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Clones",
+        "text": "Once per scene, splits into three: two decoys (Grunt toughness, no attack) and the real one. Only Notice vs its Stealth tells them apart."
+      }
+    ]
+  },
+  {
+    "name": "Scrapbeak",
+    "category": "boss",
+    "aspect": "Thief of the Bayou's Treasures",
+    "description": "A plated hoarder with an anchor for a weapon. It wants your loot.",
+    "skills": {
+      "Fight": 3,
+      "Physique": 3,
+      "Athletics": 2,
+      "Notice": 3,
+      "Provoke": 3
+    },
+    "health": 10,
+    "consequences": true,
+    "armor": 1,
+    "dread": 4,
+    "attacks": [
+      {
+        "name": "Anchor Swing",
+        "skill": "Fight",
+        "power": 2,
+        "range": [
+          "Close"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Hoarder",
+        "text": "Drawn to items: when it hits, it can take one tool or consumable from the target instead of dealing Health damage."
+      }
+    ]
+  },
+  {
+    "name": "Rotjaw",
+    "category": "boss",
+    "aspect": "The Great Jaws Below",
+    "description": "A giant swamp beast that hunts from the water.",
+    "skills": {
+      "Fight": 3,
+      "Physique": 4,
+      "Stealth": 3,
+      "Athletics": 2,
+      "Notice": 2
+    },
+    "health": 10,
+    "consequences": true,
+    "dread": 4,
+    "attacks": [
+      {
+        "name": "Bite",
+        "skill": "Fight",
+        "power": 2,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Bleeding"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Breach",
+        "text": "Lives in Deep Water. Submerged, it can't be targeted; when it breaches to attack, it can be shot until its next action."
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" font-family="Georgia, 'Times New Roman', serif">
+  <rect width="300" height="450" rx="16" fill="#1b1611"/>
+  <rect x="10" y="10" width="280" height="430" rx="10" fill="none" stroke="#b08d57" stroke-width="3"/>
+  <rect x="18" y="18" width="264" height="414" rx="6" fill="none" stroke="#b08d57" stroke-width="1" stroke-dasharray="2 4"/>
+  <circle cx="150" cy="200" r="78" fill="none" stroke="#b08d57" stroke-width="3"/>
+  <path d="M150 140 L202 236 H98 Z" fill="none" stroke="#b08d57" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M116 205 Q150 175 184 205 Q150 235 116 205 Z" fill="#2a221a" stroke="#e4d8bf" stroke-width="2.5"/>
+  <circle cx="150" cy="205" r="11" fill="#8a2a1e"/><circle cx="150" cy="205" r="4" fill="#e4d8bf"/>
+  <text x="150" y="330" text-anchor="middle" font-size="30" letter-spacing="4" fill="#e9d6a8">TIER III</text>
+  <text x="150" y="360" text-anchor="middle" font-size="14" fill="#e4d8bf">Won from the Bounty</text>
+</svg>

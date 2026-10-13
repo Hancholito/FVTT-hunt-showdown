@@ -1,0 +1,23 @@
+[
+  { "id": "scout", "name": "Scout", "role": "Eyes of the team: spots threats first and moves unseen.",
+    "great": "Notice", "good": ["Stealth", "Athletics"], "stunt": "Pathfinder (Scout)",
+    "traits": ["Greyhound", "Lightfoot", "Vigilant", "Gator Legs"] },
+  { "id": "brute", "name": "Brute", "role": "Close-quarters bruiser who soaks up punishment.",
+    "great": "Fight", "good": ["Physique", "Provoke"], "stunt": "Unbreakable (Brute)",
+    "traits": ["Hornskin", "Kiteskin", "Tomahawk", "Ghoul"] },
+  { "id": "gunslinger", "name": "Gunslinger", "role": "Fast hands, first shot, lots of lead.",
+    "great": "Shoot", "good": ["Athletics", "Notice"], "stunt": "Quick Draw (Gunslinger)",
+    "traits": ["Fanning", "Levering", "Ambidextrous", "Iron Repeater"] },
+  { "id": "medic", "name": "Field Medic", "role": "Keeps the team standing and brings the fallen back.",
+    "great": "Heal", "good": ["Empathy", "Will"], "stunt": "Field Surgery (Field Medic)",
+    "traits": ["Physician", "Doctor", "Bloodless", "Necromancer"] },
+  { "id": "mystic", "name": "Mystic", "role": "Reads the Dark Sight and knows what lurks in the bayou.",
+    "great": "Lore", "good": ["Will", "Investigate"], "stunt": "Attuned (Mystic)",
+    "traits": ["Serpent", "Conduit", "Beastface", "Mithridatist"] },
+  { "id": "scavenger", "name": "Scavenger", "role": "Always finds what the team needs, on crates and on corpses.",
+    "great": "Resources", "good": ["Burglary", "Crafts"], "stunt": "Pack Rat (Scavenger)",
+    "traits": ["Packmule", "Vulture", "Frontiersman", "Bulletgrubber"] },
+  { "id": "sapper", "name": "Sapper", "role": "Explosives expert: cooks the fuse and clears the room.",
+    "great": "Throw", "good": ["Crafts", "Physique"], "stunt": "Cooked Fuse (Sapper)",
+    "traits": ["Pitcher", "Dauntless", "Bulwark", "Poacher"] }
+]

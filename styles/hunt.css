@@ -1,0 +1,146 @@
+/* Hunt: Showdown RPG — dark bayou theme.
+   Colours come from the Fate Core Official sheet scheme set by the installer
+   (--fco-sheet-background-colour, --fco-sheet-input-colour, --fco-sheet-text-colour, --fco-accent-colour).
+   These rules only cover the places where Fate Core Official hard-codes white. */
+
+.mf_item,
+.fco_prose_mirror.fco_edit_track_desc,
+.fco_prose_mirror.fco_edit_track_when_marked,
+.fco_prose_mirror.fco_edit_track_recovery_conditions,
+.fco_prose_mirror.editAspect,
+.fco_prose_mirror.editSkill {
+  background-color: var(--fco-sheet-input-colour) !important;
+  color: var(--fco-sheet-text-colour) !important;
+}
+
+/* Inputs and text areas on Fate sheets */
+.mfate-sheet input,
+.mfate-sheet textarea,
+.mfate-sheet select {
+  background-color: var(--fco-sheet-input-colour);
+  color: var(--fco-sheet-text-colour);
+  border-color: var(--fco-accent-colour);
+}
+
+/* Character name in a western display face shipped with Foundry */
+.mfate-sheet .mfate-sheet__identity-name {
+  font-family: "Modesto Condensed", var(--fco-font-family), serif;
+  letter-spacing: 0.04em;
+}
+
+/* ---------------------------------------------------------------- weapons on the sheet */
+.hunt-weapon-tools { float: right; display: inline-flex; gap: 2px; margin-right: 4px; }
+.hunt-weapon-tools .hunt-btn {
+  width: 26px; height: 24px; line-height: 22px; padding: 0;
+  background: transparent; border: 1px solid var(--fco-accent-colour, #b08d57);
+  color: var(--fco-accent-colour, #b08d57); border-radius: 3px; font-size: 12px;
+}
+.hunt-weapon-tools .hunt-btn:hover { background: var(--fco-accent-colour, #b08d57); color: #1b1611; }
+.hunt-weapon-summary {
+  font-size: 0.85em; opacity: 0.85; padding: 2px 8px 4px 28px;
+  color: var(--fco-sheet-text-colour); font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------- dialogs */
+.hunt-dialog label { display: flex; align-items: center; gap: 6px; margin: 4px 0; }
+.hunt-dialog label > input[type="number"] { width: 4.5em; }
+.hunt-dialog fieldset { margin: 6px 0; }
+.hunt-hint { opacity: 0.7; font-size: 0.85em; }
+
+/* ---------------------------------------------------------------- chat cards */
+.hunt-card {
+  background: #1b1611; color: #e4d8bf; border: 1px solid #b08d57; border-radius: 4px;
+  padding: 6px 8px; font-variant-numeric: tabular-nums;
+}
+.hunt-card__head { display: flex; gap: 8px; align-items: center; border-bottom: 1px solid #5c4127; padding-bottom: 4px; margin-bottom: 4px; }
+.hunt-card__head img { width: 36px; height: 36px; border: none; }
+.hunt-card__head h3 { margin: 0; border: none; color: #e9d6a8; font-family: "Modesto Condensed", serif; font-size: 1.4em; letter-spacing: 0.03em; }
+.hunt-card .hunt-row { margin: 3px 0; }
+.hunt-card .hunt-result { margin: 6px 0 3px; padding: 4px 6px; background: #2a221a; border-left: 3px solid #b08d57; }
+.hunt-card .hunt-hint { color: #c9b994; }
+.hunt-hit { color: #e9d6a8; font-weight: bold; text-transform: uppercase; }
+.hunt-miss { color: #9b8f7a; font-weight: bold; text-transform: uppercase; }
+.hunt-tie { color: #d9a441; font-weight: bold; text-transform: uppercase; }
+.hunt-damage { color: #e0573f; font-weight: bold; font-size: 1.15em; }
+.hunt-jam { color: #e0573f; }
+.hunt-die {
+  display: inline-block; width: 18px; height: 18px; line-height: 16px; text-align: center;
+  border: 1px solid #b08d57; border-radius: 3px; margin: 0 1px; font-weight: bold; background: #2a221a;
+}
+.hunt-die--plus { color: #9fd18b; }
+.hunt-die--minus { color: #e0573f; }
+.hunt-die--blank { color: #9b8f7a; }
+
+/* ---------------------------------------------------------------- apply damage */
+.hunt-card .hunt-apply-btn {
+  margin-top: 6px; width: 100%; background: #3b2615; color: #e9d6a8;
+  border: 1px solid #b08d57; border-radius: 3px; line-height: 26px; cursor: pointer;
+}
+.hunt-card .hunt-apply-btn:hover { background: #8a2a1e; }
+.hunt-apply fieldset label { justify-content: flex-start; }
+.hunt-apply input[type="text"] { flex: 1; }
+.hunt-preview { margin-top: 6px; font-weight: bold; }
+
+/* ---------------------------------------------------------------- monsters */
+.hunt-monster-banner {
+  margin: 4px 8px; padding: 6px 8px; border: 1px solid #b08d57; border-radius: 4px;
+  background: #2a1512; color: #e4d8bf;
+}
+.hunt-monster-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.hunt-monster-tags span {
+  border: 1px solid #b08d57; border-radius: 10px; padding: 0 8px; font-size: 0.85em; color: #e9d6a8;
+}
+.hunt-monster-phase { margin-top: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.hunt-monster-phase select { background: #1b1611; color: #e4d8bf; border-color: #b08d57; }
+.hunt-creator-btn { flex: 1 0 100%; margin-top: 4px; }
+
+.hunt-creator .hunt-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+.hunt-creator .hunt-grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px 12px; }
+.hunt-creator .hunt-span2 { grid-column: span 2; }
+.hunt-creator .hunt-grid2 label input[type="text"] { flex: 1; }
+.hunt-creator .hunt-table { display: grid; gap: 3px 6px; align-items: center; }
+.hunt-creator .hunt-table > span { font-size: 0.8em; opacity: 0.75; text-transform: uppercase; }
+.hunt-creator .hunt-attacks { grid-template-columns: 1.8fr 1fr 0.6fr 1.3fr 0.9fr 1.5fr; }
+.hunt-creator .hunt-abilities { grid-template-columns: 1fr 3fr; }
+.hunt-creator .hunt-phase-table { grid-template-columns: 1fr 0.5fr 0.5fr 3fr; }
+.hunt-creator input[type="number"] { width: 100%; }
+
+/* ---------------------------------------------------------------- explosives and spread attacks */
+.hunt-card .hunt-detonate-btn {
+  margin-top: 6px; width: 100%; background: #5c1e14; color: #e9d6a8;
+  border: 1px solid #b08d57; border-radius: 3px; line-height: 26px; cursor: pointer;
+}
+.hunt-card .hunt-detonate-btn:hover { background: #8a2a1e; }
+.hunt-card .hunt-apply-inline { width: auto; margin: 2px 0 0 6px; line-height: 20px; padding: 0 8px; }
+
+/* ---------------------------------------------------------------- loadout */
+.hunt-loadout {
+  margin: 4px 8px 6px; padding: 3px 8px; border-left: 3px solid var(--fco-accent-colour, #b08d57);
+  font-size: 0.9em; color: var(--fco-sheet-text-colour); font-variant-numeric: tabular-nums;
+}
+.hunt-weapon-summary.hunt-holstered { opacity: 0.5; font-style: italic; }
+
+/* ---------------------------------------------------------------- hunter creator */
+.hunt-hunter-banner {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  margin: 4px 8px; padding: 4px 8px; border: 1px solid var(--fco-accent-colour, #b08d57); border-radius: 4px;
+  color: var(--fco-sheet-text-colour);
+}
+.hunt-hunter-banner button { flex: 0 0 auto; width: auto; line-height: 24px; padding: 0 10px; }
+.hunt-hcreator .hunt-arch-list, .hunt-hcreator .hunt-trait-list { display: flex; flex-direction: column; gap: 4px; max-height: 360px; overflow-y: auto; }
+.hunt-hcreator label.hunt-arch { align-items: flex-start; padding: 4px 6px; border: 1px solid transparent; border-radius: 4px; }
+.hunt-hcreator label.hunt-arch:hover { border-color: #b08d57; }
+.hunt-hcreator label.hunt-arch input { margin-top: 3px; }
+.hunt-hcreator .hunt-taken { opacity: 0.45; }
+.hunt-hcreator .hunt-tier { display: grid; grid-template-columns: 110px 1fr; align-items: center; gap: 8px; margin: 4px 0; }
+.hunt-hcreator .hunt-tier-label { font-weight: bold; }
+.hunt-hcreator .hunt-tier-picks { display: flex; flex-wrap: wrap; gap: 6px; }
+.hunt-hcreator .hunt-tier-picks select { width: 130px; }
+.hunt-hcreator .hunt-fixed {
+  display: inline-block; width: 130px; padding: 2px 6px; border: 1px solid #b08d57; border-radius: 3px;
+  background: #3b2615; color: #e9d6a8; text-align: center;
+}
+.hunt-hcreator select.hunt-dupe { outline: 2px solid #e0573f; }
+.hunt-hcreator .hunt-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+.hunt-hcreator .hunt-span2 { grid-column: span 2; }
+.hunt-hcreator .hunt-grid2 input[type="text"] { flex: 1; }

@@ -1,0 +1,39 @@
+# Publishes a Foundry release when a tag like v0.9.0 is pushed:
+# sets the version and download URL in module.json, zips the module,
+# and attaches module.json + hunt-showdown-fco.zip to the GitHub release.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set version and URLs in module.json
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          REPO="${GITHUB_REPOSITORY}"
+          jq --arg v "$VERSION" \
+             --arg url "https://github.com/$REPO" \
+             --arg manifest "https://github.com/$REPO/releases/latest/download/module.json" \
+             --arg download "https://github.com/$REPO/releases/download/$GITHUB_REF_NAME/hunt-showdown-fco.zip" \
+             '.version=$v | .url=$url | .manifest=$manifest | .download=$download' \
+             module.json > module.tmp && mv module.tmp module.json
+
+      - name: Build the zip
+        run: zip -r hunt-showdown-fco.zip module.json README.md CHANGELOG.md assets data lang scripts styles
+
+      - name: Publish the release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            module.json
+            hunt-showdown-fco.zip
+          body_path: CHANGELOG.md

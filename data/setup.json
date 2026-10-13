@@ -1,0 +1,731 @@
+{
+  "skills": {
+    "QXRobGV0aWNz": {
+      "name": "Athletics",
+      "description": "Moving your body under pressure: sprinting, vaulting, climbing, swimming the bayou, diving behind cover.",
+      "overcome": "Cross a zone with a terrain aspect (Deep Water, Mud, Barbed Fence), climb a roof, outrun a pursuer.",
+      "caa": "Reach high ground, slide into cover, get a head start.",
+      "attack": "Not an attack skill.",
+      "defend": "The default defence against shots, blows and blasts when you know they are coming.",
+      "pc": true,
+      "rank": 0
+    },
+    "QnVyZ2xhcnk": {
+      "name": "Burglary",
+      "description": "Getting into places that are locked, chained or trapped, and taking what is inside.",
+      "overcome": "Pick a lock, bypass a chained door, disarm a tripwire or bear trap, loot quietly.",
+      "caa": "Case a compound for weak points and hidden ways in.",
+      "attack": "Not an attack skill.",
+      "defend": "Not a defence skill.",
+      "pc": true,
+      "rank": 0
+    },
+    "Q3JhZnRz": {
+      "name": "Crafts",
+      "description": "Working with mechanisms: guns, traps, tools, explosives.",
+      "overcome": "Clear a jammed weapon (Fair +2), repair gear, rig a trap or a fuse.",
+      "caa": "Rig an improvised obstacle, sabotage a rival's gear, set up a booby trap.",
+      "attack": "Not usually an attack skill (traps use it to set the difficulty).",
+      "defend": "Not a defence skill.",
+      "pc": true,
+      "rank": 0
+    },
+    "RGVjZWl2ZQ": {
+      "name": "Deceive",
+      "description": "Lying, bluffing and misdirection, against rival hunters as much as anyone.",
+      "overcome": "Bluff a rival team into believing you are friendly, or that you already left.",
+      "caa": "Fake a retreat, plant a false trail, feint.",
+      "attack": "Not an attack skill.",
+      "defend": "Defend against Empathy reads of your true intent.",
+      "pc": true,
+      "rank": 0
+    },
+    "RW1wYXRoeQ": {
+      "name": "Empathy",
+      "description": "Reading people: intent, fear, the moment someone is about to betray a truce.",
+      "overcome": "Spot a lie or a shift in a rival's attitude.",
+      "caa": "Discover a hunter's aspect, read their breaking point.",
+      "attack": "Not an attack skill.",
+      "defend": "Defend against Deceive. A Field Medic uses it to calm an ally's Dread.",
+      "pc": true,
+      "rank": 0
+    },
+    "RmlnaHQ": {
+      "name": "Fight",
+      "description": "Melee combat: knives, machetes, axes, sledgehammers, fists, rifle butts.",
+      "overcome": "Rarely used outside a fight.",
+      "caa": "Trip, disarm, shove someone off a ledge.",
+      "attack": "Melee attacks, same zone only. Weapon power is added on a hit.",
+      "defend": "Defend against melee attacks.",
+      "pc": true,
+      "rank": 0
+    },
+    "SGVhbA": {
+      "name": "Heal",
+      "description": "Field medicine: bandages, first aid kits, stitching wounds under fire.",
+      "overcome": "Use a first aid kit (Fair +2): success clears 2 Health boxes, +1 per extra shift.",
+      "caa": "Stabilise a downed hunter, prepare a wound for treatment.",
+      "attack": "Not an attack skill.",
+      "defend": "Not a defence skill.",
+      "pc": true,
+      "rank": 0
+    },
+    "SW52ZXN0aWdhdGU": {
+      "name": "Investigate",
+      "description": "Methodical search: clues, tracks, the Bounty's trail.",
+      "overcome": "Search a building for a clue, follow a blood trail, read a ritual site.",
+      "caa": "Uncover details of a compound, a trail, a past fight.",
+      "attack": "Not an attack skill.",
+      "defend": "Not a defence skill.",
+      "pc": true,
+      "rank": 0
+    },
+    "TG9yZQ": {
+      "name": "Lore",
+      "description": "Knowledge of the occult, the Hive, the Bounties and the old ways of the bayou.",
+      "overcome": "Identify a monster, a ritual, a cursed object.",
+      "caa": "Reveal a monster's weakness or behaviour.",
+      "attack": "Not an attack skill.",
+      "defend": "Not a defence skill.",
+      "pc": true,
+      "rank": 0
+    },
+    "Tm90aWNl": {
+      "name": "Notice",
+      "description": "Alertness: the crow that takes off, the creak on the stairs, the glint of a scope.",
+      "overcome": "Hear or spot something before it is too late.",
+      "caa": "Spot an escape route, a sniper's nest, a weak point.",
+      "attack": "Not an attack skill.",
+      "defend": "Defend against Stealth. Sets turn order in an exchange.",
+      "pc": true,
+      "rank": 0
+    },
+    "UGh5c2lxdWU": {
+      "name": "Physique",
+      "description": "Raw strength and endurance.",
+      "overcome": "Force a door, carry a downed partner, endure poison or fire.",
+      "caa": "Grapple, pin, brace a door.",
+      "attack": "Not an attack skill.",
+      "defend": "Block a doorway against someone forcing their way through. At Great (+4), grants a second Mild consequence.",
+      "pc": true,
+      "rank": 0
+    },
+    "UHJvdm9rZQ": {
+      "name": "Provoke",
+      "description": "Intimidation and taunts: getting a rival to break cover or a nerve to snap.",
+      "overcome": "Scare off a rival, bait a team into rushing you.",
+      "caa": "Make someone Rattled, Enraged or Hesitant.",
+      "attack": "Rarely an attack skill.",
+      "defend": "Not a defence skill. Use Will.",
+      "pc": true,
+      "rank": 0
+    },
+    "UmFwcG9ydA": {
+      "name": "Rapport",
+      "description": "Trust and goodwill, enough to make a truce hold for one more minute.",
+      "overcome": "Negotiate a truce, talk a rival into sharing the extraction.",
+      "caa": "Create a mood of trust, make a rival Talkative.",
+      "attack": "Not an attack skill.",
+      "defend": "Defend against attempts to turn others against you.",
+      "pc": true,
+      "rank": 0
+    },
+    "UmVzb3VyY2Vz": {
+      "name": "Resources",
+      "description": "What you have on you, what you can find, and what you can afford.",
+      "overcome": "Turn up the right supply, find extra ammunition in a crate.",
+      "caa": "Declare you carry the right tool or consumable.",
+      "attack": "Not an attack skill.",
+      "defend": "Not a defence skill.",
+      "pc": true,
+      "rank": 0
+    },
+    "U2hvb3Q": {
+      "name": "Shoot",
+      "description": "Firearms, bows and crossbows.",
+      "overcome": "Trick shots outside a fight.",
+      "caa": "Suppressing fire, Pinning a target, shooting out a lantern.",
+      "attack": "Ranged attacks within the weapon's range bands. Weapon power is added on a hit.",
+      "defend": "Not a defence skill (use Athletics).",
+      "pc": true,
+      "rank": 0
+    },
+    "U3RlYWx0aA": {
+      "name": "Stealth",
+      "description": "Moving unseen and unheard: crouching through reeds, avoiding crows, chickens and broken glass.",
+      "overcome": "Cross a zone unnoticed, slip past a patrol of Grunts.",
+      "caa": "Become Hidden, set up an ambush.",
+      "attack": "Not an attack skill.",
+      "defend": "Defend against Notice attempts to find you.",
+      "pc": true,
+      "rank": 0
+    },
+    "VGhyb3c": {
+      "name": "Throw",
+      "description": "Throwing knives, axes, dynamite, bombs and anything else that leaves your hand.",
+      "overcome": "Land a throw in a specific spot.",
+      "caa": "Create a zone aspect with a bomb (Razor Wire, Choking Smoke, Burning Ground).",
+      "attack": "Thrown weapon attacks; explosives target a zone (see the combat rules).",
+      "defend": "Not a defence skill.",
+      "pc": true,
+      "rank": 0
+    },
+    "V2lsbA": {
+      "name": "Will",
+      "description": "Nerve and resolve against the horrors of the bayou.",
+      "overcome": "Hold your nerve, resist the Hive's whispers, recover from Dread after a fight (Fair +2).",
+      "caa": "Focus: steady yourself before a decisive shot.",
+      "attack": "Not an attack skill.",
+      "defend": "Defend against Provoke and against a monster's dread rating.",
+      "pc": true,
+      "rank": 0
+    }
+  },
+  "tracks": {
+    "SGVhbHRo": {
+      "name": "Health",
+      "category": "Combat",
+      "description": "Three chunks of two boxes (1-2, 3-4, 5-6). Each box absorbs 1 damage.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Sticky",
+      "aspect": "No",
+      "when_marked": "When you take damage, mark one box per point of damage that you don't absorb with a consequence. Fire damage burns boxes instead (see Burned).",
+      "recovery_conditions": "Bandage (action): clear 1 box. First aid kit (action, Heal vs Fair): clear 2 boxes, +1 per extra shift. When revived, all marked boxes clear but one chunk is Burned.",
+      "boxes": 6,
+      "label": "none",
+      "harm_can_absorb": 1,
+      "box_values": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "QnVybmVk": {
+      "name": "Burned",
+      "category": "Combat",
+      "description": "One box per Health chunk lost for the rest of the mission. Each burned chunk strikes out two Health boxes.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Sticky",
+      "aspect": "No",
+      "when_marked": "When you are revived, or when fire burns through a whole chunk.",
+      "recovery_conditions": "Only at the end of the mission. Three burned chunks: the hunter is dead.",
+      "boxes": 3,
+      "label": "none",
+      "harm_can_absorb": 0,
+      "box_values": [
+        false,
+        false,
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "RHJlYWQ": {
+      "name": "Dread",
+      "category": "Combat",
+      "description": "Fear and the Hive's whispers.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Sticky",
+      "aspect": "No",
+      "when_marked": "When a monster hits you, roll Will against its dread rating (Grunt +1, Hive/Armored +2, Butcher/Spider/Assassin +4). On a failure, mark one box. With all 3 marked, mark the Shaken condition.",
+      "recovery_conditions": "After each skirmish, Will vs Fair (+2): success clears 1 box, success with style clears all. A Field Medic can clear 1 box with Empathy vs Fair as an action.",
+      "boxes": 3,
+      "label": "none",
+      "harm_can_absorb": 0,
+      "box_values": [
+        false,
+        false,
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "TWlsZCBDb25zZXF1ZW5jZQ": {
+      "name": "Mild Consequence",
+      "category": "Combat",
+      "description": "Absorbs 2 damage. Examples: Grazed Arm, Ringing Ears, Twisted Ankle.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Lasting",
+      "aspect": {
+        "name": "",
+        "when_marked": true,
+        "as_name": false
+      },
+      "when_marked": "When taking damage.",
+      "recovery_conditions": "Clears at the end of the scene if it was bandaged.",
+      "boxes": 0,
+      "label": "none",
+      "harm_can_absorb": 2,
+      "box_values": [],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "UGh5c2ljYWwgTWlsZCBDb25zZXF1ZW5jZQ": {
+      "name": "Physical Mild Consequence",
+      "category": "Combat",
+      "description": "An extra Mild consequence for hunters with Physique Great (+4).",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": false,
+      "recovery_type": "Lasting",
+      "aspect": {
+        "name": "",
+        "when_marked": true,
+        "as_name": false
+      },
+      "when_marked": "When taking damage.",
+      "recovery_conditions": "Clears at the end of the scene if it was bandaged.",
+      "boxes": 0,
+      "label": "none",
+      "harm_can_absorb": 2,
+      "box_values": [],
+      "linked_skills": [
+        {
+          "linked_skill": "Physique",
+          "rank": 4,
+          "boxes": 0,
+          "enables": true
+        }
+      ],
+      "rollable": "false"
+    },
+    "TW9kZXJhdGUgQ29uc2VxdWVuY2U": {
+      "name": "Moderate Consequence",
+      "category": "Combat",
+      "description": "Absorbs 4 damage. Examples: Gut Shot, Shattered Wrist, Deep Burns.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Lasting",
+      "aspect": {
+        "name": "",
+        "when_marked": true,
+        "as_name": false
+      },
+      "when_marked": "When taking damage.",
+      "recovery_conditions": "Never heals during a mission. Field Surgery (Field Medic, once per mission) downgrades it to Mild.",
+      "boxes": 0,
+      "label": "none",
+      "harm_can_absorb": 4,
+      "box_values": [],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "U2V2ZXJlIENvbnNlcXVlbmNl": {
+      "name": "Severe Consequence",
+      "category": "Combat",
+      "description": "Absorbs 6 damage. Examples: Lung Shot, Leg Torn Open, Half-Blind.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Lasting",
+      "aspect": {
+        "name": "",
+        "when_marked": true,
+        "as_name": false
+      },
+      "when_marked": "When taking damage.",
+      "recovery_conditions": "Never heals during a mission. Field Surgery (Field Medic, once per mission) downgrades it to Moderate.",
+      "boxes": 0,
+      "label": "none",
+      "harm_can_absorb": 6,
+      "box_values": [],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "QmxlZWRpbmc": {
+      "name": "Bleeding",
+      "category": "Conditions",
+      "description": "1 damage at the end of each exchange. A new hit while Bleeding turns it into Heavy Bleeding.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Sticky",
+      "aspect": {
+        "name": "",
+        "when_marked": false,
+        "as_name": true
+      },
+      "when_marked": "On a Vital ballistic die result, or a hit from a frag or concertina bomb.",
+      "recovery_conditions": "One bandage. Bloodless prevents the escalation to Heavy Bleeding.",
+      "boxes": 1,
+      "label": "none",
+      "harm_can_absorb": 0,
+      "box_values": [
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "SGVhdnkgQmxlZWRpbmc": {
+      "name": "Heavy Bleeding",
+      "category": "Conditions",
+      "description": "2 damage at the end of each exchange.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Sticky",
+      "aspect": {
+        "name": "",
+        "when_marked": false,
+        "as_name": true
+      },
+      "when_marked": "When a Bleeding hunter takes a new hit.",
+      "recovery_conditions": "Two bandages, or one first aid kit.",
+      "boxes": 1,
+      "label": "none",
+      "harm_can_absorb": 0,
+      "box_values": [
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "QnVybmluZw": {
+      "name": "Burning",
+      "category": "Conditions",
+      "description": "Burns 1 Health box at the end of each exchange. −2 to Stealth.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Sticky",
+      "aspect": {
+        "name": "",
+        "when_marked": false,
+        "as_name": true
+      },
+      "when_marked": "Incendiary ammo hit, fire bomb, burning ground, Immolator.",
+      "recovery_conditions": "An action to put it out, or entering Deep Water.",
+      "boxes": 1,
+      "label": "none",
+      "harm_can_absorb": 0,
+      "box_values": [
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "UG9pc29uZWQ": {
+      "name": "Poisoned",
+      "category": "Conditions",
+      "description": "−1 to all rolls. Health boxes cannot be cleared.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Sticky",
+      "aspect": {
+        "name": "",
+        "when_marked": false,
+        "as_name": true
+      },
+      "when_marked": "Poison ammo hit, poison bomb, Spider.",
+      "recovery_conditions": "End of the scene (Mithridatist: end of the exchange).",
+      "boxes": 1,
+      "label": "none",
+      "harm_can_absorb": 0,
+      "box_values": [
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "UGlubmVk": {
+      "name": "Pinned",
+      "category": "Conditions",
+      "description": "−2 to your next attack. Leaving cover is an Athletics overcome at Fair (+2).",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Fleeting",
+      "aspect": {
+        "name": "",
+        "when_marked": false,
+        "as_name": true
+      },
+      "when_marked": "When an attack against you ties.",
+      "recovery_conditions": "End of your next exchange.",
+      "boxes": 1,
+      "label": "none",
+      "harm_can_absorb": 0,
+      "box_values": [
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "QmxpbmRlZA": {
+      "name": "Blinded",
+      "category": "Conditions",
+      "description": "−2 to Shoot, Notice and Throw. No Dark Sight.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Fleeting",
+      "aspect": {
+        "name": "",
+        "when_marked": false,
+        "as_name": true
+      },
+      "when_marked": "Flash, choke smoke in the eyes, mud.",
+      "recovery_conditions": "End of your next exchange.",
+      "boxes": 1,
+      "label": "none",
+      "harm_can_absorb": 0,
+      "box_values": [
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "U2hha2Vu": {
+      "name": "Shaken",
+      "category": "Conditions",
+      "description": "−1 to Shoot, Throw and defence rolls (Athletics, Will).",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Sticky",
+      "aspect": {
+        "name": "",
+        "when_marked": false,
+        "as_name": true
+      },
+      "when_marked": "When all three Dread boxes are marked.",
+      "recovery_conditions": "When a Dread box is cleared.",
+      "boxes": 1,
+      "label": "none",
+      "harm_can_absorb": 0,
+      "box_values": [
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    },
+    "RG93bmVk": {
+      "name": "Downed",
+      "category": "Conditions",
+      "description": "No action, no move. You can still talk.",
+      "notes": "",
+      "universal": true,
+      "unique": true,
+      "paid": false,
+      "enabled": true,
+      "recovery_type": "Sticky",
+      "aspect": {
+        "name": "",
+        "when_marked": false,
+        "as_name": true
+      },
+      "when_marked": "When you cannot absorb a hit.",
+      "recovery_conditions": "A teammate in your zone revives you (action, no roll). Revival burns one chunk. A downed hunter who catches fire burns one chunk per exchange.",
+      "boxes": 1,
+      "label": "none",
+      "harm_can_absorb": 0,
+      "box_values": [
+        false
+      ],
+      "linked_skills": [],
+      "rollable": "false"
+    }
+  },
+  "aspects": {
+    "SGlnaCBDb25jZXB0": {
+      "name": "High Concept",
+      "description": "Who your hunter is, in one line. Example: Disgraced Pinkerton With a Steady Hand.",
+      "value": "",
+      "notes": ""
+    },
+    "VHJvdWJsZQ": {
+      "name": "Trouble",
+      "description": "What complicates your hunter's life. Example: Owes the Wrong People in New Orleans.",
+      "value": "",
+      "notes": ""
+    },
+    "QXJjaGV0eXBl": {
+      "name": "Archetype",
+      "description": "Your archetype, phrased as an aspect. Example: Sapper Who Cooks the Fuse Too Long.",
+      "value": "",
+      "notes": ""
+    },
+    "Qmxvb2RsaW5l": {
+      "name": "Bloodline",
+      "description": "Where your hunter comes from, or who they hunt for. Example: Last of the Duchamp Line.",
+      "value": "",
+      "notes": ""
+    }
+  },
+  "stunts": {
+    "UGF0aGZpbmRlciAoU2NvdXQp": {
+      "name": "Pathfinder (Scout)",
+      "description": "<p>Once per scene, create the aspect <em>Marked</em> on a target or a zone you can see, with one free invoke your allies can use.</p>",
+      "notes": "",
+      "linked_skill": "Notice",
+      "refresh_cost": 0,
+      "overcome": false,
+      "caa": true,
+      "attack": false,
+      "defend": false,
+      "bonus": 0,
+      "boxes": 0,
+      "box_values": [],
+      "macro": null
+    },
+    "VW5icmVha2FibGUgKEJydXRlKQ": {
+      "name": "Unbreakable (Brute)",
+      "description": "<p>You have an extra Mild consequence that can only absorb melee damage.</p>",
+      "notes": "",
+      "linked_skill": "None",
+      "refresh_cost": 0,
+      "overcome": false,
+      "caa": false,
+      "attack": false,
+      "defend": false,
+      "bonus": 0,
+      "boxes": 0,
+      "box_values": [],
+      "macro": null
+    },
+    "UXVpY2sgRHJhdyAoR3Vuc2xpbmdlcik": {
+      "name": "Quick Draw (Gunslinger)",
+      "description": "<p>In the first exchange of a fight, you act before everyone else. Once per scene, one extra-shot die does not add weapon stress on a −.</p>",
+      "notes": "",
+      "linked_skill": "Shoot",
+      "refresh_cost": 0,
+      "overcome": false,
+      "caa": false,
+      "attack": true,
+      "defend": false,
+      "bonus": 0,
+      "boxes": 0,
+      "box_values": [],
+      "macro": null
+    },
+    "RmllbGQgU3VyZ2VyeSAoRmllbGQgTWVkaWMp": {
+      "name": "Field Surgery (Field Medic)",
+      "description": "<p>Once per mission, as an action, downgrade one consequence by one step (Severe → Moderate, Moderate → Mild).</p>",
+      "notes": "",
+      "linked_skill": "Heal",
+      "refresh_cost": 0,
+      "overcome": true,
+      "caa": false,
+      "attack": false,
+      "defend": false,
+      "bonus": 0,
+      "boxes": 0,
+      "box_values": [],
+      "macro": null
+    },
+    "QXR0dW5lZCAoTXlzdGljKQ": {
+      "name": "Attuned (Mystic)",
+      "description": "<p>In Dark Sight, you sense the zone of the nearest Clue or the Bounty. +2 to rolls against the supernatural.</p>",
+      "notes": "",
+      "linked_skill": "Will",
+      "refresh_cost": 0,
+      "overcome": false,
+      "caa": false,
+      "attack": false,
+      "defend": true,
+      "bonus": 2,
+      "boxes": 0,
+      "box_values": [],
+      "macro": null
+    },
+    "UGFjayBSYXQgKFNjYXZlbmdlcik": {
+      "name": "Pack Rat (Scavenger)",
+      "description": "<p>When you search a crate or a body, roll Resources. Each + on the dice finds one extra item.</p>",
+      "notes": "",
+      "linked_skill": "Resources",
+      "refresh_cost": 0,
+      "overcome": true,
+      "caa": false,
+      "attack": false,
+      "defend": false,
+      "bonus": 0,
+      "boxes": 0,
+      "box_values": [],
+      "macro": null
+    },
+    "Q29va2VkIEZ1c2UgKFNhcHBlcik": {
+      "name": "Cooked Fuse (Sapper)",
+      "description": "<p>Your explosives go off when you choose: at once, or at the end of the exchange. You never take damage from your own explosions.</p>",
+      "notes": "",
+      "linked_skill": "Throw",
+      "refresh_cost": 0,
+      "overcome": false,
+      "caa": false,
+      "attack": true,
+      "defend": false,
+      "bonus": 0,
+      "boxes": 0,
+      "box_values": [],
+      "macro": null
+    }
+  },
+  "defaults": {},
+  "track_categories": {
+    "Combat": "Combat",
+    "Conditions": "Conditions",
+    "Other": "Other"
+  },
+  "skillTotal": 20,
+  "freeStunts": 1,
+  "refreshTotal": 3,
+  "enforceSkillTotal": true,
+  "enforceColumn": true,
+  "init_skill": "Notice",
+  "skillsLabel": "Skills",
+  "fco_world_sheet_scheme": {
+    "sheet_header_colour": "#3b2615",
+    "sheet_accent_colour": "#b08d57",
+    "backgroundColour": "#1b1611",
+    "inputColour": "#2a221a",
+    "textColour": "#e4d8bf",
+    "interactableColour": "#5c4127",
+    "sheet_label_colour": "#e9d6a8",
+    "use_notched": true,
+    "fco_aspects_panel_height": 40,
+    "fco_skills_panel_height": 55,
+    "fco_user_sheet_logo": "modules/hunt-showdown-fco/assets/logo.svg"
+  }
+}

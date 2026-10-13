@@ -1,0 +1,362 @@
+[
+  {
+    "name": "Adrenaline",
+    "cost": 1,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "While you are down to your last Health chunk, you get a bonus action each exchange.",
+    "img": "modules/hunt-showdown-fco/assets/cards/adrenaline.svg"
+  },
+  {
+    "name": "Conduit",
+    "cost": 4,
+    "tier": 2,
+    "kind": "triggered",
+    "effect": "When you pick up a Clue, Rift or Bounty token, clear 1 marked Health box or 1 Dread box.",
+    "img": "modules/hunt-showdown-fco/assets/cards/conduit.svg"
+  },
+  {
+    "name": "Greyhound",
+    "cost": 4,
+    "tier": 2,
+    "kind": "active",
+    "effect": "Ignore one terrain aspect when you move into a zone.",
+    "img": "modules/hunt-showdown-fco/assets/cards/greyhound.svg"
+  },
+  {
+    "name": "Packmule",
+    "cost": 3,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "When you find a tool or a consumable, take one more.",
+    "img": "modules/hunt-showdown-fco/assets/cards/packmule.svg"
+  },
+  {
+    "name": "Hornskin",
+    "cost": 3,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "+2 to defend against blunt melee weapons.",
+    "img": "modules/hunt-showdown-fco/assets/cards/hornskin.svg"
+  },
+  {
+    "name": "Determination",
+    "cost": 3,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "When you sprint (give up your action to move twice), you keep your cover bonus to defence.",
+    "img": "modules/hunt-showdown-fco/assets/cards/determination.svg"
+  },
+  {
+    "name": "Iron Repeater",
+    "cost": 2,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Chained shot with lever-action rifles and shotguns: after an aimed shot, make one extra shot that exchange without losing the aim bonus.",
+    "img": "modules/hunt-showdown-fco/assets/cards/iron-repeater.svg"
+  },
+  {
+    "name": "Resilience",
+    "cost": 2,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "When you are revived, also clear your Mild consequence.",
+    "img": "modules/hunt-showdown-fco/assets/cards/resilience.svg"
+  },
+  {
+    "name": "Bolt Thrower",
+    "cost": 4,
+    "tier": 2,
+    "kind": "triggered",
+    "effect": "Your crossbow is reloaded for free at the end of each exchange.",
+    "img": "modules/hunt-showdown-fco/assets/cards/bolt-thrower.svg"
+  },
+  {
+    "name": "Levering",
+    "cost": 3,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Lever-action weapons: up to 3 extra shots.",
+    "img": "modules/hunt-showdown-fco/assets/cards/levering.svg"
+  },
+  {
+    "name": "Salveskin",
+    "cost": 5,
+    "tier": 2,
+    "kind": "triggered",
+    "effect": "Once per mission, ignore one fire hit: no boxes burned.",
+    "img": "modules/hunt-showdown-fco/assets/cards/salveskin.svg"
+  },
+  {
+    "name": "Fanning",
+    "cost": 7,
+    "tier": 3,
+    "kind": "triggered",
+    "effect": "Single-action revolvers: up to 3 extra shots.",
+    "img": "modules/hunt-showdown-fco/assets/cards/fanning.svg"
+  },
+  {
+    "name": "Ghoul",
+    "cost": 4,
+    "tier": 2,
+    "kind": "triggered",
+    "effect": "When you kill a Grunt in your zone, clear 1 marked (not burned) Health box.",
+    "img": "modules/hunt-showdown-fco/assets/cards/ghoul.svg"
+  },
+  {
+    "name": "Gator Legs",
+    "cost": 2,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Ignore water and mud terrain aspects, and moving crouched through water makes no noise.",
+    "img": "modules/hunt-showdown-fco/assets/cards/gator-legs.svg"
+  },
+  {
+    "name": "Deadeye Scopesmith",
+    "cost": 1,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Chained shot with short-scope (Deadeye) weapons: after an aimed shot, make one extra shot that exchange without losing the aim bonus.",
+    "img": "modules/hunt-showdown-fco/assets/cards/deadeye-scopesmith.svg"
+  },
+  {
+    "name": "Silent Killer",
+    "cost": 5,
+    "tier": 2,
+    "kind": "triggered",
+    "effect": "Your melee attacks are silent: nobody gets a Notice roll to hear them.",
+    "img": "modules/hunt-showdown-fco/assets/cards/silent-killer.svg"
+  },
+  {
+    "name": "Lightfoot",
+    "cost": 5,
+    "tier": 2,
+    "kind": "triggered",
+    "effect": "Climbing, vaulting, jumping and falling make no noise.",
+    "img": "modules/hunt-showdown-fco/assets/cards/lightfoot.svg"
+  },
+  {
+    "name": "Serpent",
+    "cost": 4,
+    "tier": 2,
+    "kind": "active",
+    "effect": "In Dark Sight, interact with a Clue, Rift, banishable target or abandoned Bounty from an adjacent zone.",
+    "img": "modules/hunt-showdown-fco/assets/cards/serpent.svg"
+  },
+  {
+    "name": "Physician",
+    "cost": 5,
+    "tier": 2,
+    "kind": "triggered",
+    "effect": "Once per exchange, using a first aid kit is a free action.",
+    "img": "modules/hunt-showdown-fco/assets/cards/physician.svg"
+  },
+  {
+    "name": "Steady Aim",
+    "cost": 3,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "+2 to aimed shots with scoped rifles.",
+    "img": "modules/hunt-showdown-fco/assets/cards/steady-aim.svg"
+  },
+  {
+    "name": "Whispersmith",
+    "cost": 2,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Swapping weapons or tools is silent: it never gives away your position, and doesn't break Stealth.",
+    "img": "modules/hunt-showdown-fco/assets/cards/whispersmith.svg"
+  },
+  {
+    "name": "Steady Hand",
+    "cost": 2,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "+2 to aimed shots with scoped pistols and stockless weapons.",
+    "img": "modules/hunt-showdown-fco/assets/cards/steady-hand.svg"
+  },
+  {
+    "name": "Marksman Scopesmith",
+    "cost": 2,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Chained shot with medium-scope (Marksman) weapons: after an aimed shot, make one extra shot that exchange without losing the aim bonus.",
+    "img": "modules/hunt-showdown-fco/assets/cards/marksman-scopesmith.svg"
+  },
+  {
+    "name": "Bloodless",
+    "cost": 4,
+    "tier": 2,
+    "kind": "triggered",
+    "effect": "Bleeding never escalates to Heavy Bleeding.",
+    "img": "modules/hunt-showdown-fco/assets/cards/bloodless.svg"
+  },
+  {
+    "name": "Frontiersman",
+    "cost": 8,
+    "tier": 3,
+    "kind": "triggered",
+    "effect": "Each tool you carry can be used one extra time per mission.",
+    "img": "modules/hunt-showdown-fco/assets/cards/frontiersman.svg"
+  },
+  {
+    "name": "Beastface",
+    "cost": 3,
+    "tier": 1,
+    "kind": "active",
+    "effect": "Animals in your zone (crows, dogs, horses, ducks) don't react to you this exchange.",
+    "img": "modules/hunt-showdown-fco/assets/cards/beastface.svg"
+  },
+  {
+    "name": "Decoy Supply",
+    "cost": 1,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Ammo crates restock your decoys.",
+    "img": "modules/hunt-showdown-fco/assets/cards/decoy-supply.svg"
+  },
+  {
+    "name": "Ambidextrous",
+    "cost": 3,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "With a matched pair of pistols: up to 2 extra shots per pistol, and reloading both takes one action.",
+    "img": "modules/hunt-showdown-fco/assets/cards/ambidextrous.svg"
+  },
+  {
+    "name": "Tomahawk",
+    "cost": 1,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "You can throw any melee weapon you find (axe, shovel, machete) with Throw.",
+    "img": "modules/hunt-showdown-fco/assets/cards/tomahawk.svg"
+  },
+  {
+    "name": "Iron Sharpshooter",
+    "cost": 3,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Chained shot with bolt-action rifles: after an aimed shot, make one extra shot that exchange without losing the aim bonus.",
+    "img": "modules/hunt-showdown-fco/assets/cards/iron-sharpshooter.svg"
+  },
+  {
+    "name": "Bolt Seer",
+    "cost": 2,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "You recover your bolts and throwing knives after each fight.",
+    "img": "modules/hunt-showdown-fco/assets/cards/bolt-seer.svg"
+  },
+  {
+    "name": "Quartermaster",
+    "cost": 6,
+    "tier": 3,
+    "kind": "triggered",
+    "effect": "You can carry a Medium weapon in addition to a Large one.",
+    "img": "modules/hunt-showdown-fco/assets/cards/quartermaster.svg"
+  },
+  {
+    "name": "Mithridatist",
+    "cost": 3,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Poisoned ends at the end of the exchange instead of the end of the scene.",
+    "img": "modules/hunt-showdown-fco/assets/cards/mithridatist.svg"
+  },
+  {
+    "name": "Pitcher",
+    "cost": 6,
+    "tier": 3,
+    "kind": "triggered",
+    "effect": "You can throw explosives two zones away (Great +4).",
+    "img": "modules/hunt-showdown-fco/assets/cards/pitcher.svg"
+  },
+  {
+    "name": "Bulletgrubber",
+    "cost": 6,
+    "tier": 3,
+    "kind": "triggered",
+    "effect": "After each skirmish, roll Resources vs Mediocre (+0): recover spent rounds equal to your shifts (max 3) for one weapon.",
+    "img": "modules/hunt-showdown-fco/assets/cards/bulletgrubber.svg"
+  },
+  {
+    "name": "Poacher",
+    "cost": 2,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Placing and disarming traps is silent.",
+    "img": "modules/hunt-showdown-fco/assets/cards/poacher.svg"
+  },
+  {
+    "name": "Dauntless",
+    "cost": 1,
+    "tier": 1,
+    "kind": "active",
+    "effect": "As an action, defuse an explosive thrown into your zone before it goes off.",
+    "img": "modules/hunt-showdown-fco/assets/cards/dauntless.svg"
+  },
+  {
+    "name": "Kiteskin",
+    "cost": 1,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Falling damage is halved.",
+    "img": "modules/hunt-showdown-fco/assets/cards/kiteskin.svg"
+  },
+  {
+    "name": "Iron Devastator",
+    "cost": 2,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Chained shot with pump-action shotguns: after an aimed shot, make one extra shot that exchange without losing the aim bonus.",
+    "img": "modules/hunt-showdown-fco/assets/cards/iron-devastator.svg"
+  },
+  {
+    "name": "Necromancer",
+    "cost": 4,
+    "tier": 2,
+    "kind": "active",
+    "effect": "In Dark Sight, revive a downed partner up to two zones away, at the cost of 2 of your own Health boxes.",
+    "img": "modules/hunt-showdown-fco/assets/cards/necromancer.svg"
+  },
+  {
+    "name": "Vulture",
+    "cost": 3,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "When you search a dead hunter, take one extra item, and you can take one of their traits even if they were already looted.",
+    "img": "modules/hunt-showdown-fco/assets/cards/vulture.svg"
+  },
+  {
+    "name": "Doctor",
+    "cost": 8,
+    "tier": 3,
+    "kind": "triggered",
+    "effect": "First aid kits clear twice as many Health boxes.",
+    "img": "modules/hunt-showdown-fco/assets/cards/doctor.svg"
+  },
+  {
+    "name": "Sniper Scopesmith",
+    "cost": 3,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "Chained shot with long-scope (Sniper) weapons: after an aimed shot, make one extra shot that exchange without losing the aim bonus.",
+    "img": "modules/hunt-showdown-fco/assets/cards/sniper-scopesmith.svg"
+  },
+  {
+    "name": "Vigilant",
+    "cost": 2,
+    "tier": 1,
+    "kind": "triggered",
+    "effect": "In Dark Sight, traps within two zones are revealed: no Notice roll needed to spot them.",
+    "img": "modules/hunt-showdown-fco/assets/cards/vigilant.svg"
+  },
+  {
+    "name": "Bulwark",
+    "cost": 4,
+    "tier": 2,
+    "kind": "triggered",
+    "effect": "+2 to defend against explosions and harpoon attacks.",
+    "img": "modules/hunt-showdown-fco/assets/cards/bulwark.svg"
+  }
+]

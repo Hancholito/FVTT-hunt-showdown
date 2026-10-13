@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Hunt RPG">
+  <circle cx="60" cy="60" r="56" fill="#1b1611" stroke="#b08d57" stroke-width="4"/>
+  <circle cx="60" cy="60" r="47" fill="none" stroke="#b08d57" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <path d="M60 22 L94 84 H26 Z" fill="none" stroke="#b08d57" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M38 62 Q60 42 82 62 Q60 82 38 62 Z" fill="#2a221a" stroke="#e4d8bf" stroke-width="2.5"/>
+  <circle cx="60" cy="62" r="7.5" fill="#7a1e14"/>
+  <circle cx="60" cy="62" r="3" fill="#e4d8bf"/>
+</svg>

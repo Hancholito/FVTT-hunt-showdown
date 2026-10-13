@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" font-family="Georgia, 'Times New Roman', serif">
+  <rect width="300" height="450" rx="16" fill="#1b1611"/>
+  <rect x="10" y="10" width="280" height="430" rx="10" fill="none" stroke="#b08d57" stroke-width="3"/>
+  <rect x="18" y="18" width="264" height="414" rx="6" fill="none" stroke="#b08d57" stroke-width="1" stroke-dasharray="2 4"/>
+  <text x="150" y="48" text-anchor="middle" font-size="13" letter-spacing="4" fill="#b08d57">TIER I TRAIT</text>
+  <text x="150" y="92" text-anchor="middle" font-size="26" letter-spacing="2" fill="#e9d6a8">STEADY AIM</text>
+  <line x1="60" y1="140" x2="240" y2="140" stroke="#b08d57" stroke-width="1.5"/>
+  <rect x="30" y="152" width="240" height="68" rx="6" fill="#2a221a"/>
+  <text x="150" y="174" text-anchor="middle" font-size="16" fill="#e4d8bf">+2 to aimed shots with</text><text x="150" y="196" text-anchor="middle" font-size="16" fill="#e4d8bf">scoped rifles.</text>
+  <rect x="40" y="368" width="220" height="26" rx="13" fill="#2a221a" stroke="#b08d57" stroke-width="1"/>
+  <text x="150" y="386" text-anchor="middle" font-size="12" letter-spacing="2" fill="#e9d6a8">TRIGGERED · ALWAYS ON</text>
+  <circle cx="132" cy="418" r="6" fill="#b08d57"/><circle cx="150" cy="418" r="6" fill="#b08d57"/><circle cx="168" cy="418" r="6" fill="#b08d57"/>
+</svg>
