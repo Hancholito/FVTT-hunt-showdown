@@ -161,17 +161,17 @@ When damage is applied:
 | Immolator | Elite | 4 | – | 2 | Vital hit kills; immune to Burning; **volatile**: bullets, blades, arrows and blasts that don't kill it set it ablaze |
 | Hellhound | Elite | 3 | – | 2 | Moves two zones; pack bonus |
 | Water Devil | Elite | 4 | – | 2 | Deep Water only, submerged |
-| The Butcher | Boss | 10 + consequences | – | 4 | Fight 3; Meat Hook (2), Burning Hammer (1), Fire Breath |
+| The Butcher | Boss | 13 + consequences | – | 4 | Fight 3; Meat Hook (2), Burning Hammer (1), Fire Breath |
 | The Spider | Boss | 8 + consequences | – | 4 | Fight 3; Fangs (2), Poison Spit (1); immune to Poisoned; wall crawler |
 | The Assassin | Boss | 8 + consequences | – | 4 | Fight 3; Blade Claws (2); clones |
 | Scrapbeak | Boss | 10 + consequences | 1 | 4 | Fight 3; Anchor Swing (2); steals items |
-| Rotjaw | Boss | 10 + consequences | – | 4 | Fight 3; Bite (2); submerged, breaches to attack |
+| Rotjaw | Boss | 12 + consequences | – | 4 | Fight 3; Bite (2); submerged, breaches to attack |
 
 ### Monster Creator
 
 GM only: the **Monster Creator** button at the top of the Actors directory (or Game Settings → Monster Creator). Start blank or from a bestiary entry, then set skills, Health, armour, dread, consequences, vital hit kills, immunities, up to three attacks (skill, power, range, conditions on hit), up to three abilities, and for bosses the four phases. The monster is created in the Hunt Bestiary folder and its sheet opens.
 
-Boss tuning target: a boss hit averages about 5 damage, so one hit leaves a fresh hunter on their last box and a second one downs them, unless they absorb with a consequence. **Game Settings → Hunt bestiary** can create missing monsters or rebuild the whole bestiary from the module's data.
+Boss tuning target: a boss hit averages about 5 damage, so one hit leaves a fresh hunter on their last box and a second one downs them, unless they absorb with a consequence. A boss takes about 6–7 rifle attacks or 7–9 pistol attacks from a Good (+3) shooter (`tools/balance_full.py` runs every arsenal weapon against every monster and against a hunter). **Game Settings → Hunt bestiary** can create missing monsters or rebuild the whole bestiary from the module's data.
 
 ## Explosives
 

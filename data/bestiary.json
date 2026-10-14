@@ -105,7 +105,7 @@
     "aspect": "Blind Mountain of Leeches",
     "description": "Huge, blind, and hunting by sound. Leeches crawl off it to find you. It takes a lot of lead.",
     "skills": {
-      "Fight": 3,
+      "Fight": 2,
       "Physique": 4,
       "Athletics": 0,
       "Notice": 2,
@@ -220,7 +220,7 @@
     "aspect": "Something Under the Water",
     "description": "It waits in deep water and drags the unwary under.",
     "skills": {
-      "Fight": 3,
+      "Fight": 2,
       "Athletics": 2,
       "Stealth": 3,
       "Notice": 2
@@ -252,12 +252,12 @@
     "skills": {
       "Fight": 3,
       "Physique": 4,
-      "Athletics": 1,
+      "Athletics": 2,
       "Notice": 2,
       "Will": 3,
       "Provoke": 3
     },
-    "health": 10,
+    "health": 13,
     "consequences": true,
     "dread": 4,
     "attacks": [
@@ -312,7 +312,7 @@
     "skills": {
       "Fight": 3,
       "Shoot": 3,
-      "Athletics": 4,
+      "Athletics": 3,
       "Stealth": 3,
       "Notice": 3,
       "Will": 2
@@ -435,7 +435,7 @@
       "Athletics": 2,
       "Notice": 2
     },
-    "health": 10,
+    "health": 12,
     "consequences": true,
     "dread": 4,
     "attacks": [

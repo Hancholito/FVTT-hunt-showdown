@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.12.1
+- Balance pass with a full damage simulation (every weapon against every monster and a hunter, `tools/balance_full.py`). Weapons stay as they are: a hunter goes down in about 3 pistol attacks, 2.5 rifle attacks, 2 with the Nitro.
+- Bosses evened out: the Spider took 12–15 attacks (Athletics +4) while the Butcher took 4. Butcher Health 13 and Athletics +2, Spider Athletics +3, Rotjaw Health 12. Every boss now takes about 6–7 rifle attacks or 7–9 pistol attacks.
+- Meathead and Water Devil fight at +2 (was +3): they hit harder than the bosses. On update, the GM is asked to rebuild these five monsters; the compendium is updated.
+
 ## 0.12.0
 - Compendiums, in a "Hunt: Showdown RPG" folder: **Hunt: Rules** (journal: welcome, Fate Core in five minutes with links to the official SRD and the Fate Core Official documentation, Fate points, hunters, health and harm, combat, explosives, support items, monsters, bestiary, traits, arsenal tables), **Hunt: Arsenal** (85 items in six folders), **Hunt: Bestiary** (12 monsters by category), **Hunt: Traits** (the three decks), **Hunt: Macros**.
 - Fate points: a **Fate point** button on single-target attack cards. The attacker (attack) or the aware target (defence) invokes an aspect for +2 or a reroll, paid from the sheet (or a free invoke); a new card replaces the old one, whose Apply button is disabled.

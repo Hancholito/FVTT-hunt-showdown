@@ -356,6 +356,17 @@ Hooks.once("ready", async () => {
         if (n) ui.notifications.info(game.i18n.format("HUNT.Arsenal.Done", { n }));
         const d = await createTraitDecks();
         if (d) ui.notifications.info(game.i18n.format("HUNT.Traits.Done", { n: d }));
+        // 0.12.1: bosses evened out (Butcher, Spider, Rotjaw), Meathead and Water Devil hit less often.
+        if (foundry.utils.isNewerVersion("0.12.1", installed)) {
+            const ok = await foundry.applications.api.DialogV2.confirm({
+                window: { title: game.i18n.localize("HUNT.Bestiary.MenuName") },
+                content: `<p>${game.i18n.localize("HUNT.Bestiary.Update0121")}</p>`,
+                rejectClose: false
+            });
+            if (ok) {
+                try { await rebuildBestiary(["The Butcher", "The Spider", "Rotjaw", "Meathead", "Water Devil"]); } catch (e) { console.warn("Hunt bestiary:", e); }
+            }
+        }
         // 0.11.3: the Hive Bomb has no blast damage any more (power 0, poison and swarm only).
         if (foundry.utils.isNewerVersion("0.11.3", installed)) {
             const all = [...game.items, ...game.actors.contents.flatMap(a => [...a.items])];
