@@ -137,6 +137,7 @@ export function buildMonster(spec, folderId = null) {
             volatile: !!spec.volatile,
             vitalPierces: !!spec.vitalPierces,
             deathBurst: spec.deathBurst ?? null,
+            aura: spec.aura ?? null,
             immune: spec.immune ?? [],
             phases,
             phase: phases.length ? Math.min(phases.length - 1, Number(spec.startPhase ?? (category === "boss" ? 1 : 0))) : 0
@@ -339,6 +340,7 @@ export function decorateMonsterSheet(app, html) {
         m.fireproof ? "Fireproof" : "",
         m.volatile ? (m.ignited ? "ABLAZE" : "Volatile: bullets and blades set it ablaze") : "",
         m.deathBurst ? `${m.deathBurst.label || "Death burst"} when it dies${m.deathBurst.notFire ? " (not if burned)" : ""}` : "",
+        m.aura ? `${m.aura.label || "Aura"}: ${m.aura.skill || "Will"} vs ${m.aura.difficulty ?? m.dread} within ${m.aura.radius} m each exchange` : "",
         m.immune?.length ? `Immune: ${m.immune.join(", ")}` : ""
     ].filter(Boolean);
 

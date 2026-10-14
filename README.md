@@ -161,6 +161,9 @@ When damage is applied:
 | Immolator | Elite | 4 | – | 2 | Vital hit kills; immune to Burning; **volatile**: bullets, blades, arrows and blasts that don't kill it set it ablaze |
 | Flayed | Elite | 2 | – | 3 | Blind (immune to Blinded), fine hearing; wanders, then charges screaming; Bone Spikes (Fight 3, power 1, Bleeding) |
 | Myconid | Elite | 10 | 2 | 2 | Slow; Spore Breath (cone, Poisoned); spore cloud when it dies unless burned; Vital pierces armour; immune to Poisoned |
+| Drowned | Grunt | 3 | – | 2 | Submerged (hidden, +2 defence) then Surfaced; Drag Under (Pinned, drowning); packs; fireproof |
+| The Hanged | Elite | 5 | – | 3 | Lurks above (Stealth 4), drops and hoists (Pinned); Vital hit kills |
+| The Chanter | Elite | 4 | – | 3 | The Hymn: Will vs Good (+3) within 15 m each exchange or Shaken and drawn in; leads a choir of Grunts; Vital hit kills |
 | Hellhound | Elite | 3 | – | 2 | Moves two zones; pack bonus |
 | Water Devil | Elite | 4 | – | 2 | Deep Water only, submerged |
 | The Butcher | Boss | 13 + consequences | – | 4 | Fight 3; Meat Hook (2), Burning Hammer (1), Fire Breath |

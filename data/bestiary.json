@@ -385,6 +385,194 @@
     }
   },
   {
+    "name": "Drowned",
+    "category": "grunt",
+    "img": "modules/hunt-showdown-fco/assets/monster-drowned.svg",
+    "aspect": "Bloated, Waterlogged, Patient",
+    "description": "Swollen corpses that wait under the black water and rise together when something wades in. Slow and clumsy on land.",
+    "skills": {
+      "Fight": 2,
+      "Athletics": 0,
+      "Notice": 2,
+      "Stealth": 3,
+      "Will": 0
+    },
+    "health": 3,
+    "dread": 2,
+    "fireproof": true,
+    "attacks": [
+      {
+        "name": "Drag Under",
+        "skill": "Fight",
+        "power": 1,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Pinned"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Submerged",
+        "text": "Only in Deep Water zones. Hidden under the surface until it attacks: Notice vs its Stealth to spot the ripples. Submerged, it defends at +2."
+      },
+      {
+        "name": "Drag Under",
+        "text": "A hit leaves the hunter Pinned. A Pinned hunter in deep water takes 1 damage at the end of each exchange (drowning) until an Athletics overcome vs Fair (+2) frees them."
+      },
+      {
+        "name": "Pack",
+        "text": "They come in groups: each other Drowned in the zone gives +1 to attack (max +2)."
+      },
+      {
+        "name": "Waterlogged",
+        "text": "Soaked through: fire doesn't kill it outright. On land it moves one zone every other exchange."
+      }
+    ],
+    "phases": [
+      {
+        "name": "Submerged",
+        "attack": 0,
+        "defence": 2,
+        "note": "Under the surface: hidden, hard to hit."
+      },
+      {
+        "name": "Surfaced",
+        "attack": 0,
+        "defence": 0,
+        "note": "Risen and grabbing."
+      }
+    ],
+    "startPhase": 0
+  },
+  {
+    "name": "The Hanged",
+    "category": "elite",
+    "img": "modules/hunt-showdown-fco/assets/monster-hanged.svg",
+    "aspect": "Too Tall, Too Quiet, Rope-Necked",
+    "description": "A long, thin shape folded in the rafters of barns and the branches over the road, a noose still around its neck. It drops on whoever walks alone and hauls them up into the dark.",
+    "skills": {
+      "Fight": 3,
+      "Athletics": 1,
+      "Notice": 3,
+      "Stealth": 4,
+      "Will": 2
+    },
+    "health": 5,
+    "dread": 3,
+    "vitalKills": true,
+    "attacks": [
+      {
+        "name": "Drop and Hoist",
+        "skill": "Fight",
+        "power": 1,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Pinned"
+        ]
+      },
+      {
+        "name": "Long Arms",
+        "skill": "Fight",
+        "power": 2,
+        "range": [
+          "Close",
+          "Medium"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Lurker",
+        "text": "Waits above (rafters, trees, lofts) at Stealth 4. Spotting it is Notice vs its Stealth. Its first attack from hiding is against an unaware target (untick Target aware: Mediocre defence)."
+      },
+      {
+        "name": "Hoist",
+        "text": "A hunter hit by Drop and Hoist is lifted off the ground: Pinned, Fight only at −2, no Shoot. Teammates free them by hitting the Hanged or with an Athletics overcome vs Fair (+2)."
+      },
+      {
+        "name": "Rope-Necked",
+        "text": "A Vital hit (the neck) kills it outright."
+      },
+      {
+        "name": "Back Into the Dark",
+        "text": "When hurt, it climbs back up: next exchange it is hidden again unless someone keeps it in sight."
+      }
+    ],
+    "phases": [
+      {
+        "name": "Lurking",
+        "attack": 1,
+        "defence": 1,
+        "note": "Hidden above, waiting for someone alone."
+      },
+      {
+        "name": "Hoisting",
+        "attack": 0,
+        "defence": -1,
+        "note": "Holding a hunter aloft: exposed, easy to hit."
+      }
+    ],
+    "startPhase": 0
+  },
+  {
+    "name": "The Chanter",
+    "category": "elite",
+    "img": "modules/hunt-showdown-fco/assets/monster-chanter.svg",
+    "aspect": "Leads the Hymn That Calls You In",
+    "description": "A gaunt preacher at the head of a choir of the dead. Its hymn pulls the living toward the pews. Silence it and the choir falls apart.",
+    "skills": {
+      "Fight": 1,
+      "Athletics": 0,
+      "Notice": 2,
+      "Will": 4,
+      "Provoke": 3
+    },
+    "health": 4,
+    "dread": 3,
+    "vitalKills": true,
+    "attacks": [
+      {
+        "name": "Grasping Hands",
+        "skill": "Fight",
+        "power": 1,
+        "range": [
+          "Close"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "The Hymn",
+        "text": "At the end of each exchange, every hunter within 15 m rolls Will vs Good (+3): on a failure they are Shaken and drawn one zone toward the Chanter (they must spend their next move on it)."
+      },
+      {
+        "name": "The Choir",
+        "text": "Comes with 4–8 Grunts singing in the pews. While the Chanter lives they stand and sing; they attack whoever reaches the altar."
+      },
+      {
+        "name": "Silence",
+        "text": "When the Chanter dies, the hymn stops at once and the choir breaks: the Grunts scatter and fight as ordinary Grunts."
+      },
+      {
+        "name": "Rope-Thin",
+        "text": "A Vital hit kills it outright."
+      }
+    ],
+    "aura": {
+      "label": "The Hymn",
+      "radius": 15,
+      "skill": "Will",
+      "difficulty": 3,
+      "condition": "Shaken",
+      "text": "Those who fail are drawn one zone toward it."
+    }
+  },
+  {
     "name": "The Butcher",
     "category": "boss",
     "aspect": "The Flayer of Stillwater",

@@ -161,6 +161,38 @@ async function ablazeAura(scene) {
     return rows;
 }
 
+/* Monster auras (the Chanter's hymn): every hunter within the radius rolls a skill against the aura's difficulty;
+ * on a failure they gain the aura's condition. Dead or downed monsters have no aura. */
+async function monsterAuras(scene) {
+    const rows = [];
+    const s = scene.grid.size;
+    const centre = d => { const src = d._source ?? d; return { x: src.x + (src.width * s) / 2, y: src.y + (src.height * s) / 2 }; };
+    for (const src of scene.tokens) {
+        const m = monsterData(src.actor);
+        const aura = m?.aura;
+        if (!aura || isDead(src.actor) || isMarked(src.actor, "Downed")) continue;
+        const c = centre(src);
+        const results = [];
+        for (const t of scene.tokens) {
+            const a = t.actor;
+            if (!a || t.id === src.id || monsterData(a) || ["container", "beetle", "alarm"].some(f => a.getFlag(MODULE_ID, f))) continue;
+            if (!trackEntry(a, "Health") || isMarked(a, "Downed")) continue;
+            const p = centre(t);
+            if (Math.hypot(p.x - c.x, p.y - c.y) / s * scene.grid.distance > Number(aura.radius ?? 10)) continue;
+            const skill = Object.values(a.system.skills ?? {}).find(k => k.name === (aura.skill ?? "Will"))?.rank ?? 0;
+            const roll = await new Roll("4dF").evaluate();
+            const total = roll.total + skill;
+            const diff = Number(aura.difficulty ?? m.dread ?? 2);
+            if (total >= diff) { results.push(`${esc(t.name)} resists (${total})`); continue; }
+            const cond = aura.condition ? trackEntry(a, aura.condition) : null;
+            if (cond && !cond.track.box_values?.[0]) await a.update({ [`system.tracks.${cond.key}.box_values`]: cond.track.box_values.map((v, i) => i === 0 ? true : v) });
+            results.push(`<strong>${esc(t.name)}</strong> fails (${total})${aura.condition ? ` — ${esc(aura.condition)}` : ""}`);
+        }
+        if (results.length) rows.push(`<div class="hunt-row"><strong>${esc(src.name)}</strong> — ${esc(aura.label ?? "aura")} (${esc(aura.skill ?? "Will")} vs ${Number(aura.difficulty ?? m.dread ?? 2)}): ${results.join(" · ")}${aura.text ? ` <span class="hunt-hint">${esc(aura.text)}</span>` : ""}</div>`);
+    }
+    return rows;
+}
+
 /* All tokens of the active scene (GM only). */
 export async function endOfExchange() {
     if (!game.user.isGM) return ui.notifications.warn("Only the GM runs the end of the exchange.");
@@ -178,11 +210,12 @@ export async function endOfExchange() {
         } catch (e) { console.error("Hunt: end of exchange", tokDoc.name, e); }
     }
     rows.unshift(...(await ablazeAura(scene)));
+    rows.push(...(await monsterAuras(scene)));
     rows.push(...(await ageBeetles()));
     await ChatMessage.create({
         content: `<div class="hunt-card">
           <header class="hunt-card__head"><img src="modules/${MODULE_ID}/assets/exchange.svg" alt=""><div><h3>End of exchange</h3>
-            <span class="hunt-hint">${esc(scene.name)} · bleeding, poison, fire, regeneration, beetles</span></div></header>
+            <span class="hunt-hint">${esc(scene.name)} · bleeding, poison, fire, regeneration, auras, beetles</span></div></header>
           ${rows.join("") || `<div class="hunt-row hunt-hint">Nobody is bleeding, poisoned or burning.</div>`}
         </div>`
     });
