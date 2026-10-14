@@ -1837,14 +1837,14 @@
     "name": "Hive Bomb",
     "category": "grenade",
     "img": "modules/hunt-showdown-fco/assets/explosive.svg",
-    "description": "<p>A nest of hive insects. The swarm hunts whoever is in the zone.</p>",
+    "description": "<p>A nest of hive insects. No blast: the swarm poisons whoever is in the zone and stays there.</p>",
     "weapon": {
       "skill": "Throw",
       "action": "thrown",
       "power": {
-        "Close": 1,
-        "Medium": 1,
-        "Long": 1,
+        "Close": 0,
+        "Medium": 0,
+        "Long": 0,
         "Extreme": null
       },
       "best": "Medium",

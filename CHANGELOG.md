@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.3
+- Utility bombs do no damage: power 0 explosives (Flash, Poison, Choke, Chaos, Hive) only apply their conditions and zone aspect ("Caught"). The Hive Bomb drops to power 0 (existing copies are updated).
+- Dead monsters are no longer caught again by blasts, cones and area attacks.
+- Cone and area weapons get extra shots: the second barrel of the Rival 78 and Slate, pump and lever shotguns. Each + adds 1 power for everyone hit, each − adds weapon stress, rounds are spent.
+- First Aid Kit on a targeted ally works even when both tokens come from the same actor.
+
 ## 0.11.2
 - Monsters die when their last Health box is marked (they only died on overflow, so a 4-damage hit left a 4-box Immolator standing — and ablaze). Hunters still go down on overflow.
 - The ablaze aura line names who is already burning instead of saying nobody is close.

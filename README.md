@@ -188,6 +188,8 @@ Radii are in metres; on a scene measured in feet they are converted. Each explos
 | Flash Bomb | 0 | 5 m | Blinded |
 | Chaos Bomb | 0 | 1 m | Gunfire Over There (Notice to tell it from a real fight), No damage: used to draw monsters and hunters |
 
+**Power 0 explosives** (Flash, Poison, Choke, Chaos, Hive) do no damage: whoever is caught only gets the conditions and the zone aspect. Dead monsters are never caught again.
+
 **Fire**: any fire hit (fire bombs, and any hit that inflicts Burning, incendiary ammo included) **kills ordinary monsters outright**. Bosses, fireproof monsters (the Meathead) and monsters immune to Burning (the Immolator) take the damage normally. The monster banner shows "Fire kills" or "Fireproof".
 
 ## Support items
@@ -239,7 +241,7 @@ The Immolator is **volatile**: when a bullet, blade, arrow or blast hits it **wi
 
 ## Attack shapes
 
-Every weapon and monster attack has a **Shape**: Single target (default), **Area** (everyone in a zone) or **Cone** (everyone in front of the attacker, in range). **Shotguns fire in a cone** (the Romero 77). Explosives have no shape setting: they always blast their zone. Area and Cone attacks make one roll; every targeted token defends with Athletics, a tie leaves them Pinned, and each hit has its own Apply button. Spread attacks don't roll the ballistic die. Set the shape in the weapon settings (gun button) or in the Monster Creator; the Butcher's Fire Breath is a cone too.
+Every weapon and monster attack has a **Shape**: Single target (default), **Area** (everyone in a zone) or **Cone** (everyone in front of the attacker, in range). **Shotguns fire in a cone** (the Romero 77). Explosives have no shape setting: they always blast their zone. Area and Cone attacks make one roll; every targeted token defends with Athletics, a tie leaves them Pinned, and each hit has its own Apply button. Spread attacks don't roll the ballistic die. Extra shots work as for single shots (second barrel, pump, lever): each + adds 1 power for everyone hit, each − adds weapon stress. Set the shape in the weapon settings (gun button) or in the Monster Creator; the Butcher's Fire Breath is a cone too.
 
 ## Loadout
 

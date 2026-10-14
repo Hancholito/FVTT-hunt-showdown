@@ -353,6 +353,17 @@ Hooks.once("ready", async () => {
         if (n) ui.notifications.info(game.i18n.format("HUNT.Arsenal.Done", { n }));
         const d = await createTraitDecks();
         if (d) ui.notifications.info(game.i18n.format("HUNT.Traits.Done", { n: d }));
+        // 0.11.3: the Hive Bomb has no blast damage any more (power 0, poison and swarm only).
+        if (foundry.utils.isNewerVersion("0.11.3", installed)) {
+            const all = [...game.items, ...game.actors.contents.flatMap(a => [...a.items])];
+            for (const item of all) {
+                if (item.name !== "Hive Bomb" || !item.getFlag(MODULE_ID, "weapon")?.explosive) continue;
+                await item.update({
+                    [`flags.${MODULE_ID}.weapon.power`]: { Close: 0, Medium: 0, Long: 0, Extreme: null },
+                    "system.description.value": "<p>A nest of hive insects. No blast: the swarm poisons whoever is in the zone and stays there.</p>"
+                });
+            }
+        }
         // 0.11.0: ongoing damage, volatile Immolator, tougher Armored and Meathead.
         if (foundry.utils.isNewerVersion("0.11.0", installed)) {
             const ok = await foundry.applications.api.DialogV2.confirm({

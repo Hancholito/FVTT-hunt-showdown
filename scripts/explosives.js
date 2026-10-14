@@ -206,9 +206,17 @@ export function flashBlast(center, px, fire) {
 }
 
 /* Every token in the radius, friend or foe, the thrower included. Hidden tokens only for the GM. */
+/* A monster that is already dead (dead status or Downed) isn't caught again. Downed hunters still are. */
+export function isDeadMonster(actor) {
+    if (!monsterData(actor)) return false;
+    const downed = Object.values(actor.system?.tracks ?? {}).find(t => t.name === "Downed")?.box_values?.some(v => v);
+    return !!(downed || actor.statuses?.has?.("dead") || actor.effects?.some?.(e => e.statuses?.has?.("dead")));
+}
+
 export function tokensInBlast(center, px) {
     return canvas.tokens.placeables.filter(tok => {
         if (!tok.actor || (tok.document.hidden && !game.user.isGM)) return false;
+        if (isDeadMonster(tok.actor)) return false;
         const c = tok.center;
         const reach = Math.hypot(c.x - center.x, c.y - center.y) - Math.min(tok.w, tok.h) / 2;
         tok._huntBlastEdge = reach > px / 2;
@@ -260,9 +268,11 @@ export async function resolveMulti({ actor, targets, title, img, attackValue, po
     const rolls = [...extraRolls];
     const results = [];
     const rows = [];
+    // Power 0 (flash, poison, choke, hive, chaos): no damage, only the conditions and the zone.
+    const harmless = Number(power) <= 0;
     for (const token of targets) {
         const a = token.actor;
-        if (!a) continue;
+        if (!a || isDeadMonster(a)) continue;
         const uuid = token.document.uuid;
         let defence, defText;
         if (stuck && stuck === uuid) {
@@ -279,7 +289,16 @@ export async function resolveMulti({ actor, targets, title, img, attackValue, po
         const pt = perTarget[uuid] ?? {};
         if (pt.note) defText += ` <span class="hunt-hint">(${esc(pt.note)})</span>`;
         let line;
-        if (shifts > 0) {
+        if (shifts > 0 && harmless) {
+            if (conditions.length || fire) {
+                const idx = results.length;
+                results.push({ target: uuid, damage: 0, conditions, vital: false, fire, dread });
+                line = `<span class="hunt-tie">Caught</span>${conditions.length ? ` — ${conditions.map(esc).join(", ")}` : ""}
+                    <button type="button" class="hunt-apply-btn hunt-apply-inline" data-index="${idx}"><i class="fas fa-droplet"></i> Apply</button>`;
+            } else {
+                line = `<span class="hunt-tie">Caught</span>`;
+            }
+        } else if (shifts > 0) {
             const damage = Math.max(1, shifts + Math.max(0, power + (pt.powerMod ?? 0)));
             const idx = results.length;
             results.push({ target: uuid, damage, conditions, vital: false, fire, dread });
@@ -304,7 +323,7 @@ export async function resolveMulti({ actor, targets, title, img, attackValue, po
         content: `
           <div class="hunt-card">
             <header class="hunt-card__head"><img src="${img}" alt=""><div><h3>${esc(title)}</h3>
-              <span class="hunt-hint">attack ${attackValue} · power ${power}${fire ? " · fire" : ""}${conditions.length ? ` · ${conditions.map(esc).join(", ")}` : ""}</span></div></header>
+              <span class="hunt-hint">attack ${attackValue} · ${harmless ? "no damage" : `power ${power}`}${fire ? " · fire" : ""}${conditions.length ? ` · ${conditions.map(esc).join(", ")}` : ""}</span></div></header>
             ${headerRows}
             ${rows.join("") || `<div class="hunt-row hunt-hint">No token targeted: nobody is caught.</div>`}
             ${zoneAspect ? `<div class="hunt-result">The zone gains <em>${esc(zoneAspect)}</em>.</div>` : ""}

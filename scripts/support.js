@@ -102,7 +102,7 @@ export async function useSupport(actor, item) {
     let target = actor;
     if (s.target === "ally") {
         const t = game.user.targets.first()?.actor;
-        if (t && t.id !== actor.id) {
+        if (t && t.uuid !== actor.uuid) {
             const choice = await foundry.applications.api.DialogV2.wait({
                 window: { title: `${item.name} — on whom?` },
                 content: `<p>Use <strong>${esc(item.name)}</strong> on yourself or on <strong>${esc(t.name)}</strong> (targeted, must be in your zone)?</p>`,

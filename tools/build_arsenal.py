@@ -152,7 +152,7 @@ bomb("Concertina Bomb", G, "Scatters razor wire across the zone.", 2, 4, ["Bleed
 bomb("Fire Bomb", G, "An incendiary flask. Fire kills ordinary monsters outright; hunters catch fire.", 1, 4, ["Burning"], "Burning Ground", fire=True)
 bomb("Liquid Fire Bomb", G, "Burning oil that spreads: the fire covers a wider zone and lasts longer.", 1, 6, ["Burning"], "Burning Ground (lasts the scene)", fire=True)
 bomb("Hellfire Bomb", G, "A heavy incendiary charge. Fire kills ordinary monsters outright; hunters catch fire.", 2, 6, ["Burning"], "Burning Ground", fire=True)
-bomb("Hive Bomb", G, "A nest of hive insects. The swarm hunts whoever is in the zone.", 1, 5, ["Poisoned"], "Hive Swarm (−1 to all rolls until you leave)")
+bomb("Hive Bomb", G, "A nest of hive insects. No blast: the swarm poisons whoever is in the zone and stays there.", 0, 5, ["Poisoned"], "Hive Swarm (−1 to all rolls until you leave)")
 bomb("Poison Bomb", G, "A cloud of poison gas. No damage, but it lingers.", 0, 5, ["Poisoned"], "Poison Cloud (Poisoned each exchange you stay)")
 bomb("Choke Bomb", G, "Thick choking smoke: −2 to all rolls in the zone, no Dark Sight. Puts out fires.", 0, 5, ["Blinded"], "Choking Smoke (−2 to all rolls, no Dark Sight)", notes="Extinguishes Burning Ground and Burning hunters in the zone")
 bomb("Flash Bomb", G, "A blinding burst. No damage; everyone in the zone is Blinded.", 0, 5, ["Blinded"], "")

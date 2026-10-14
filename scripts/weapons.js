@@ -203,14 +203,18 @@ async function attackMulti(actor, item, weapon, usesAmmo) {
     const targets = [...game.user.targets];
     const bands = BANDS.filter(b => rangeInfo(weapon, b));
     const shape = SHAPES[weapon.shape]?.label ?? weapon.shape;
+    const maxExtra = Math.max(0, Math.min(ACTIONS[weapon.action]?.extra ?? 0, usesAmmo ? weapon.loaded - 1 : 0));
     const opts = await foundry.applications.api.DialogV2.prompt({
         window: { title: `${weapon.shape === "cone" ? "Cone" : "Area"} attack — ${item.name}` },
         content: `<div class="hunt-dialog">
             <p><strong>${esc(item.name)}</strong> — ${esc(shape)}. Target every token caught in it
               (${targets.length} targeted${targets.length ? `: ${targets.map(t => esc(t.name)).join(", ")}` : ""}).</p>
             <label>Range <select name="band">${bands.map(b => `<option ${b === weapon.best ? "selected" : ""}>${b}</option>`).join("")}</select></label>
+            <label>Extra shots <input type="number" name="extra" value="0" min="0" max="${maxExtra}" step="1" ${maxExtra === 0 ? "disabled" : ""}> <span class="hunt-hint">max ${maxExtra} · + = +1 power for everyone hit</span></label>
             <label>Other bonus <input type="number" name="bonus" value="0" step="1"></label></div>`,
-        ok: { label: "Attack", icon: "fas fa-burst", callback: (e, b) => ({ band: b.form.elements.band.value, bonus: Number(b.form.elements.bonus.value || 0) }) },
+        ok: { label: "Attack", icon: "fas fa-burst", callback: (e, b) => ({
+            band: b.form.elements.band.value, bonus: Number(b.form.elements.bonus.value || 0),
+            extra: Math.max(0, Math.min(maxExtra, Number(b.form.elements.extra.value || 0))) }) },
         rejectClose: false
     });
     if (!opts) return;
@@ -229,17 +233,35 @@ async function attackMulti(actor, item, weapon, usesAmmo) {
     const roll = await rollDF(4);
     const attackValue = roll.total + mods;
 
-    if (usesAmmo) await item.update({ [`flags.${MODULE_ID}.weapon.loaded`]: Math.max(0, weapon.loaded - 1) });
+    // Extra shots (second barrel, pump, lever): each + adds 1 power, each − adds weapon stress.
+    const extraRolls = [roll];
+    let extraPlus = 0, extraMinus = 0, extraHtml = "";
+    if (opts.extra > 0) {
+        const er = await rollDF(opts.extra);
+        extraRolls.push(er);
+        const faces = er.dice[0].results.map(r => r.result);
+        extraPlus = faces.filter(v => v > 0).length;
+        extraMinus = faces.filter(v => v < 0).length;
+        extraHtml = `<div class="hunt-row">Extra shots ${diceHtml(er)} <span class="hunt-hint">+ = +1 power · − = weapon stress</span></div>`;
+    }
+    const update = {};
+    if (usesAmmo) update[`flags.${MODULE_ID}.weapon.loaded`] = Math.max(0, weapon.loaded - 1 - opts.extra);
+    if (extraMinus && !NO_STRESS.includes(weapon.action)) {
+        const stress = Math.min(weapon.reliability, weapon.stress + extraMinus);
+        update[`flags.${MODULE_ID}.weapon.stress`] = stress;
+        extraHtml += `<div class="hunt-row${stress >= weapon.reliability ? " hunt-jam" : ""}">Weapon stress ${stress}/${weapon.reliability}${stress >= weapon.reliability ? " — <strong>Jammed</strong>" : ""}</div>`;
+    }
+    if (Object.keys(update).length) await item.update(update);
     const ammo = AMMO[weapon.ammo] ?? AMMO.standard;
-    let power = range.power + (usesAmmo ? (ammo.power ?? 0) : 0);
+    let power = range.power + (usesAmmo ? (ammo.power ?? 0) : 0) + extraPlus;
     if (usesAmmo && weapon.ammo === "dumdum") power += opts.band === "Close" ? 1 : -1;
     const conditions = [...new Set([...(weapon.conditions ?? []), ...(usesAmmo && ammo.condition ? [ammo.condition] : [])])];
 
     await resolveMulti({
         actor, targets, title: `${item.name} — ${weapon.shape === "cone" ? "Cone" : "Area"}`, img: item.img,
         attackValue, power, conditions, fire: conditions.includes("Burning"),
-        dread: Number(monsterData(actor)?.dread ?? 0), extraRolls: [roll],
-        headerRows: `<div class="hunt-row">${esc(weapon.skill)} ${diceHtml(roll)} ${rank >= 0 ? "+" : ""}${rank}${notes.length ? ` <span class="hunt-hint">(${notes.join(", ")})</span>` : ""} = <strong>${attackValue}</strong> · ${opts.band}</div>`
+        dread: Number(monsterData(actor)?.dread ?? 0), extraRolls,
+        headerRows: `<div class="hunt-row">${esc(weapon.skill)} ${diceHtml(roll)} ${rank >= 0 ? "+" : ""}${rank}${notes.length ? ` <span class="hunt-hint">(${notes.join(", ")})</span>` : ""} = <strong>${attackValue}</strong> · ${opts.band}</div>${extraHtml}${usesAmmo ? `<div class="hunt-row hunt-hint">${1 + opts.extra} round${opts.extra ? "s" : ""} spent — ${Math.max(0, weapon.loaded - 1 - opts.extra)}/${weapon.capacity} loaded</div>` : ""}`
     });
 }
 
