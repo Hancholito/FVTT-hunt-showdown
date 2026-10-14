@@ -14,6 +14,7 @@ import { createBestiary, rebuildBestiary, openCreator, decorateMonsterSheet } fr
 import "./support.js";
 import { endOfExchange, createExchangeMacro, registerExchangeHooks } from "./exchange.js";
 import { startOfMission, createMissionMacro, registerFateHooks } from "./fatepoints.js";
+import { registerBeetleHooks } from "./beetles.js";
 
 const MODULE_ID = "hunt-showdown-fco";
 const SYSTEM_ID = "fate-core-official";
@@ -296,6 +297,7 @@ registerExplosiveHooks();
 registerLoadoutHooks();
 registerExchangeHooks();
 registerFateHooks();
+registerBeetleHooks();
 
 Hooks.once("init", () => {
     game.hunt = { endOfExchange, startOfMission };
@@ -356,6 +358,16 @@ Hooks.once("ready", async () => {
         if (n) ui.notifications.info(game.i18n.format("HUNT.Arsenal.Done", { n }));
         const d = await createTraitDecks();
         if (d) ui.notifications.info(game.i18n.format("HUNT.Traits.Done", { n: d }));
+        // 0.12.2: beetles are played as tokens. Existing beetle items get the new effect.
+        if (foundry.utils.isNewerVersion("0.12.2", installed)) {
+            const entries = await loadArsenal();
+            const all = [...game.items, ...game.actors.contents.flatMap(a => [...a.items])];
+            for (const item of all) {
+                const entry = entries.find(e => e.name === item.name && e.support?.effect?.beetle);
+                if (!entry || !item.getFlag(MODULE_ID, "support")) continue;
+                await item.update({ [`flags.${MODULE_ID}.support.effect`]: entry.support.effect });
+            }
+        }
         // 0.12.1: bosses evened out (Butcher, Spider, Rotjaw), Meathead and Water Devil hit less often.
         if (foundry.utils.isNewerVersion("0.12.1", installed)) {
             const ok = await foundry.applications.api.DialogV2.confirm({

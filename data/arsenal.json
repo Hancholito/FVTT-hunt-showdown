@@ -2282,7 +2282,8 @@
       "usesMax": 1,
       "target": "self",
       "effect": {
-        "text": "Send it up to three zones away (Lore overcome vs Fair +2 to guide it past hunters). Detonate: the zone gets Choking Smoke (−2 to all rolls, no Dark Sight) and fires there go out."
+        "beetle": "choke",
+        "text": "Placed as a token up to 40 m away, with its own sight (8 m) through the fog of war. Move it to guide it (Lore overcome vs Fair +2 past watchful hunters). Lives 3 exchanges. Release: choking smoke 5 m around it (Blinded, Choking Smoke, fires go out)."
       }
     }
   },
@@ -2297,7 +2298,8 @@
       "usesMax": 1,
       "target": "self",
       "effect": {
-        "text": "Send it up to three zones away (Lore overcome vs Fair +2). You see what it sees: Notice as if you were in its zone. Burst it to mark one hunter (free invoke on Spotted)."
+        "beetle": "stalker",
+        "text": "Placed as a token up to 40 m away, with its own sight (15 m) through the fog of war: find the rival hunters. Move it to guide it (Lore overcome vs Fair +2 past watchful hunters). Lives 3 exchanges. Burst: every targeted hunter it can see is Spotted (eye icon, free invoke)."
       }
     }
   }

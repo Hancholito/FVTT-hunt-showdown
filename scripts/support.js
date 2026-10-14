@@ -7,6 +7,7 @@
  */
 
 import { MODULE_ID, getWeapon } from "./weapons.js";
+import { deployBeetle } from "./beetles.js";
 
 const NO_AMMO = ["melee", "natural", "thrown"];
 
@@ -97,6 +98,13 @@ export async function useSupport(actor, item) {
     const s = getSupport(item);
     if (!s) return;
     if (s.usesMax > 0 && s.uses <= 0) return ui.notifications.warn(`${item.name} is used up.`);
+
+    // Beetles are played as tokens on the map.
+    if (s.effect?.beetle) {
+        const ok = await deployBeetle(actor, item, s.effect.beetle);
+        if (ok && s.usesMax > 0) await item.update({ [`flags.${MODULE_ID}.support.uses`]: Math.max(0, s.uses - 1) });
+        return;
+    }
 
     // Target: the hunter themself, or a targeted token for "ally" items.
     let target = actor;
@@ -216,6 +224,7 @@ export function supportSummary(s) {
     if (e.heal) parts.push(`heals ${e.heal}`);
     if (e.unburn) parts.push(`restores ${e.unburn} chunk`);
     if (e.regen) parts.push(`regen ${e.regen} exchanges`);
+    if (e.beetle) parts.push("placed on the map as a token");
     if (e.cure?.length) parts.push(`cures ${e.cure.join(", ")}`);
     if (e.ammo) parts.push("refills rounds");
     if (s.target === "ally") parts.push("self or ally");

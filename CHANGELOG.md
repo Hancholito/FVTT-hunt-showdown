@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.12.2
+- Beetles are played as tokens: Use the Stalker or Choke Beetle, click where it lands (up to 40 m), and a beetle token owned by the player appears with its own sight through the fog of war (Stalker 15 m, Choke 8 m), to find rival hunters. The player moves it; it lives 3 exchanges (counted down by End of Exchange). Burst (Stalker): targeted hunters within its sight are Spotted (eye icon). Release (Choke): Blinded and Choking Smoke 5 m around it. Recall. The GM's client creates the token through the module socket.
+- Existing beetle items are updated on load.
+
 ## 0.12.1
 - Balance pass with a full damage simulation (every weapon against every monster and a hunter, `tools/balance_full.py`). Weapons stay as they are: a hunter goes down in about 3 pistol attacks, 2.5 rifle attacks, 2 with the Nitro.
 - Bosses evened out: the Spider took 12–15 attacks (Athletics +4) while the Butcher took 4. Butcher Health 13 and Athletics +2, Spider Athletics +3, Rotjaw Health 12. Every boss now takes about 6–7 rifle attacks or 7–9 pistol attacks.

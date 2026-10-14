@@ -2,7 +2,7 @@
   "id": "hunt-showdown-fco",
   "title": "Hunt: Showdown RPG (Fate Core)",
   "description": "Unofficial Hunt: Showdown tabletop RPG for Fate Core Official: skills, health, dread and conditions, archetypes, full arsenal, bestiary, trait cards and a dark bayou theme. Made with the authorization of the rights holder, free of charge.",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "authors": [
     {
       "name": "Hannibal (Hancholito)"
@@ -103,5 +103,6 @@
         "hunt-macros"
       ]
     }
-  ]
+  ],
+  "socket": true
 }

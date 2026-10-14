@@ -171,7 +171,7 @@ export function radiusPixels(metres) {
 }
 
 /* Waits for a left click on the map; resolves to canvas coordinates, or null on right click / Escape. */
-function pickPoint(label) {
+export function pickPoint(label) {
     return new Promise(resolve => {
         const view = canvas.app.view;
         ui.notifications.info(`${label}: click where it lands (right click or Escape to cancel).`);

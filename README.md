@@ -230,6 +230,10 @@ Support items are Extras with support data: **tools** keep their charges (First 
 | Choke Beetle | tool | Send it up to three zones away (Lore overcome vs Fair +2 to guide it past hunters). Detonate: the zone gets Choking Smoke (−2 to all rolls, no Dark Sight) and fires there go out. |
 | Stalker Beetle | tool | Send it up to three zones away (Lore overcome vs Fair +2). You see what it sees: Notice as if you were in its zone. Burst it to mark one hunter (free invoke on Spotted). |
 
+### Beetles
+
+The Stalker and Choke Beetles are played as **tokens**: Use, click where it lands (up to 40 m), and a beetle token owned by the player appears with its own sight (Stalker 15 m, Choke 8 m) through the fog of war. The player moves it; it lives 3 exchanges. Chat card buttons: **Burst** (Stalker: targeted hunters in its sight are Spotted, eye icon), **Release the smoke** (Choke: Blinded and Choking Smoke 5 m around it), **Recall**. Needs a connected GM (the GM's client creates the token through the module socket).
+
 ### Tools and consumables
 
 As in Hunt, a hunter carries **4 tools** (melee and thrown weapons, derringer, flare pistol, hand crossbow, kits, traps, beetles) and **4 consumables** (explosives, shots, ammo boxes). They don't use weapon slots. The loadout line counts them; dropping a fifth warns but is allowed (things picked up in the field).

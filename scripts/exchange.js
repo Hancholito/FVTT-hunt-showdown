@@ -7,6 +7,7 @@
 
 import { MODULE_ID, monsterData } from "./weapons.js";
 import { hasTrait } from "./support.js";
+import { ageBeetles, beetleData } from "./beetles.js";
 
 const TICKS = [
     { name: "Bleeding", damage: 1 },
@@ -35,7 +36,7 @@ function isMarked(actor, name) {
 export async function tickActor(actor) {
     const health = trackEntry(actor, "Health");
     if (!health) return null;
-    if (isMarked(actor, "Downed") || isDead(actor)) return null;
+    if (isMarked(actor, "Downed") || isDead(actor) || beetleData(actor)) return null;
     const monster = monsterData(actor);
     const immune = new Set(monster?.immune ?? []);
     const values = [...(health.track.box_values ?? [])];
@@ -172,10 +173,11 @@ export async function endOfExchange() {
         } catch (e) { console.error("Hunt: end of exchange", tokDoc.name, e); }
     }
     rows.unshift(...(await ablazeAura(scene)));
+    rows.push(...(await ageBeetles()));
     await ChatMessage.create({
         content: `<div class="hunt-card">
           <header class="hunt-card__head"><img src="modules/${MODULE_ID}/assets/exchange.svg" alt=""><div><h3>End of exchange</h3>
-            <span class="hunt-hint">${esc(scene.name)} · bleeding, poison, fire, regeneration</span></div></header>
+            <span class="hunt-hint">${esc(scene.name)} · bleeding, poison, fire, regeneration, beetles</span></div></header>
           ${rows.join("") || `<div class="hunt-row hunt-hint">Nobody is bleeding, poisoned or burning.</div>`}
         </div>`
     });

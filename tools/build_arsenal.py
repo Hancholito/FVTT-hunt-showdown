@@ -194,9 +194,9 @@ support("Alert Trip Mine", "A tripwire that fires a flare and a shriek.", "tool"
 support("Bear Trap", "Iron jaws. Loud, slow, cruel.", "tool", 1,
         {"text": "Place in your zone (Crafts, free action). The first to enter without Notice vs Good (+3) takes 3 damage, Bleeding, and is Pinned until an Athletics overcome at Fair (+2)."})
 support("Choke Beetle", "A beetle you guide by Dark Sight. Bursts into choking smoke on command.", "tool", 1,
-        {"text": "Send it up to three zones away (Lore overcome vs Fair +2 to guide it past hunters). Detonate: the zone gets Choking Smoke (−2 to all rolls, no Dark Sight) and fires there go out."})
+        {"beetle": "choke", "text": "Placed as a token up to 40 m away, with its own sight (8 m) through the fog of war. Move it to guide it (Lore overcome vs Fair +2 past watchful hunters). Lives 3 exchanges. Release: choking smoke 5 m around it (Blinded, Choking Smoke, fires go out)."})
 support("Stalker Beetle", "A beetle you guide by Dark Sight. Shows you what it sees.", "tool", 1,
-        {"text": "Send it up to three zones away (Lore overcome vs Fair +2). You see what it sees: Notice as if you were in its zone. Burst it to mark one hunter (free invoke on Spotted)."})
+        {"beetle": "stalker", "text": "Placed as a token up to 40 m away, with its own sight (15 m) through the fog of war: find the rival hunters. Move it to guide it (Lore overcome vs Fair +2 past watchful hunters). Lives 3 exchanges. Burst: every targeted hunter it can see is Spotted (eye icon, free invoke)."})
 
 out = pathlib.Path(__file__).resolve().parent.parent / "data" / "arsenal.json"
 out.write_text(json.dumps(items, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

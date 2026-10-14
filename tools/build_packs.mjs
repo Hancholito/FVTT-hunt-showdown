@@ -134,6 +134,8 @@ const huntersPage = `<h1>Hunters</h1>
 
 const supportPage = `<h1>Support items</h1>
 <p><strong>Tools</strong> keep their charges (First Aid Kit: 3 uses), <strong>consumables</strong> leave the sheet once used. Press <strong>Use</strong> on the item's row: the module clears Health boxes, restores Burned chunks, cures conditions or refills spare rounds, spends the charge and posts the effect. The First Aid Kit can be used on a targeted ally in your zone; Doctor doubles it. While <strong>Poisoned</strong>, kits and shots clear no Health box.</p>
+<h2>Beetles</h2>
+<p>The <strong>Stalker</strong> and <strong>Choke Beetles</strong> are played as tokens. <strong>Use</strong>, then click where it lands (up to 40 m from your hunter): a beetle token appears, owned by you, with its own sight (Stalker 15 m, Choke 8 m) — it sees through the fog of war, so you can find where rival hunters are hiding. Move the token to guide it (Lore overcome vs Fair +2 to slip past watchful hunters). It lives <strong>3 exchanges</strong> (End of Exchange counts them down). Buttons on its chat card: <strong>Burst</strong> (Stalker: target the hunters it can see, they are <em>Spotted</em> — eye icon, one free invoke each for your team), <strong>Release the smoke</strong> (Choke: choking smoke 5 m around it, Blinded, fires go out), <strong>Recall</strong>. A GM must be connected: the GM's client creates and removes the beetle. The Stalker's card is whispered to its owner and the GM.</p>
 ${table(["Item", "Kind", "Effect"], arsenal.filter(e => e.category === "support").map(e => [`<strong>${esc(e.name)}</strong>`, e.support.kind + (e.support.usesMax > 1 ? `, ${e.support.usesMax} uses` : ""), esc(e.support.effect.text)]))}`;
 
 const arsenalPage = `<h1>Arsenal</h1>
