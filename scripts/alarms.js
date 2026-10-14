@@ -35,9 +35,11 @@ function metres(px) {
     return feet ? u / 3.28084 : u;
 }
 
+/* Centre of a token from its stored position: in v14 doc.x follows the movement animation, _source is the destination. */
 function centerOf(doc) {
     const s = canvas.scene.grid.size;
-    return { x: doc.x + (doc.width * s) / 2, y: doc.y + (doc.height * s) / 2 };
+    const src = doc._source ?? doc;
+    return { x: src.x + (src.width * s) / 2, y: src.y + (src.height * s) / 2 };
 }
 
 function isHunter(actor) {
@@ -59,7 +61,8 @@ async function onMove(tokenDoc, changes, options, userId) {
         const a = alarmData(t.actor);
         if (!a || a.spent || t.document.hidden) continue;
         const key = `${tokenDoc.id}:${t.id}`;
-        const dist = metres(Math.hypot(pos.x - t.center.x, pos.y - t.center.y));
+        const ac = centerOf(t.document);
+        const dist = metres(Math.hypot(pos.x - ac.x, pos.y - ac.y));
         if (dist > Number(a.radius ?? 3)) { inside.delete(key); continue; }
         if (inside.has(key)) continue;
         inside.add(key);

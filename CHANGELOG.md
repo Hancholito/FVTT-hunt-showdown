@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.14.1
+- Animal alarms trigger on the movement's destination: in Foundry v14 a token's position follows its movement animation, so the check ran on the old position and could miss the alarm.
+
 ## 0.14.0
 - Animal alarms: crows, chicken coops, dog kennels, ducks, horses and cows as tokens. A player moving a hunter within an animal's radius chooses: crouch past (Stealth vs its difficulty), run past, or Beastface. When it goes off, its spot is pinged on everyone's map and a public message tells the table; monsters with a Triggered phase within earshot (the Flayed) switch to it and the GM is told. Crows and ducks fly off once and vanish (the GM can reset them); the others go off again when a hunter comes back. Radius, difficulty, range and an optional sound per alarm.
 - Lore Creator: Animal alarm. New compendium Hunt: Alarms (the six animals). Rules journal: Animal alarms.
