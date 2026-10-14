@@ -37,7 +37,7 @@ function isMarked(actor, name) {
 export async function tickActor(actor) {
     const health = trackEntry(actor, "Health");
     if (!health) return null;
-    if (isMarked(actor, "Downed") || isDead(actor) || beetleData(actor) || actor.getFlag(MODULE_ID, "container")) return null;
+    if (isMarked(actor, "Downed") || isDead(actor) || beetleData(actor) || actor.getFlag(MODULE_ID, "container") || actor.getFlag(MODULE_ID, "alarm")) return null;
     const monster = monsterData(actor);
     const immune = new Set(monster?.immune ?? []);
     const values = [...(health.track.box_values ?? [])];

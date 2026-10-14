@@ -116,7 +116,7 @@ export async function invokeFromMessage(message) {
 
 export async function startOfMission() {
     if (!game.user.isGM) return ui.notifications.warn("Only the GM starts a mission.");
-    const hunters = game.actors.filter(a => a.type === "fate-core-official" && !a.getFlag(MODULE_ID, "monster") && !a.getFlag(MODULE_ID, "beetle") && a.hasPlayerOwner);
+    const hunters = game.actors.filter(a => a.type === "fate-core-official" && !a.getFlag(MODULE_ID, "monster") && !a.getFlag(MODULE_ID, "beetle") && !a.getFlag(MODULE_ID, "alarm") && !a.getFlag(MODULE_ID, "container") && a.hasPlayerOwner);
     const rows = [];
     for (const a of hunters) {
         const fp = fatePoints(a);

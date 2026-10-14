@@ -262,6 +262,10 @@ The Immolator is **volatile**: when a bullet, blade, arrow or blast hits it **wi
 
 Lore items (clipping, note, book, photograph, toy, wax cylinder with audio, Pony Express missive, key) are read from the sheet as period handouts and can be shown to everyone. Door walls take a Lock ID and pick difficulty; containers (chest, desk, footlocker, safe) are actors on the map with a lock and contents. Keys open the matching lock; Burglary picks it. The **Search** button on the hunter's loadout line opens the container in reach. GM tools: **Lore Creator** (Items directory), the **Hunt: Lore** and **Hunt: Containers** compendiums.
 
+## Animal alarms
+
+Crows, chicken coops, dog kennels, ducks, horses and cows are tokens. Moving a hunter within their radius asks the player: crouch past (Stealth), run past, or Beastface. An alarm pings its spot on everyone's map, posts a public message and wakes Triggered-phase monsters within earshot. Crows and ducks fly off once. Lore Creator → Animal alarm, or the **Hunt: Alarms** compendium.
+
 ## Attack shapes
 
 Every weapon and monster attack has a **Shape**: Single target (default), **Area** (everyone in a zone) or **Cone** (everyone in front of the attacker, in range). **Shotguns fire in a cone** (the Romero 77). Explosives have no shape setting: they always blast their zone. Area and Cone attacks make one roll; every targeted token defends with Athletics, a tie leaves them Pinned, and each hit has its own Apply button. Spread attacks don't roll the ballistic die. Extra shots work as for single shots (second barrel, pump, lever): each + adds 1 power for everyone hit, each − adds weapon stress. Set the shape in the weapon settings (gun button) or in the Monster Creator; the Butcher's Fire Breath is a cone too.

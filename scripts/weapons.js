@@ -583,7 +583,7 @@ function decorateSheetInner(app, html) {
 
     // Loadout line at the top of the Extras panel (hunters only).
     const body = root.querySelector('[name="extras_body"]');
-    const isProp = !!(actor.getFlag(MODULE_ID, "container") || actor.getFlag(MODULE_ID, "beetle"));
+    const isProp = !!(actor.getFlag(MODULE_ID, "container") || actor.getFlag(MODULE_ID, "beetle") || actor.getFlag(MODULE_ID, "alarm"));
     let summary = "";
     try { if (!isProp) summary = loadoutSummary(actor); } catch (e) { console.error("Hunt loadout:", e); }
     if (body && summary && !body.querySelector(".hunt-loadout")) {

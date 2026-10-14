@@ -17,6 +17,7 @@ import { startOfMission, createMissionMacro, registerFateHooks } from "./fatepoi
 import { registerBeetleHooks } from "./beetles.js";
 import { registerLoreHooks, openLoreCreator } from "./lore.js";
 import { registerLockHooks } from "./locks.js";
+import { registerAlarmHooks } from "./alarms.js";
 
 const MODULE_ID = "hunt-showdown-fco";
 const SYSTEM_ID = "fate-core-official";
@@ -302,6 +303,7 @@ registerFateHooks();
 registerBeetleHooks();
 registerLoreHooks();
 registerLockHooks();
+registerAlarmHooks();
 
 Hooks.once("init", () => {
     game.hunt = { endOfExchange, startOfMission, openLoreCreator };

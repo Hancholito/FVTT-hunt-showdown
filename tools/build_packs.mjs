@@ -20,7 +20,7 @@ const lore = read("data/lore.json");
 // ---------------------------------------------------------------- Foundry stubs for the module's builders
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 globalThis.foundry = { utils: { deepClone: o => structuredClone(o), escapeHTML: esc, mergeObject: (a, b) => ({ ...a, ...b }) } };
-globalThis.CONST = { TOKEN_DISPOSITIONS: { HOSTILE: -1 }, DOCUMENT_OWNERSHIP_LEVELS: { NONE: 0, OBSERVER: 2, OWNER: 3 } };
+globalThis.CONST = { TOKEN_DISPOSITIONS: { HOSTILE: -1, NEUTRAL: 0, FRIENDLY: 1 }, TOKEN_DISPLAY_MODES: { HOVER: 30, OWNER_HOVER: 20 }, DOCUMENT_OWNERSHIP_LEVELS: { NONE: 0, LIMITED: 1, OBSERVER: 2, OWNER: 3 } };
 globalThis.fcoConstants = {
     tob64: s => Buffer.from(s, "utf8").toString("base64").replace(/=+$/, ""),
     wd: () => ({ system: { skills: setup.skills, tracks: setup.tracks } })
@@ -29,6 +29,7 @@ globalThis.Hooks = { on: () => {}, once: () => {} };
 globalThis.game = { settings: { get: () => ({}) } };
 const { buildMonster } = await import(pathToFileURL(path.join(ROOT, "scripts/monsters.js")));
 const { traitDeckData } = await import(pathToFileURL(path.join(ROOT, "scripts/traits.js")));
+const { ALARM_TYPES, alarmActorData } = await import(pathToFileURL(path.join(ROOT, "scripts/alarms.js")));
 
 // ---------------------------------------------------------------- helpers
 const ALNUM = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -134,6 +135,13 @@ const addContainer = (c, folderId, i, prefix) => {
 };
 lore.containers.templates.forEach((c, i) => addContainer(c, cTpl, i, "cont-tpl"));
 lore.containers.examples.forEach((c, i) => addContainer(c, cEx, i, "cont"));
+
+// ---------------------------------------------------------------- Alarms (Actors)
+Object.keys(ALARM_TYPES).forEach((type, i) => {
+    const d = alarmActorData(type, "");
+    const _id = id(`alarm:${type}`);
+    put("hunt-alarms", { ...d, _id, _key: `!actors!${_id}`, folder: null, sort: i * 100, system: {}, items: [], effects: [], _stats: STATS });
+});
 
 // ---------------------------------------------------------------- Macros
 for (const [name, cmd, img, flag, sort] of [

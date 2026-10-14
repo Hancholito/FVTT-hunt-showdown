@@ -246,13 +246,18 @@ export async function openLoreCreator() {
         window: { title: "Lore Creator" },
         content: `<p>What do the hunters find?</p>`,
         buttons: [...Object.entries(LORE_KINDS).map(([k, v]) => ({ action: k, label: v.label })),
-            { action: "container", label: "Container (chest, desk…)" }],
+            { action: "container", label: "Container (chest, desk…)" },
+            { action: "alarm", label: "Animal alarm (crows, dogs…)" }],
         rejectClose: false
     });
     if (!kind) return;
     if (kind === "container") {
         const { openContainerCreator } = await import("./locks.js");
         return openContainerCreator();
+    }
+    if (kind === "alarm") {
+        const { openAlarmCreator } = await import("./alarms.js");
+        return openAlarmCreator();
     }
     const res = await loreDialog(`New ${LORE_KINDS[kind].label}`, kind, {}, "");
     if (!res) return;

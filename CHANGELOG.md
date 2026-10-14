@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.14.0
+- Animal alarms: crows, chicken coops, dog kennels, ducks, horses and cows as tokens. A player moving a hunter within an animal's radius chooses: crouch past (Stealth vs its difficulty), run past, or Beastface. When it goes off, its spot is pinged on everyone's map and a public message tells the table; monsters with a Triggered phase within earshot (the Flayed) switch to it and the GM is told. Crows and ducks fly off once and vanish (the GM can reset them); the others go off again when a hunter comes back. Radius, difficulty, range and an optional sound per alarm.
+- Lore Creator: Animal alarm. New compendium Hunt: Alarms (the six animals). Rules journal: Animal alarms.
+
 ## 0.13.2
 - New monster: the **Myconid** (Elite), a man gone to mould. Health 10, armour 2 (a Vital hit ignores it), Athletics −1, slow. Slam (Fight 2, power 2) and Spore Breath (cone, no damage, Poisoned). When it dies, a spore cloud bursts 4 m around it (Athletics vs Good +3 or Poisoned, Spore Cloud zone) — unless fire killed it: fire kills it outright and leaves no cloud.
 - Monsters can have a death burst (any monster data: label, radius, attack, power, conditions, zone aspect, not when burned); it also goes off when bleeding or poison kill the monster at the end of the exchange.
