@@ -3,6 +3,7 @@
 ## 0.15.0
 - Three new creatures. **Drowned** (Grunt, packs): wait Submerged in deep water (hidden, +2 defence), rise to Drag Under (Pinned, 1 drowning damage per exchange in deep water until freed), fireproof while soaked. **The Hanged** (Elite): lurks in rafters and trees (Stealth 4), drops on a lone hunter and hoists them (Pinned, Fight −2), a Vital hit to the neck kills it. **The Chanter** (Elite): leads a choir of Grunts; its Hymn makes every hunter within 15 m roll Will vs Good (+3) each exchange or be Shaken and drawn toward it; kill it and the choir breaks.
 - Monster auras: a monster can make every hunter within a radius roll a skill each exchange, with a condition on a failure (run by End of Exchange).
+- A tie against a cloud with no damage (spores, smoke, flash) is a miss, not Pinned.
 - Alarm message names the token only when it differs from the animal type.
 
 ## 0.14.1

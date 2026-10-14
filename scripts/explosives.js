@@ -307,6 +307,8 @@ export async function resolveMulti({ actor, targets, title, img, attackValue, po
             const fireKill = burns && m && m.category !== "boss" && !m.fireproof && !(m.immune ?? []).includes("Burning");
             line = `<span class="hunt-damage">${damage} damage</span>${fireKill ? ` <strong>(fire: lethal)</strong>` : ""}
                     <button type="button" class="hunt-apply-btn hunt-apply-inline" data-index="${idx}"><i class="fas fa-droplet"></i> Apply</button>`;
+        } else if (shifts === 0 && harmless) {
+            line = `<span class="hunt-miss">${esc(missLabel)}</span>`;
         } else if (shifts === 0) {
             line = `<span class="hunt-tie">Grazed</span> — no damage, <strong>Pinned</strong>
                     <button type="button" class="hunt-apply-btn hunt-apply-inline" data-index="${results.length}"><i class="fas fa-droplet"></i> Apply</button>`;
