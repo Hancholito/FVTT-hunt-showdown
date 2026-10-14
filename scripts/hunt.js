@@ -13,6 +13,7 @@ import { sideBySideBio } from "./layout.js";
 import { createBestiary, rebuildBestiary, openCreator, decorateMonsterSheet } from "./monsters.js";
 import "./support.js";
 import { endOfExchange, createExchangeMacro, registerExchangeHooks } from "./exchange.js";
+import { startOfMission, createMissionMacro, registerFateHooks } from "./fatepoints.js";
 
 const MODULE_ID = "hunt-showdown-fco";
 const SYSTEM_ID = "fate-core-official";
@@ -223,6 +224,7 @@ class HuntInstaller extends foundry.applications.api.ApplicationV2 {
         await createTraitDecks();
         await createHands();
         await createExchangeMacro();
+        await createMissionMacro();
 
         // A personal colour scheme on the GM would hide the Hunt theme.
         await game.user.unsetFlag(SYSTEM_ID, "current-sheet-scheme");
@@ -293,9 +295,10 @@ registerDamageHooks();
 registerExplosiveHooks();
 registerLoadoutHooks();
 registerExchangeHooks();
+registerFateHooks();
 
 Hooks.once("init", () => {
-    game.hunt = { endOfExchange };
+    game.hunt = { endOfExchange, startOfMission };
 });
 
 // Fate Core Official decorates every 4dF roll message and expects a ".dice-total" element.
@@ -441,7 +444,7 @@ Hooks.once("ready", async () => {
     // Players added since the last load get their trait hand.
     await createHands();
     // End of Exchange macro (Macros directory, Hunt folder).
-    try { await createExchangeMacro(); } catch (e) { console.warn("Hunt macro:", e); }
+    try { await createExchangeMacro(); await createMissionMacro(); } catch (e) { console.warn("Hunt macro:", e); }
     // First load after a fresh install: the bestiary needs the installed tracks, so it is created now.
     if (!game.folders.find(f => f.type === "Actor" && f.name === "Hunt Bestiary")) {
         try { await createBestiary(); } catch (e) { console.warn("Hunt bestiary:", e); }

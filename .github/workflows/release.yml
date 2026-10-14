@@ -46,7 +46,7 @@ jobs:
 
       - name: Build the zip
         if: steps.check.outputs.exists == 'false'
-        run: zip -r hunt-showdown-fco.zip module.json README.md CHANGELOG.md assets data lang scripts styles
+        run: zip -r hunt-showdown-fco.zip module.json README.md CHANGELOG.md assets data lang packs scripts styles -x 'packs/*/LOCK' 'packs/*/LOG' 'packs/*/LOG.old'
 
       - name: Publish the release
         if: steps.check.outputs.exists == 'false'

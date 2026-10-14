@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.0
+- Compendiums, in a "Hunt: Showdown RPG" folder: **Hunt: Rules** (journal: welcome, Fate Core in five minutes with links to the official SRD and the Fate Core Official documentation, Fate points, hunters, health and harm, combat, explosives, support items, monsters, bestiary, traits, arsenal tables), **Hunt: Arsenal** (85 items in six folders), **Hunt: Bestiary** (12 monsters by category), **Hunt: Traits** (the three decks), **Hunt: Macros**.
+- Fate points: a **Fate point** button on single-target attack cards. The attacker (attack) or the aware target (defence) invokes an aspect for +2 or a reroll, paid from the sheet (or a free invoke); a new card replaces the old one, whose Apply button is disabled.
+- **Start of Mission** macro: every player's hunter goes back to their Fate point refresh (3). Refresh is per mission, not per session.
+- Rules decided: invoke = +2 or reroll; rival compel in the same compound: the compeller pays 1 FP, the rival accepts and takes it or refuses and pays 1.
+
 ## 0.11.3
 - Utility bombs do no damage: power 0 explosives (Flash, Poison, Choke, Chaos, Hive) only apply their conditions and zone aspect ("Caught"). The Hive Bomb drops to power 0 (existing copies are updated).
 - Dead monsters are no longer caught again by blasts, cones and area attacks.

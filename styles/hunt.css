@@ -159,3 +159,14 @@
 .mfate-sheet .hunt-bio-row > .mfate-biography-collapsed {
   flex: 1 1 0; min-width: 0; align-self: flex-start;
 }
+
+/* Fate point invoke */
+.hunt-card .hunt-invoke-btn {
+  margin-top: 4px; width: 100%; background: #22303b; color: #e9d6a8;
+  border: 1px solid #b08d57; border-radius: 3px; line-height: 24px; cursor: pointer;
+}
+.hunt-card .hunt-invoke-btn:hover { background: #2f4a5c; }
+.hunt-card .hunt-invoke-btn i { color: #d9a441; }
+.hunt-card.hunt-superseded { opacity: 0.5; }
+.hunt-card.hunt-superseded .hunt-result { text-decoration: line-through; }
+.hunt-card button:disabled { opacity: 0.4; cursor: not-allowed; }

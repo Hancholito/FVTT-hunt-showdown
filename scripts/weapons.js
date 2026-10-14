@@ -99,7 +99,7 @@ function hasCondition(actor, name) {
     return !!track?.box_values?.some(v => v);
 }
 
-function ladderLabel(value) {
+export function ladderLabel(value) {
     const ladder = game.settings.get(SYSTEM_ID, "ladder") ?? {};
     const label = ladder[String(Math.max(-2, Math.min(10, value)))];
     const sign = value >= 0 ? `+${value}` : `${value}`;
@@ -110,13 +110,13 @@ function face(v) {
     return v > 0 ? "+" : v < 0 ? "−" : "0";
 }
 
-function diceHtml(roll) {
+export function diceHtml(roll) {
     return roll.dice[0].results
         .map(r => `<span class="hunt-die hunt-die--${r.result > 0 ? "plus" : r.result < 0 ? "minus" : "blank"}">${face(r.result)}</span>`)
         .join("");
 }
 
-async function rollDF(n) {
+export async function rollDF(n) {
     const roll = await new Roll(`${n}dF`).evaluate();
     roll.dice[0].options.sfx = { id: "fate4df", result: roll.result };
     return roll;
@@ -265,6 +265,42 @@ async function attackMulti(actor, item, weapon, usesAmmo) {
     });
 }
 
+/* Outcome of a single-target attack once the shifts are known: miss, near miss, or hit with the ballistic die.
+ * calc: { power, extraPlus, ammoCondition, weaponConditions }. Also used again after a Fate point invoke. */
+export async function rollOutcome(shifts, calc) {
+    const rolls = [];
+    let outcome, damage = 0, ballisticHtml = "", vital = false;
+    const conditions = [];
+    if (shifts < 0) {
+        outcome = `<span class="hunt-miss">Miss</span>`;
+    } else if (shifts === 0) {
+        outcome = `<span class="hunt-tie">Near miss</span> — no damage, the target is <strong>Pinned</strong>.`;
+        conditions.push("Pinned");
+    } else {
+        // Ballistic die, twice keep the better on success with style.
+        const style = shifts >= 3;
+        const ball = await rollDF(style ? 2 : 1);
+        rolls.push(ball);
+        const best = Math.max(...ball.dice[0].results.map(r => r.result));
+        damage = shifts + calc.power + (calc.extraPlus ?? 0);
+        let ballText;
+        if (best > 0) { damage += 2; ballText = "<strong>Vital</strong>: +2 damage, the target gains <strong>Bleeding</strong>"; conditions.push("Bleeding"); }
+        else if (best < 0) { damage = Math.max(1, damage - 2); ballText = "<strong>Graze</strong>: −2 damage (minimum 1)"; }
+        else ballText = "<strong>Clean</strong> hit";
+        damage = Math.max(1, damage);
+        if (calc.ammoCondition) conditions.push(calc.ammoCondition);
+        for (const c of calc.weaponConditions ?? []) conditions.push(c);
+        vital = best > 0;
+        ballisticHtml = `<div class="hunt-row">Ballistic ${diceHtml(ball)}${style ? " <em>(with style: better kept)</em>" : ""} → ${ballText}</div>`;
+        const dmgParts = [`${shifts} shifts`, `power ${calc.power}`];
+        if (calc.extraPlus) dmgParts.push(`extra shots +${calc.extraPlus}`);
+        outcome = `<span class="hunt-hit">Hit${style ? " with style" : ""}</span> — <span class="hunt-damage">${damage} damage</span> <span class="hunt-hint">(${dmgParts.join(", ")}, then ballistic)</span>`;
+    }
+    return { outcome, damage, ballisticHtml, conditions: [...new Set(conditions)], vital, rolls };
+}
+
+export const INVOKE_BTN = `<button type="button" class="hunt-invoke-btn"><i class="fas fa-star"></i> Fate point</button>`;
+
 async function resolveAttack(actor, item, weapon, target, opts) {
     const rolls = [];
     const lines = [];
@@ -289,7 +325,7 @@ async function resolveAttack(actor, item, weapon, target, opts) {
     const attackTotal = atkRoll.total + mods;
 
     // ---- Opposition
-    let defence = 0;
+    let defence = 0, defDice = null, defModsKept = 0;
     let defenceText = "unaware, Mediocre (+0)";
     if (opts.aware) {
         if (target) {
@@ -300,6 +336,7 @@ async function resolveAttack(actor, item, weapon, target, opts) {
             if (hasCondition(target, "Poisoned")) defMods -= 1;
             defMods += phaseBonus(target, "defence");
             defence = defRoll.total + defMods;
+            defDice = defRoll.total; defModsKept = defMods;
             defenceText = `Athletics ${diceHtml(defRoll)} ${defMods >= 0 ? "+" : ""}${defMods} = <strong>${defence}</strong>`;
         } else {
             defence = opts.defence;
@@ -326,35 +363,20 @@ async function resolveAttack(actor, item, weapon, target, opts) {
     const extraMinus = extraResults.filter(v => v < 0).length;
 
     // ---- Outcome
-    let outcome, damage = 0, ballisticHtml = "", conditions = [], vital = false;
-    if (shifts < 0) {
-        outcome = `<span class="hunt-miss">Miss</span>`;
-    } else if (shifts === 0) {
-        outcome = `<span class="hunt-tie">Near miss</span> — no damage, the target is <strong>Pinned</strong>.`;
-        conditions.push("Pinned");
-    } else {
-        // Ballistic die, twice keep the better on success with style.
-        const style = shifts >= 3;
-        const ball = await rollDF(style ? 2 : 1);
-        rolls.push(ball);
-        const faces = ball.dice[0].results.map(r => r.result);
-        const best = Math.max(...faces);
-        let power = range.power + (ammo.power ?? 0);
-        if (weapon.ammo === "dumdum") power += opts.band === "Close" ? 1 : -1;
-        damage = shifts + power + (extraPlus);
-        let ballText;
-        if (best > 0) { damage += 2; ballText = "<strong>Vital</strong>: +2 damage, the target gains <strong>Bleeding</strong>"; conditions.push("Bleeding"); }
-        else if (best < 0) { damage = Math.max(1, damage - 2); ballText = "<strong>Graze</strong>: −2 damage (minimum 1)"; }
-        else ballText = "<strong>Clean</strong> hit";
-        damage = Math.max(1, damage);
-        if (ammo.condition && !NO_AMMO.includes(weapon.action)) conditions.push(ammo.condition);
-        for (const c of weapon.conditions ?? []) conditions.push(c);
-        vital = best > 0;
-        ballisticHtml = `<div class="hunt-row">Ballistic ${diceHtml(ball)}${style ? " <em>(with style: better kept)</em>" : ""} → ${ballText}</div>`;
-        const dmgParts = [`${shifts} shifts`, `power ${power}`];
-        if (extraPlus) dmgParts.push(`extra shots +${extraPlus}`);
-        outcome = `<span class="hunt-hit">Hit${style ? " with style" : ""}</span> — <span class="hunt-damage">${damage} damage</span> <span class="hunt-hint">(${dmgParts.join(", ")}, then ballistic)</span>`;
-    }
+    let power = range.power + (ammo.power ?? 0);
+    if (weapon.ammo === "dumdum") power += opts.band === "Close" ? 1 : -1;
+    const calc = {
+        actorUuid: actor.uuid, itemName: item.name, img: item.img, skill: weapon.skill, band: opts.band,
+        targetUuid: opts.targetUuid ?? null, targetActorUuid: target?.uuid ?? null, targetName: target?.name ?? "",
+        atkDice: atkRoll.total, mods, aware: !!opts.aware, defDice, defMods: defModsKept, defEntered: target ? null : defence,
+        rangePenalty: range.penalty, cover, power, extraPlus,
+        ammoCondition: ammo.condition && !NO_AMMO.includes(weapon.action) ? ammo.condition : null,
+        weaponConditions: weapon.conditions ?? [], blunt: !!weapon.blunt, dread: Number(monsterData(actor)?.dread ?? 0),
+        invokes: []
+    };
+    const res = await rollOutcome(shifts, calc);
+    rolls.push(...res.rolls);
+    const { outcome, damage, ballisticHtml, conditions, vital } = res;
 
     // ---- Update the weapon: ammo and weapon stress
     const update = {};
@@ -398,13 +420,14 @@ async function resolveAttack(actor, item, weapon, target, opts) {
         ${jamText}
         ${ammoLine}
         ${applyBtn}
+        ${INVOKE_BTN}
       </div>`;
 
     await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor }),
         content,
         rolls,
-        flags: { [MODULE_ID]: { attack: true, result: canApply ? { target: opts.targetUuid, damage, conditions: appliedConditions, vital, blunt: !!weapon.blunt, dread: Number(monsterData(actor)?.dread ?? 0) } : null } }
+        flags: { [MODULE_ID]: { attack: true, calc, result: canApply ? { target: opts.targetUuid, damage, conditions: appliedConditions, vital, blunt: !!weapon.blunt, dread: Number(monsterData(actor)?.dread ?? 0) } : null } }
     });
 }
 

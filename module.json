@@ -2,7 +2,7 @@
   "id": "hunt-showdown-fco",
   "title": "Hunt: Showdown RPG (Fate Core)",
   "description": "Unofficial Hunt: Showdown tabletop RPG for Fate Core Official: skills, health, dread and conditions, archetypes, full arsenal, bestiary, trait cards and a dark bayou theme. Made with the authorization of the rights holder, free of charge.",
-  "version": "0.11.3",
+  "version": "0.12.0",
   "authors": [
     {
       "name": "Hannibal (Hancholito)"
@@ -34,6 +34,74 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
+    }
+  ],
+  "packs": [
+    {
+      "name": "hunt-rules",
+      "label": "Hunt: Rules",
+      "type": "JournalEntry",
+      "path": "packs/hunt-rules",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "hunt-arsenal",
+      "label": "Hunt: Arsenal",
+      "type": "Item",
+      "system": "fate-core-official",
+      "path": "packs/hunt-arsenal",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "hunt-bestiary",
+      "label": "Hunt: Bestiary",
+      "type": "Actor",
+      "system": "fate-core-official",
+      "path": "packs/hunt-bestiary",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "hunt-traits",
+      "label": "Hunt: Traits",
+      "type": "Cards",
+      "path": "packs/hunt-traits",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "hunt-macros",
+      "label": "Hunt: Macros",
+      "type": "Macro",
+      "path": "packs/hunt-macros",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Hunt: Showdown RPG",
+      "sorting": "m",
+      "color": "#5c4127",
+      "packs": [
+        "hunt-rules",
+        "hunt-arsenal",
+        "hunt-bestiary",
+        "hunt-traits",
+        "hunt-macros"
+      ]
     }
   ]
 }

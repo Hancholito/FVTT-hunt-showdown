@@ -1,3 +1,7 @@
 *.zip
 node_modules/
 .DS_Store
+packs-src/_build/
+packs/*/LOCK
+packs/*/LOG
+packs/*/LOG.old

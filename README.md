@@ -11,7 +11,7 @@ Unofficial tabletop adaptation of Hunt: Showdown for Foundry VTT v14, built on t
 
 The install can be rerun at any time from **Game Settings → Hunt rules → Install / reinstall**.
 
-## What it sets up (v0.10.0)
+## What it sets up (v0.12.0)
 
 - **18 skills**: Athletics, Burglary, Crafts, Deceive, Empathy, Fight, Heal, Investigate, Lore, Notice, Physique, Provoke, Rapport, Resources, Shoot, Stealth, Throw, Will. Skill pyramid of 20 points, column rule enforced.
 - **Tracks**: Health (6 boxes in 3 chunks), Burned (3), Dread (3), Mild / Moderate / Severe consequences, extra Mild at Physique Great (+4).
@@ -22,6 +22,19 @@ The install can be rerun at any time from **Game Settings → Hunt rules → Ins
 - **Arsenal**: 85 items in the Items directory (Hunt Arsenal folder): handguns, long guns, grenades, thrown and melee weapons, support items.
 - **Bestiary**: 12 Stillwater monsters in the Actors directory (Hunt Bestiary folder).
 - **Traits**: 45 trait cards in three decks, a hand for each player, and two piles (Cards directory, Hunt Traits folder).
+
+## Compendiums
+
+The module ships five compendiums in a **Hunt: Showdown RPG** folder of the Compendium Packs sidebar:
+
+- **Hunt: Rules** — the rules journal: Fate Core in five minutes (with links to the free [Fate Core SRD](https://fate-srd.com/fate-core) and to the Fate Core Official documentation), Fate points, hunters, health and harm, combat, explosives, support items, monsters, bestiary, traits and the full arsenal tables.
+- **Hunt: Arsenal** — 85 items in six folders. **Hunt: Bestiary** — 12 monsters (GM only). **Hunt: Traits** — the three decks. **Hunt: Macros** — Start of Mission, End of Exchange (GM only).
+
+They are built from the module's data with `node tools/build_packs.mjs` (Foundry CLI).
+
+## Fate points
+
+Refresh 3, **per mission**: the GM runs the **Start of Mission** macro. Spend a point to invoke an aspect (**+2 or reroll**), to play an active trait, to compel a rival in the same compound (they take the point if they accept, pay one to refuse) or to refuse a compel. Single-target attack cards have a **Fate point** button: the attacker or the aware target invokes, the point is taken from the sheet (or a free invoke), and a new card replaces the old one.
 
 ## Arsenal
 

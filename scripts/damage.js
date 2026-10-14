@@ -5,6 +5,7 @@
 
 import { MODULE_ID as HUNT_ID, monsterData } from "./weapons.js";
 import { resolveMulti, radiusPixels, flashBlast, tokensInBlast } from "./explosives.js";
+import { supersededBy } from "./fatepoints.js";
 
 const IGNITE = { power: 2, radius: 4, attack: 3 };
 
@@ -79,6 +80,7 @@ export async function applyFromMessage(message, index = null) {
     const data = index === null ? message.getFlag(MODULE_ID, "result") : message.getFlag(MODULE_ID, "results")?.[index];
     const appliedKey = `${message.id}:${index ?? ""}`;
     if (!data?.target) return;
+    if (index === null && supersededBy(message)) return ui.notifications.warn("A Fate point changed this attack: apply the newest card instead.");
     const target = await fromUuid(data.target);
     const actor = target?.actor ?? target;
     if (!actor) return ui.notifications.warn("The target no longer exists.");

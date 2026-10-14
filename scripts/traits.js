@@ -33,6 +33,34 @@ async function getFolder() {
         ?? Folder.create({ name: FOLDER, type: "Cards", color: "#5c4127" });
 }
 
+/* Creation data of one trait deck (also used to build the compendium). */
+export function traitDeckData(traits, tier, folderId = null) {
+    const back = `modules/${MODULE_ID}/assets/cards/back-tier${tier}.svg`;
+    return {
+        name: TIER_NAMES[tier],
+        type: "deck",
+        img: back,
+        folder: folderId,
+        description: `<p>Tier ${tier} traits, ${TIER_WHERE[tier]}.</p>`,
+        ownership: { default: OWNER },
+        width: 2, height: 3,
+        flags: { [MODULE_ID]: { role: "deck", tier } },
+        cards: traits.filter(t => t.tier === tier).map((t, i) => ({
+            name: t.name,
+            type: "base",
+            description: `<p>${esc(t.effect)}</p>`,
+            suit: `Tier ${tier}`,
+            value: t.cost,
+            face: 0,
+            width: 2, height: 3,
+            sort: i,
+            back: { name: TIER_NAMES[tier], img: back },
+            faces: [{ name: t.name, img: t.img, text: `<p>${esc(t.effect)}</p>` }],
+            flags: { [MODULE_ID]: { trait: { cost: t.cost, tier, kind: t.kind, effect: t.effect } } }
+        }))
+    };
+}
+
 /* Decks and piles. Existing ones are left as they are. Returns how many documents were created. */
 export async function createTraitDecks() {
     if (!game.user.isGM) return 0;
@@ -42,30 +70,7 @@ export async function createTraitDecks() {
 
     for (const tier of [1, 2, 3]) {
         if (findByRole("deck", c => c.getFlag(MODULE_ID, "tier") === tier)) continue;
-        const back = `modules/${MODULE_ID}/assets/cards/back-tier${tier}.svg`;
-        toCreate.push({
-            name: TIER_NAMES[tier],
-            type: "deck",
-            img: back,
-            folder: folder.id,
-            description: `<p>Tier ${tier} traits, ${TIER_WHERE[tier]}.</p>`,
-            ownership: { default: OWNER },
-            width: 2, height: 3,
-            flags: { [MODULE_ID]: { role: "deck", tier } },
-            cards: traits.filter(t => t.tier === tier).map((t, i) => ({
-                name: t.name,
-                type: "base",
-                description: `<p>${esc(t.effect)}</p>`,
-                suit: `Tier ${tier}`,
-                value: t.cost,
-                face: 0,
-                width: 2, height: 3,
-                sort: i,
-                back: { name: TIER_NAMES[tier], img: back },
-                faces: [{ name: t.name, img: t.img, text: `<p>${esc(t.effect)}</p>` }],
-                flags: { [MODULE_ID]: { trait: { cost: t.cost, tier, kind: t.kind, effect: t.effect } } }
-            }))
-        });
+        toCreate.push(traitDeckData(traits, tier, folder.id));
     }
     if (!findByRole("play")) toCreate.push({
         name: "Played Traits", type: "pile", folder: folder.id, img: "icons/svg/card-joker.svg",
