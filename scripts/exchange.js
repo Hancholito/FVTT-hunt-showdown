@@ -23,6 +23,10 @@ function trackEntry(actor, name) {
     return entry ? { key: entry[0], track: entry[1] } : null;
 }
 
+function isDead(actor) {
+    return !!(actor.statuses?.has?.("dead") || actor.effects?.some?.(e => e.statuses?.has?.("dead")));
+}
+
 function isMarked(actor, name) {
     return !!trackEntry(actor, name)?.track?.box_values?.some(v => v);
 }
@@ -31,7 +35,7 @@ function isMarked(actor, name) {
 export async function tickActor(actor) {
     const health = trackEntry(actor, "Health");
     if (!health) return null;
-    if (isMarked(actor, "Downed") || actor.statuses?.has?.("dead")) return null;
+    if (isMarked(actor, "Downed") || isDead(actor)) return null;
     const monster = monsterData(actor);
     const immune = new Set(monster?.immune ?? []);
     const values = [...(health.track.box_values ?? [])];
@@ -127,7 +131,7 @@ async function ablazeAura(scene) {
     if (!canvas?.ready || canvas.scene?.id !== scene.id) return rows;
     for (const tok of canvas.tokens.placeables) {
         const m = monsterData(tok.actor);
-        if (!m?.volatile || !m.ignited || tok.actor.statuses?.has?.("dead") || isMarked(tok.actor, "Downed")) continue;
+        if (!m?.volatile || !m.ignited || isDead(tok.actor) || isMarked(tok.actor, "Downed")) continue;
         const px = (2 / canvas.scene.grid.distance) * canvas.scene.grid.size;
         const caught = [];
         for (const other of canvas.tokens.placeables) {
@@ -189,10 +193,14 @@ export async function createExchangeMacro() {
 }
 
 export function registerExchangeHooks() {
-    // The Combat Tracker advancing a round is the end of an exchange.
-    Hooks.on("combatRound", (combat, updateData) => {
-        if (!game.user.isGM || !game.users.activeGM || game.users.activeGM.id !== game.user.id) return;
-        if ((updateData?.round ?? 0) <= (combat.previous?.round ?? 0)) return;
+    // The Combat Tracker moving to a new round is the end of an exchange. updateCombat reaches every client,
+    // whoever clicked; only the active GM runs it, once. Going back a round or starting the combat doesn't count.
+    Hooks.on("updateCombat", (combat, changed, options) => {
+        if (!("round" in changed) || game.users.activeGM?.id !== game.user.id) return;
+        if (options?.direction !== undefined && options.direction < 0) return;
+        const previous = Number(combat.previous?.round ?? 0);
+        if (!(changed.round > previous) || previous < 1) return;
+        if (combat.scene && canvas?.scene && combat.scene.id !== canvas.scene.id) return;
         endOfExchange();
     });
 }

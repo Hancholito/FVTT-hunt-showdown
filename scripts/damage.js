@@ -14,7 +14,9 @@ export async function igniteVolatile(actor, tokenDoc) {
     const m = monsterData(actor);
     if (!m?.volatile || m.ignited) return false;
     await actor.update({ [`flags.${HUNT_ID}.monster.ignited`]: true });
-    try { await actor.toggleStatusEffect("burning", { active: true }); } catch (e) { /* no burning status in this core */ }
+    // A token's actor is rebuilt by the update: take the fresh one before adding the burning icon.
+    const fresh = tokenDoc?.actor ?? actor;
+    try { await fresh.toggleStatusEffect("burning", { active: true }); } catch (e) { console.warn("Hunt: burning status", e); }
     let targets = [];
     const perTarget = {};
     let header = `<div class="hunt-row"><strong>${esc(actor.name)}</strong> bursts into flame!</div>`;

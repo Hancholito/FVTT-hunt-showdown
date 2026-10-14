@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.11.1
+- End of exchange now runs when anyone advances the Combat Tracker round (it only ran when the main GM clicked). The active GM's client runs it once; going back a round or starting the combat doesn't trigger it.
+- An ignited Immolator shows the burning status icon on its token.
+
 ## 0.11.0
 - End of exchange: Bleeding (1), Heavy Bleeding (2), Poisoned (1) and Burning (1 box, burns the chunk it empties) deal their damage to every token on the scene, automatically when the Combat Tracker advances a round, or with the End of Exchange macro (Hunt macro folder). Overflow marks Downed; burning ordinary monsters die. One chat card per exchange.
 - Poisoned blocks healing: kits and shots clear no Health box while Poisoned. Regeneration Shot now regenerates 1 box per exchange for 3 exchanges.
