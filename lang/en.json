@@ -34,5 +34,6 @@
   "HUNT.Bestiary.Fire": "This update adds fire: fire bombs and Burning kill ordinary monsters outright. The Meathead becomes fireproof and the Butcher's Fire Breath becomes a cone attack. Replace the Meathead and the Butcher in the Hunt Bestiary folder?",
   "HUNT.Hunter.Button": "Hunter Creator",
   "fate-core-official.Extras": "Arsenal",
-  "fate-core-official.BiographyAndExtras": "Description, Biography and Arsenal"
+  "fate-core-official.BiographyAndExtras": "Description, Biography and Arsenal",
+  "HUNT.Bestiary.Update011": "This update adds ongoing damage at the end of each exchange (Bleeding, Heavy Bleeding, Poisoned, Burning), makes the Immolator volatile (bullets and blades that don't kill it set it ablaze), and makes the Armored (Health 10, armour 4, a Vital hit pierces the armour) and the Meathead (Health 18, armour 1) much tougher. Replace those three monsters in the Hunt Bestiary folder and update the arsenal (Regeneration Shot, blunt weapons)? Tokens already on scenes keep their old stats."
 }

@@ -134,6 +134,8 @@ export function buildMonster(spec, folderId = null) {
             armor: Number(spec.armor) || 0,
             vitalKills: !!spec.vitalKills,
             fireproof: !!spec.fireproof,
+            volatile: !!spec.volatile,
+            vitalPierces: !!spec.vitalPierces,
             immune: spec.immune ?? [],
             phases,
             phase: phases.length ? 1 : 0
@@ -200,6 +202,8 @@ function creatorContent(spec) {
         <label>Consequences <input type="checkbox" name="consequences" ${spec.consequences ?? cat === "boss" ? "checked" : ""}></label>
         <label>Vital hit kills <input type="checkbox" name="vitalKills" ${spec.vitalKills ? "checked" : ""}></label>
         <label title="Fire does not kill it outright (bosses never die to fire alone)">Fireproof <input type="checkbox" name="fireproof" ${spec.fireproof ? "checked" : ""}></label>
+        <label title="A Vital hit ignores its armour (instead of killing it outright)">Vital pierces armour <input type="checkbox" name="vitalPierces" ${spec.vitalPierces ? "checked" : ""}></label>
+        <label title="A piercing or cutting hit that doesn't kill it sets it ablaze: fire blast on everyone around">Volatile <input type="checkbox" name="volatile" ${spec.volatile ? "checked" : ""}></label>
         <label class="hunt-span2">Immune to <input type="text" name="immune" value="${esc((spec.immune ?? []).join(", "))}" placeholder="Burning, Poisoned"></label>
       </div></fieldset>
 
@@ -261,7 +265,7 @@ function readCreator(form) {
         name: f.name.value.trim(), category: f.category.value, aspect: f.aspect.value.trim(),
         description: f.description.value.trim(), img: f.img.value.trim(), skills,
         health: Number(f.health.value || 1), armor: Number(f.armor.value || 0), dread: Number(f.dread.value || 0),
-        consequences: f.consequences.checked, vitalKills: f.vitalKills.checked, fireproof: f.fireproof.checked, immune: list(f.immune.value),
+        consequences: f.consequences.checked, vitalKills: f.vitalKills.checked, fireproof: f.fireproof.checked, volatile: f.volatile.checked, vitalPierces: f.vitalPierces.checked, immune: list(f.immune.value),
         attacks, abilities, phases
     };
 }
@@ -329,8 +333,10 @@ export function decorateMonsterSheet(app, html) {
         `Dread ${m.dread}`,
         m.armor ? `Armour ${m.armor}` : "",
         m.vitalKills ? "Vital hit kills" : "",
+        m.vitalPierces ? "Vital pierces armour" : "",
         m.category !== "boss" && !m.fireproof && !(m.immune ?? []).includes("Burning") ? "Fire kills" : "",
         m.fireproof ? "Fireproof" : "",
+        m.volatile ? (m.ignited ? "ABLAZE" : "Volatile: bullets and blades set it ablaze") : "",
         m.immune?.length ? `Immune: ${m.immune.join(", ")}` : ""
     ].filter(Boolean);
 

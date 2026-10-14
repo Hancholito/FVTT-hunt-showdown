@@ -1097,7 +1097,8 @@
       "slot": "Small",
       "conditions": [],
       "shape": "single",
-      "notes": "Blunt (Hornskin applies)"
+      "notes": "Blunt (Hornskin applies; never ignites an Immolator)",
+      "blunt": true
     }
   },
   {
@@ -1243,7 +1244,8 @@
       "slot": "Large",
       "conditions": [],
       "shape": "single",
-      "notes": "Blunt (Hornskin applies). Found in the world, not bought"
+      "notes": "Blunt (Hornskin applies). Found in the world, not bought",
+      "blunt": true
     }
   },
   {
@@ -1271,7 +1273,8 @@
       "slot": "Medium",
       "conditions": [],
       "shape": "single",
-      "notes": "Blunt. Found in the world"
+      "notes": "Blunt. Found in the world",
+      "blunt": true
     }
   },
   {
@@ -2075,7 +2078,8 @@
       "effect": {
         "heal": 1,
         "unburn": 1,
-        "text": "Restores 1 Burned chunk and clears 1 Health box. For the rest of the scene, clear 1 more Health box at the end of each exchange."
+        "regen": 3,
+        "text": "Restores 1 Burned chunk and clears 1 Health box, then 1 more box at the end of each of the next 3 exchanges (not while Poisoned)."
       }
     }
   },

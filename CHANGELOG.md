@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.11.0
+- End of exchange: Bleeding (1), Heavy Bleeding (2), Poisoned (1) and Burning (1 box, burns the chunk it empties) deal their damage to every token on the scene, automatically when the Combat Tracker advances a round, or with the End of Exchange macro (Hunt macro folder). Overflow marks Downed; burning ordinary monsters die. One chat card per exchange.
+- Poisoned blocks healing: kits and shots clear no Health box while Poisoned. Regeneration Shot now regenerates 1 box per exchange for 3 exchanges.
+- Volatile monsters: the Immolator bursts into flame when a bullet, blade, arrow or blast hits it without killing it — fire burst (power 2, 4 m, Burning) on everyone around, Burning Ground, and it stays ablaze, setting fire to anyone within 2 m each exchange. Blunt weapons don't set it off (new Blunt weapon option: Dusters, Railroad Hammer, Shovel). Monster Creator: Volatile option.
+- Armored: Health 10, armour 4, a Vital hit pierces its armour instead of killing it (new "Vital pierces armour" option). Meathead: Health 18, armour 1. About 3–4 pistol hits or 2–3 rifle hits for the Armored, 3–4 rifle hits for the Meathead.
+- On update, the GM is asked to rebuild the Immolator, the Armored and the Meathead and to refresh the arsenal. Reinstalling the rules updates the Bleeding, Burning and Poisoned descriptions.
+
 ## 0.10.0
 - Full arsenal: 85 items in six folders under Hunt Arsenal — Handguns (16), Long Guns (22), Grenades & Bombs (16), Thrown Weapons (5), Melee Weapons (8), Support Items (18). Existing items are sorted into the folders; Mosin-Nagant and Martini-Henry get their full names.
 - Support items: First Aid Kit, Vitality / Regeneration / Antidote / Stamina shots, ammo boxes, spyglass, decoys, traps, beetles. A Use button applies the effect (Health boxes, Burned chunks, conditions, spare rounds), spends the charge and posts it; consumables leave the sheet. The First Aid Kit can be used on a targeted ally; Doctor doubles it. Any Extra can be made a support item (kit button).

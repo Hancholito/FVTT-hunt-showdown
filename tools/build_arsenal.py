@@ -39,7 +39,8 @@ def melee(name, desc, power, slot, conditions=None, notes=None):
             "capacity": 0, "loaded": 0, "reserve": 0, "maxReserve": 0,
             "ammo": "standard", "reliability": 1, "stress": 0, "slot": slot,
             "conditions": conditions or [], "shape": "single",
-            **({"notes": notes} if notes else {})
+            **({"notes": notes} if notes else {}),
+            **({"blunt": True} if notes and notes.startswith("Blunt") else {})
         }
     })
 
@@ -123,7 +124,7 @@ gun("Slate", L, "Heavy double-barrel with tight choke. Reaches further than othe
 
 # ------------------------------------------------------------------ Melee weapons (tools, Fight)
 melee("Knife", "Short blade. Quiet and quick.", 2, "Small", ["Bleeding"])
-melee("Dusters", "Brass knuckles. Blunt, fast, silent.", 2, "Small", notes="Blunt (Hornskin applies)")
+melee("Dusters", "Brass knuckles. Blunt, fast, silent.", 2, "Small", notes="Blunt (Hornskin applies; never ignites an Immolator)")
 melee("Heavy Knife", "A big blade with a heavy spine.", 3, "Medium", ["Bleeding"])
 melee("Combat Axe", "Hatchet with a spike on the back.", 3, "Medium", ["Bleeding"], notes="Can be thrown with Tomahawk")
 melee("Machete", "Long cane blade. Wide arcs.", 3, "Medium", ["Bleeding"])
@@ -167,7 +168,7 @@ support("Vitality Shot", "A syringe of something that works. Instant.", "consuma
 support("Weak Vitality Shot", "Half a dose. Better than nothing.", "consumable", 1,
         {"heal": 1, "text": "Clears 1 Health box. Free action."})
 support("Regeneration Shot", "Knits burned flesh back together. Restores a lost Health chunk over the scene.", "consumable", 1,
-        {"heal": 1, "unburn": 1, "text": "Restores 1 Burned chunk and clears 1 Health box. For the rest of the scene, clear 1 more Health box at the end of each exchange."})
+        {"heal": 1, "unburn": 1, "regen": 3, "text": "Restores 1 Burned chunk and clears 1 Health box, then 1 more box at the end of each of the next 3 exchanges (not while Poisoned)."})
 support("Antidote Shot", "Neutralises poison and keeps it out for a while.", "consumable", 1,
         {"cure": ["Poisoned"], "text": "Cures Poisoned. Immune to Poisoned until the end of the scene (Hive swarms, poison clouds, Spider spit)."})
 support("Weak Antidote Shot", "Cures the poison, nothing more.", "consumable", 1,

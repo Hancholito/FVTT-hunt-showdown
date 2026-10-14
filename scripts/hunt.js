@@ -12,6 +12,7 @@ import { openHunterCreator, decorateHunterSheet } from "./creator.js";
 import { sideBySideBio } from "./layout.js";
 import { createBestiary, rebuildBestiary, openCreator, decorateMonsterSheet } from "./monsters.js";
 import "./support.js";
+import { endOfExchange, createExchangeMacro, registerExchangeHooks } from "./exchange.js";
 
 const MODULE_ID = "hunt-showdown-fco";
 const SYSTEM_ID = "fate-core-official";
@@ -221,6 +222,7 @@ class HuntInstaller extends foundry.applications.api.ApplicationV2 {
         await createArsenal();
         await createTraitDecks();
         await createHands();
+        await createExchangeMacro();
 
         // A personal colour scheme on the GM would hide the Hunt theme.
         await game.user.unsetFlag(SYSTEM_ID, "current-sheet-scheme");
@@ -290,6 +292,11 @@ registerTraitHooks();
 registerDamageHooks();
 registerExplosiveHooks();
 registerLoadoutHooks();
+registerExchangeHooks();
+
+Hooks.once("init", () => {
+    game.hunt = { endOfExchange };
+});
 
 // Fate Core Official decorates every 4dF roll message and expects a ".dice-total" element.
 // Hunt cards don't have one, so give them a hidden one to keep FCO's chat hook from failing.
@@ -346,6 +353,18 @@ Hooks.once("ready", async () => {
         if (n) ui.notifications.info(game.i18n.format("HUNT.Arsenal.Done", { n }));
         const d = await createTraitDecks();
         if (d) ui.notifications.info(game.i18n.format("HUNT.Traits.Done", { n: d }));
+        // 0.11.0: ongoing damage, volatile Immolator, tougher Armored and Meathead.
+        if (foundry.utils.isNewerVersion("0.11.0", installed)) {
+            const ok = await foundry.applications.api.DialogV2.confirm({
+                window: { title: game.i18n.localize("HUNT.Bestiary.MenuName") },
+                content: `<p>${game.i18n.localize("HUNT.Bestiary.Update011")}</p>`,
+                rejectClose: false
+            });
+            if (ok) {
+                try { await rebuildBestiary(["Immolator", "Armored", "Meathead"]); } catch (e) { console.warn("Hunt bestiary:", e); }
+                try { await rebalanceArsenal(); } catch (e) { console.warn("Hunt arsenal:", e); }
+            }
+        }
         // 0.10.0: full arsenal, rebalanced stats, category folders.
         if (foundry.utils.isNewerVersion("0.10.0", installed)) {
             const ok = await foundry.applications.api.DialogV2.confirm({
@@ -410,6 +429,8 @@ Hooks.once("ready", async () => {
     }
     // Players added since the last load get their trait hand.
     await createHands();
+    // End of Exchange macro (Macros directory, Hunt folder).
+    try { await createExchangeMacro(); } catch (e) { console.warn("Hunt macro:", e); }
     // First load after a fresh install: the bestiary needs the installed tracks, so it is created now.
     if (!game.folders.find(f => f.type === "Actor" && f.name === "Hunt Bestiary")) {
         try { await createBestiary(); } catch (e) { console.warn("Hunt bestiary:", e); }

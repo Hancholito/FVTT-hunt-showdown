@@ -23,7 +23,7 @@ function track(name, boxes, marked = []) {
 }
 function makeActor(id, tracks) {
     const actor = {
-        id, name: id, items: [], isOwner: true, system: { tracks, skills: {}, stunts: {} },
+        id, name: id, items: [], isOwner: true, system: { tracks, skills: {}, stunts: {} }, flags: { [MODULE_ID]: {} },
         testUserPermission: () => true,
         getFlag: () => null,
         async update(u) { for (const [k, v] of Object.entries(u)) { const p = k.split("."); let o = this; for (const s of p.slice(0, -1)) o = o[s]; o[p.at(-1)] = v; } }
@@ -47,31 +47,37 @@ const arsenal = (await import("node:fs")).readFileSync(new URL("../data/arsenal.
 const data = JSON.parse(arsenal);
 const entry = n => data.find(e => e.name === n);
 
-// --- First Aid Kit: 2 boxes, stops bleeding, charge spent, item stays.
+// --- Poisoned: a First Aid Kit stops the bleeding but clears no Health box.
 const hunter = makeActor("Hunter", {
     t1: track("Health", 6, [0, 1, 2, 3]), t2: track("Burned", 3, [0]), t3: track("Bleeding", 1, [0]), t4: track("Heavy Bleeding", 1), t5: track("Poisoned", 1, [0])
 });
 const kit = makeItem("First Aid Kit", { support: entry("First Aid Kit").support }, hunter);
 hunter.items.push(kit);
 await useSupport(hunter, kit);
-assert.deepEqual(hunter.system.tracks.t1.box_values, [false, false, true, true, false, false], "2 boxes cleared from the first chunk");
+assert.deepEqual(hunter.system.tracks.t1.box_values, [true, true, true, true, false, false], "Poisoned: no box cleared");
 assert.equal(hunter.system.tracks.t3.box_values[0], false, "Bleeding cured");
 assert.equal(getSupport(kit).uses, 2, "one charge spent");
 assert.equal(kit.deleted, undefined, "kit stays");
-
-// --- Regeneration Shot: restores a burned chunk and clears a box, item gone.
-const regen = makeItem("Regeneration Shot", { support: entry("Regeneration Shot").support }, hunter);
-hunter.items.push(regen);
-await useSupport(hunter, regen);
-assert.deepEqual(hunter.system.tracks.t2.box_values, [false, false, false], "burned chunk restored");
-assert.deepEqual(hunter.system.tracks.t1.box_values, [false, false, false, true, false, false], "1 more box cleared");
-assert.equal(regen.deleted, true, "consumable removed");
 
 // --- Antidote cures Poisoned.
 const anti = makeItem("Weak Antidote Shot", { support: entry("Weak Antidote Shot").support }, hunter);
 hunter.items.push(anti);
 await useSupport(hunter, anti);
 assert.equal(hunter.system.tracks.t5.box_values[0], false, "Poisoned cured");
+
+// --- First Aid Kit again: 2 boxes from the first chunk.
+await useSupport(hunter, kit);
+assert.deepEqual(hunter.system.tracks.t1.box_values, [false, false, true, true, false, false], "2 boxes cleared from the first chunk");
+assert.equal(getSupport(kit).uses, 1);
+
+// --- Regeneration Shot: restores a burned chunk, clears a box, starts regeneration, item gone.
+const regen = makeItem("Regeneration Shot", { support: entry("Regeneration Shot").support }, hunter);
+hunter.items.push(regen);
+await useSupport(hunter, regen);
+assert.deepEqual(hunter.system.tracks.t2.box_values, [false, false, false], "burned chunk restored");
+assert.deepEqual(hunter.system.tracks.t1.box_values, [false, false, false, true, false, false], "1 more box cleared");
+assert.equal(hunter.flags[MODULE_ID].regen, 3, "regeneration for 3 exchanges");
+assert.equal(regen.deleted, true, "consumable removed");
 
 // --- Ammo Box refills firearms, not thrown knives.
 const nagant = makeItem("Nagant M1895", { weapon: { ...entry("Nagant M1895").weapon, reserve: 3 } }, hunter);

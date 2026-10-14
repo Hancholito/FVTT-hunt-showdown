@@ -29,8 +29,8 @@ function hasStunt(actor, name) {
     return Object.values(actor.system?.stunts ?? {}).some(s => s.name === name);
 }
 
-/* Trait cards in the hand of any player who owns this hunter. */
-function hasTrait(actor, name) {
+/* Stunt on the sheet, or trait card in the hand of any player who owns this hunter. */
+export function hasTrait(actor, name) {
     if (hasStunt(actor, name)) return true;
     const owners = game.users.filter(u => !u.isGM && actor.testUserPermission(u, "OWNER")).map(u => u.id);
     return game.cards.some(c => c.getFlag(MODULE_ID, "role") === "hand"
@@ -123,8 +123,10 @@ export async function useSupport(actor, item) {
 
     let heal = Number(e.heal ?? 0);
     if (heal && item.name.includes("First Aid") && hasTrait(actor, "Doctor")) { heal *= 2; lines.push("Doctor: twice the boxes"); }
-    const healed = healBoxes(target, heal, update);
-    if (heal) lines.push(`${healed} Health box${healed === 1 ? "" : "es"} cleared`);
+    const poisoned = !!trackEntry(target, "Poisoned")?.track.box_values?.some(v => v) && !(e.cure ?? []).includes("Poisoned");
+    const healed = poisoned ? 0 : healBoxes(target, heal, update);
+    if (heal) lines.push(poisoned ? "Poisoned: Health boxes cannot be cleared" : `${healed} Health box${healed === 1 ? "" : "es"} cleared`);
+    if (e.regen) { update[`flags.${MODULE_ID}.regen`] = Number(e.regen); lines.push(`regenerates 1 box per exchange for ${e.regen} exchanges`); }
     const restored = unburn(target, Number(e.unburn ?? 0), update);
     if (restored) lines.push(`${restored} Burned chunk${restored === 1 ? "" : "s"} restored`);
     const cured = cure(target, e.cure, update);
@@ -173,6 +175,7 @@ export async function configureSupport(item) {
           <option value="ally" ${s.target === "ally" ? "selected" : ""}>Yourself or a targeted ally</option></select></label>
         <label>Health boxes cleared <input type="number" name="heal" value="${e.heal ?? 0}" min="0" step="1"></label>
         <label>Burned chunks restored <input type="number" name="unburn" value="${e.unburn ?? 0}" min="0" step="1"></label>
+        <label>Regeneration (exchanges) <input type="number" name="regen" value="${e.regen ?? 0}" min="0" step="1"> <span class="hunt-hint">1 box back at the end of each</span></label>
         <label>Conditions cured <input type="text" name="cure" value="${esc((e.cure ?? []).join(", "))}" placeholder="Bleeding, Poisoned…"></label>
         <label>Refills spare rounds <input type="checkbox" name="ammo" ${e.ammo ? "checked" : ""}></label>
         <label>Effect text <input type="text" name="text" value="${esc(e.text ?? "")}"></label>
@@ -191,7 +194,7 @@ export async function configureSupport(item) {
                     support: {
                         kind: f.kind.value, usesMax: num(f.usesMax.value), uses: num(f.uses.value), target: f.target.value,
                         effect: {
-                            heal: num(f.heal.value), unburn: num(f.unburn.value),
+                            heal: num(f.heal.value), unburn: num(f.unburn.value), regen: num(f.regen.value),
                             cure: f.cure.value.split(",").map(c => c.trim()).filter(Boolean),
                             ammo: f.ammo.checked, text: f.text.value.trim()
                         }
@@ -212,6 +215,7 @@ export function supportSummary(s) {
     if (s.usesMax > 0) parts.push(`${s.uses}/${s.usesMax} charge${s.usesMax === 1 ? "" : "s"}`);
     if (e.heal) parts.push(`heals ${e.heal}`);
     if (e.unburn) parts.push(`restores ${e.unburn} chunk`);
+    if (e.regen) parts.push(`regen ${e.regen} exchanges`);
     if (e.cure?.length) parts.push(`cures ${e.cure.join(", ")}`);
     if (e.ammo) parts.push("refills rounds");
     if (s.target === "ally") parts.push("self or ally");

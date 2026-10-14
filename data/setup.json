@@ -363,7 +363,7 @@
     "QmxlZWRpbmc": {
       "name": "Bleeding",
       "category": "Conditions",
-      "description": "1 damage at the end of each exchange. A new hit while Bleeding turns it into Heavy Bleeding.",
+      "description": "1 damage at the end of each exchange. A new hit while Bleeding turns it into Heavy Bleeding. Stopped by a first aid kit.",
       "notes": "",
       "universal": true,
       "unique": true,
@@ -415,7 +415,7 @@
     "QnVybmluZw": {
       "name": "Burning",
       "category": "Conditions",
-      "description": "Burns 1 Health box at the end of each exchange. −2 to Stealth.",
+      "description": "Burns 1 Health box at the end of each exchange; if that empties a chunk, the chunk burns away (Burned). −2 to Stealth. Putting it out: Athletics overcome vs Fair (+2), or water, or choke smoke.",
       "notes": "",
       "universal": true,
       "unique": true,
@@ -441,7 +441,7 @@
     "UG9pc29uZWQ": {
       "name": "Poisoned",
       "category": "Conditions",
-      "description": "−1 to all rolls. Health boxes cannot be cleared.",
+      "description": "1 damage at the end of each exchange and −1 to all rolls. Health boxes cannot be cleared. Cured by an antidote.",
       "notes": "",
       "universal": true,
       "unique": true,

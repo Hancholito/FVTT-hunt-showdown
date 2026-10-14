@@ -163,7 +163,7 @@ export function blastRadius(name, ex) {
 }
 
 /* Radius in metres → pixels on the current scene (feet scenes are converted). */
-function radiusPixels(metres) {
+export function radiusPixels(metres) {
     const grid = canvas.scene.grid;
     const feet = /^(ft|feet|foot|pi|pied|pieds|')\.?$/i.test(String(grid.units ?? "").trim());
     const units = feet ? metres * 3.28084 : metres;
@@ -194,7 +194,7 @@ function pickPoint(label) {
 }
 
 /* Draws the blast circle on the map for a few seconds. */
-function flashBlast(center, px, fire) {
+export function flashBlast(center, px, fire) {
     try {
         const g = new PIXI.Graphics();
         const colour = fire ? 0xe0573f : 0xd9a441;
@@ -206,7 +206,7 @@ function flashBlast(center, px, fire) {
 }
 
 /* Every token in the radius, friend or foe, the thrower included. Hidden tokens only for the GM. */
-function tokensInBlast(center, px) {
+export function tokensInBlast(center, px) {
     return canvas.tokens.placeables.filter(tok => {
         if (!tok.actor || (tok.document.hidden && !game.user.isGM)) return false;
         const c = tok.center;

@@ -59,6 +59,7 @@ export const DEFAULT_WEAPON = {
     shape: "single",
     notes: "",
     tool: false,
+    blunt: false,
     recoverable: false
 };
 
@@ -381,7 +382,7 @@ async function resolveAttack(actor, item, weapon, target, opts) {
         speaker: ChatMessage.getSpeaker({ actor }),
         content,
         rolls,
-        flags: { [MODULE_ID]: { attack: true, result: canApply ? { target: opts.targetUuid, damage, conditions: appliedConditions, vital, dread: Number(monsterData(actor)?.dread ?? 0) } : null } }
+        flags: { [MODULE_ID]: { attack: true, result: canApply ? { target: opts.targetUuid, damage, conditions: appliedConditions, vital, blunt: !!weapon.blunt, dread: Number(monsterData(actor)?.dread ?? 0) } : null } }
     });
 }
 
@@ -456,6 +457,7 @@ export async function configureWeapon(item) {
         <label>Conditions on hit <input type="text" name="conditions" value="${esc((w.conditions ?? []).join(", "))}" placeholder="Bleeding, Poisoned…"></label>
         <label>Slot <select name="slot">${["Small", "Medium", "Large"].map(s => `<option ${s === w.slot ? "selected" : ""}>${s}</option>`).join("")}</select></label>
         <label>Tool <input type="checkbox" name="tool" ${w.tool ? "checked" : ""}> <span class="hunt-hint">no weapon slot, counts as a tool (derringer, flare pistol, melee)</span></label>
+        <label>Blunt <input type="checkbox" name="blunt" ${w.blunt ? "checked" : ""}> <span class="hunt-hint">dusters, hammers: never sets a volatile monster ablaze</span></label>
         <label>Notes <input type="text" name="notes" value="${esc(w.notes ?? "")}" placeholder="shown on the sheet"></label>
         ${getWeapon(item) ? `<label>Not a weapon <input type="checkbox" name="remove"> <span class="hunt-hint">remove the weapon data</span></label>` : ""}
       </div>`;
@@ -476,7 +478,7 @@ export async function configureWeapon(item) {
                     weapon: {
                         skill: f.skill.value, action: f.action.value, power, best: f.best.value,
                         capacity: num(f.capacity.value), loaded: num(f.loaded.value), reserve: num(f.reserve.value),
-                        maxReserve: num(f.maxReserve.value), tool: f.tool.checked, notes: f.notes.value.trim(),
+                        maxReserve: num(f.maxReserve.value), tool: f.tool.checked, blunt: f.blunt.checked, notes: f.notes.value.trim(),
                         recoverable: w.recoverable ?? false,
                         ammo: f.ammo.value, reliability: Math.max(1, num(f.reliability.value, 3)),
                         stress: num(f.stress.value), slot: f.slot.value,

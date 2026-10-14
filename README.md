@@ -129,7 +129,7 @@ Traits are cards, sorted into three decks by cost: **Tier I** (cost 1–3, found
 
 ## Monsters
 
-Monsters are Fate Core characters with monster data: a category (Grunt, Elite, Boss), a **dread** rating, **armour**, **vital hit kills**, **immunities**, and for bosses **phases**. Their attacks are Extras with a natural attack (no ammo, no jams), fired with the same crosshairs button as hunters' weapons.
+Monsters are Fate Core characters with monster data: a category (Grunt, Elite, Boss), a **dread** rating, **armour**, **vital hit kills** or **vital pierces armour**, **volatile**, **immunities**, and for bosses **phases**. Their attacks are Extras with a natural attack (no ammo, no jams), fired with the same crosshairs button as hunters' weapons.
 
 The sheet shows a banner with the monster's tags and, for bosses, a **phase** selector (Idle, Attack, Rage, Pursuit by default). The phase's attack and defence bonuses apply to rolls automatically; a phase change is whispered to the GM.
 
@@ -143,9 +143,9 @@ When damage is applied:
 | --- | --- | --- | --- | --- | --- |
 | Grunt | Grunt | 2 | – | 1 | Horde: +1 attack per extra Grunt (max +2) |
 | Hive | Elite | 4 | – | 2 | Vital hit kills; Swarm (Close/Medium) poisons |
-| Armored | Elite | 5 | 2 | 2 | Vital hit kills |
-| Meathead | Elite | 8 | – | 3 | Blind (+2 Stealth against it), leeches |
-| Immolator | Elite | 4 | – | 2 | Vital hit kills; immune to Burning; ignites its zone |
+| Armored | Elite | 10 | 4 | 2 | A Vital hit pierces the armour (pistols barely scratch it) |
+| Meathead | Elite | 18 | 1 | 3 | Blind (+2 Stealth against it), leeches, fireproof |
+| Immolator | Elite | 4 | – | 2 | Vital hit kills; immune to Burning; **volatile**: bullets, blades, arrows and blasts that don't kill it set it ablaze |
 | Hellhound | Elite | 3 | – | 2 | Moves two zones; pack bonus |
 | Water Devil | Elite | 4 | – | 2 | Deep Water only, submerged |
 | The Butcher | Boss | 10 + consequences | – | 4 | Fight 3; Meat Hook (2), Burning Hammer (1), Fire Breath |
@@ -218,6 +218,24 @@ Support items are Extras with support data: **tools** keep their charges (First 
 ### Tools and consumables
 
 As in Hunt, a hunter carries **4 tools** (melee and thrown weapons, derringer, flare pistol, hand crossbow, kits, traps, beetles) and **4 consumables** (explosives, shots, ammo boxes). They don't use weapon slots. The loadout line counts them; dropping a fifth warns but is allowed (things picked up in the field).
+
+## End of exchange: ongoing damage
+
+At the end of every exchange, every token on the scene suffers its ongoing conditions. It runs **automatically when the Combat Tracker moves to the next round**, or by hand with the **End of Exchange** macro (Macros directory, Hunt folder) or `game.hunt.endOfExchange()`. GM only; one chat card sums it up.
+
+| Condition | Each exchange | Ends |
+| --- | --- | --- |
+| Bleeding | 1 damage | First Aid Kit. A new hit turns it into Heavy Bleeding (not with Bloodless) |
+| Heavy Bleeding | 2 damage | First Aid Kit |
+| Poisoned | 1 damage, −1 to all rolls, Health boxes **cannot be cleared** (kits and shots heal nothing) | Antidote; Mithridatist ends it at the end of the exchange |
+| Burning | 1 Health box; when that empties a chunk, the chunk **burns away** (Burned) | Athletics overcome vs Fair (+2), water, choke smoke — untick it on the sheet |
+| Regeneration (shot) | clears 1 Health box for 3 exchanges (not while Poisoned) | — |
+
+Damage over time marks Health from the last unburned chunk backward; what cannot be absorbed marks **Downed**. Ordinary monsters that are Burning die (bosses, fireproof monsters and the Immolator don't). Downed hunters and dead monsters are skipped.
+
+### The Immolator
+
+The Immolator is **volatile**: when a bullet, blade, arrow or blast hits it **without killing it**, it bursts into flame. A fire burst (power 2, radius 4 m, Athletics vs Good +3) catches everyone around it, friend or foe, with Burning; its zone gains Burning Ground; it stays **ablaze**, and at each end of exchange it sets fire to everyone within 2 m. Blunt weapons (dusters, hammer, shovel), fire and choke smoke don't set it off. A Vital hit kills it cleanly — aim for the head. Any monster can be made volatile in the Monster Creator; any weapon can be marked **blunt** in its settings.
 
 ## Attack shapes
 

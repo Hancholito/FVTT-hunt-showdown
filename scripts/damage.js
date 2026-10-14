@@ -3,7 +3,38 @@
  * the rest marks Health boxes from the last unburned chunk backward. Overflow = Downed.
  */
 
-import { monsterData } from "./weapons.js";
+import { MODULE_ID as HUNT_ID, monsterData } from "./weapons.js";
+import { resolveMulti, radiusPixels, flashBlast, tokensInBlast } from "./explosives.js";
+
+const IGNITE = { power: 2, radius: 4, attack: 3 };
+
+/* A volatile monster (the Immolator) hit by a bullet, blade, arrow or blast that doesn't kill it bursts into flame:
+ * a fire blast centred on it catches everyone around, its zone gains Burning Ground, and it stays ablaze. */
+export async function igniteVolatile(actor, tokenDoc) {
+    const m = monsterData(actor);
+    if (!m?.volatile || m.ignited) return false;
+    await actor.update({ [`flags.${HUNT_ID}.monster.ignited`]: true });
+    try { await actor.toggleStatusEffect("burning", { active: true }); } catch (e) { /* no burning status in this core */ }
+    let targets = [];
+    const perTarget = {};
+    let header = `<div class="hunt-row"><strong>${esc(actor.name)}</strong> bursts into flame!</div>`;
+    const token = tokenDoc?.object;
+    if (canvas?.ready && token) {
+        const px = radiusPixels(IGNITE.radius);
+        flashBlast(token.center, px, true);
+        targets = tokensInBlast(token.center, px).filter(t => t.document.uuid !== tokenDoc.uuid);
+        for (const t of targets) if (t._huntBlastEdge) perTarget[t.document.uuid] = { powerMod: -2, note: "edge of the flames, −2 power" };
+        header += `<div class="hunt-row hunt-hint">Fire burst ${IGNITE.radius} m around it: ${targets.length} caught. Defence: Athletics vs Good (+${IGNITE.attack}).</div>`;
+    } else {
+        header += `<div class="hunt-row hunt-hint">No token on the map: catch whoever is in its zone by hand (fire, power ${IGNITE.power}, Burning).</div>`;
+    }
+    await resolveMulti({
+        actor, targets, title: `${actor.name} — Ignites`, img: `modules/${HUNT_ID}/assets/explosive.svg`,
+        attackValue: IGNITE.attack, power: IGNITE.power, conditions: ["Burning"], fire: true,
+        zoneAspect: "Burning Ground", dread: 0, missLabel: "Clear of the flames", perTarget, headerRows: header
+    });
+    return true;
+}
 
 const MODULE_ID = "hunt-showdown-fco";
 const applied = new Set();
@@ -68,6 +99,9 @@ export async function applyFromMessage(message, index = null) {
         if (monster.vitalKills && data.vital) { instantKill = true; notes.push("Vital hit: killed outright"); }
         else if ((data.fire || (data.conditions ?? []).includes("Burning")) && monster.category !== "boss" && !monster.fireproof && !(monster.immune ?? []).includes("Burning")) {
             instantKill = true; notes.push("fire: burned to death");
+        }
+        else if (monster.armor && damage > 0 && data.vital && monster.vitalPierces) {
+            notes.push("Vital: armour pierced");
         }
         else if (monster.armor && damage > 0) {
             const before = damage;
@@ -225,6 +259,12 @@ export async function applyFromMessage(message, index = null) {
         </div>`,
         rolls
     });
+
+    // Volatile monsters: a piercing or cutting hit that leaves them standing sets them ablaze.
+    const firey = data.fire || (data.conditions ?? []).includes("Burning");
+    if (monster?.volatile && !downed && !instantKill && data.damage > 0 && !data.blunt && !firey) {
+        await igniteVolatile(actor, target?.documentName === "Token" ? target : actor.token);
+    }
 }
 
 export function registerDamageHooks() {
