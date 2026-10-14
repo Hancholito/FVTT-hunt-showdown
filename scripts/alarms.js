@@ -137,7 +137,7 @@ async function handle(req) {
     await ChatMessage.create({
         content: `<div class="hunt-card"><header class="hunt-card__head"><img src="${tok.texture.src}" alt=""><div><h3>${esc(type.label ?? a.label ?? "Alarm")}!</h3>
             <span class="hunt-hint">heard up to ${reach} m</span></div></header>
-          <div class="hunt-row">${esc(a.text ?? type.text ?? "The animals give the alarm")} — near <strong>${esc(tok.name)}</strong>. Everyone within earshot knows someone is there.</div></div>`
+          <div class="hunt-row">${esc(a.text ?? type.text ?? "The animals give the alarm")}${tok.name && tok.name !== (type.label ?? a.label) ? ` — <strong>${esc(tok.name)}</strong>` : ""}. Everyone within earshot knows someone is there.</div></div>`
     });
     if (woken.length) await ChatMessage.create({
         whisper: ChatMessage.getWhisperRecipients("GM").map(u => u.id),
