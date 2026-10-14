@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.11.2
+- Monsters die when their last Health box is marked (they only died on overflow, so a 4-damage hit left a 4-box Immolator standing — and ablaze). Hunters still go down on overflow.
+- The ablaze aura line names who is already burning instead of saying nobody is close.
+
 ## 0.11.1
 - End of exchange now runs when anyone advances the Combat Tracker round (it only ran when the main GM clicked). The active GM's client runs it once; going back a round or starting the combat doesn't trigger it.
 - An ignited Immolator shows the burning status icon on its token.

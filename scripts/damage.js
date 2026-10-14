@@ -207,7 +207,9 @@ export async function applyFromMessage(message, index = null) {
         const b = trackEntry(actor, "Bleeding");
         if (b) update[`system.tracks.${b.key}.box_values`] = b.track.box_values.map(() => false);
     }
-    if (remaining > 0 || instantKill) conds.add("Downed");
+    // Hunters go down when damage can't be absorbed; monsters die when their last Health box is marked.
+    const monsterSpent = !!monster && damage > 0 && health.free.length - marked <= 0;
+    if (remaining > 0 || instantKill || monsterSpent) conds.add("Downed");
     const set = [];
     for (const name of conds) {
         const t = trackEntry(actor, name);

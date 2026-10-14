@@ -40,3 +40,10 @@ await tickActor(a); assert.equal(H(a), "010000"); assert.equal(a.flags[MODULE_ID
 a = actor({ h: track("Health", 6), b: track("Bleeding", 1, [0]), d: track("Downed", 1, [0]) });
 assert.equal(await tickActor(a), null);
 console.log("exchange tests passed");
+// Monster whose last box is marked by bleeding dies.
+{
+    const { tickActor } = await import("../scripts/exchange.js");
+    const m = actor({ h: track("Health", 2, [0]), b: track("Bleeding", 1, [0]), d: track("Downed", 1) }, { monster: { category: "grunt" } });
+    await tickActor(m); assert.ok(m.statuses.has("dead"), "bled out");
+    console.log("monster bleed-out test passed");
+}

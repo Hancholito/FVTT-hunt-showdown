@@ -108,7 +108,8 @@ export async function tickActor(actor) {
 
     if (values.some((v, i) => v !== health.track.box_values[i])) update[`system.tracks.${health.key}.box_values`] = values;
     if (burnedTrack && burned.some((v, i) => v !== burnedTrack.track.box_values[i])) update[`system.tracks.${burnedTrack.key}.box_values`] = burned;
-    if (overflow > 0 || killed) conds.add("Downed");
+    const monsterSpent = !!monster && values.slice(0, usable()).every(v => v);
+    if (overflow > 0 || killed || monsterSpent) conds.add("Downed");
     for (const name of conds) {
         const t = trackEntry(actor, name);
         if (t) update[`system.tracks.${t.key}.box_values`] = t.track.box_values.map((v, i) => i === 0 ? true : v);
@@ -133,7 +134,7 @@ async function ablazeAura(scene) {
         const m = monsterData(tok.actor);
         if (!m?.volatile || !m.ignited || isDead(tok.actor) || isMarked(tok.actor, "Downed")) continue;
         const px = (2 / canvas.scene.grid.distance) * canvas.scene.grid.size;
-        const caught = [];
+        const caught = [], already = [];
         for (const other of canvas.tokens.placeables) {
             if (other === tok || !other.actor) continue;
             const reach = Math.hypot(other.center.x - tok.center.x, other.center.y - tok.center.y) - Math.min(other.w, other.h) / 2 - Math.min(tok.w, tok.h) / 2;
@@ -141,11 +142,15 @@ async function ablazeAura(scene) {
             const om = monsterData(other.actor);
             if (om && (om.fireproof || (om.immune ?? []).includes("Burning"))) continue;
             const b = trackEntry(other.actor, "Burning");
-            if (!b || b.track.box_values?.[0]) continue;
+            if (!b) continue;
+            if (b.track.box_values?.[0]) { already.push(other.name); continue; }
             await other.actor.update({ [`system.tracks.${b.key}.box_values`]: b.track.box_values.map((v, i) => i === 0 ? true : v) });
             caught.push(other.name);
         }
-        rows.push(`<div class="hunt-row"><strong>${esc(tok.name)}</strong> is ablaze${caught.length ? ` — sets fire to <strong>${caught.map(esc).join(", ")}</strong>` : ": nobody close enough"}.</div>`);
+        const parts = [];
+        if (caught.length) parts.push(`sets fire to <strong>${caught.map(esc).join(", ")}</strong>`);
+        if (already.length) parts.push(`${already.map(esc).join(", ")} already burning`);
+        rows.push(`<div class="hunt-row"><strong>${esc(tok.name)}</strong> is ablaze — ${parts.length ? parts.join("; ") : "nobody within 2 m"}.</div>`);
     }
     return rows;
 }
