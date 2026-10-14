@@ -11,30 +11,117 @@ import { registerLoadoutHooks } from "./loadout.js";
 import { openHunterCreator, decorateHunterSheet } from "./creator.js";
 import { sideBySideBio } from "./layout.js";
 import { createBestiary, rebuildBestiary, openCreator, decorateMonsterSheet } from "./monsters.js";
+import "./support.js";
 
 const MODULE_ID = "hunt-showdown-fco";
 const SYSTEM_ID = "fate-core-official";
 const SETUP_PATH = `modules/${MODULE_ID}/data/setup.json`;
-const WEAPONS_PATH = `modules/${MODULE_ID}/data/weapons.json`;
+const ARSENAL_PATH = `modules/${MODULE_ID}/data/arsenal.json`;
 const ARSENAL_FOLDER = "Hunt Arsenal";
+const CATEGORIES = {
+    handgun: { label: "Handguns", color: "#5c4127" },
+    longgun: { label: "Long Guns", color: "#4f3a22" },
+    grenade: { label: "Grenades & Bombs", color: "#6b2f1e" },
+    thrown: { label: "Thrown Weapons", color: "#5a4a2a" },
+    melee: { label: "Melee Weapons", color: "#4a4a3a" },
+    support: { label: "Support Items", color: "#2f4a3a" }
+};
+// Items renamed since earlier versions (old name → new name).
+const RENAMED = { "Mosin-Nagant": "Mosin-Nagant M1891", "Martini-Henry": "Martini-Henry IC1" };
 
-/* Creates the sample weapons as world Extras in a "Hunt Arsenal" folder, skipping names already there. */
+async function loadArsenal() {
+    return (await fetch(ARSENAL_PATH)).json();
+}
+
+function arsenalDoc(entry, folderId) {
+    const flags = {};
+    if (entry.weapon) flags.weapon = entry.weapon;
+    if (entry.support) flags.support = entry.support;
+    return {
+        name: entry.name, type: "Extra", img: entry.img, folder: folderId,
+        system: { description: { value: entry.description } },
+        flags: { [MODULE_ID]: flags }
+    };
+}
+
+/* The Hunt Arsenal folder and its category sub-folders, created when missing. */
+async function arsenalFolders() {
+    let root = game.folders.find(f => f.type === "Item" && f.name === ARSENAL_FOLDER && !f.folder);
+    if (!root) root = await Folder.create({ name: ARSENAL_FOLDER, type: "Item", color: "#5c4127" });
+    const folders = { root };
+    for (const [key, cat] of Object.entries(CATEGORIES)) {
+        let f = game.folders.find(f => f.type === "Item" && f.name === cat.label && f.folder?.id === root.id);
+        if (!f) f = await Folder.create({ name: cat.label, type: "Item", color: cat.color, folder: root.id });
+        folders[key] = f;
+    }
+    return folders;
+}
+
+function inArsenal(item, folders) {
+    const ids = new Set(Object.values(folders).map(f => f.id));
+    return !!item.folder && ids.has(item.folder.id);
+}
+
+/* Creates the arsenal as world Extras, sorted into category folders, skipping names already there. */
 async function createArsenal() {
     if (!game.user.isGM) return 0;
-    const weapons = await (await fetch(WEAPONS_PATH)).json();
-    let folder = game.folders.find(f => f.type === "Item" && f.name === ARSENAL_FOLDER);
-    if (!folder) folder = await Folder.create({ name: ARSENAL_FOLDER, type: "Item", color: "#5c4127" });
-    const existing = new Set(game.items.filter(i => i.folder?.id === folder.id).map(i => i.name));
-    const docs = weapons.filter(w => !existing.has(w.name)).map(w => ({
-        name: w.name,
-        type: "Extra",
-        img: w.img,
-        folder: folder.id,
-        system: { description: { value: w.description } },
-        flags: { [MODULE_ID]: { weapon: w.weapon } }
-    }));
+    const entries = await loadArsenal();
+    const folders = await arsenalFolders();
+    // Earlier versions put everything in the root folder: sort those into their categories and apply renames.
+    for (const item of game.items.filter(i => inArsenal(i, folders))) {
+        const newName = RENAMED[item.name];
+        const entry = entries.find(e => e.name === (newName ?? item.name));
+        if (!entry) continue;
+        const update = {};
+        if (newName) update.name = newName;
+        if (item.folder.id !== folders[entry.category].id) update.folder = folders[entry.category].id;
+        if (Object.keys(update).length) await item.update(update);
+    }
+    const existing = new Set(game.items.filter(i => inArsenal(i, folders)).map(i => i.name));
+    const docs = entries.filter(e => !existing.has(e.name)).map(e => arsenalDoc(e, folders[e.category].id));
     if (docs.length) await Item.createDocuments(docs);
     return docs.length;
+}
+
+/* Rebalance: rewrites the stats of every arsenal item in the world and on characters from the module's data.
+ * World copies are replaced outright; copies on characters keep their loaded rounds, spare rounds, stress and charges. */
+async function rebalanceArsenal() {
+    if (!game.user.isGM) return 0;
+    const entries = await loadArsenal();
+    const byName = Object.fromEntries(entries.map(e => [e.name, e]));
+    const folders = await arsenalFolders();
+    let n = 0;
+    const all = [...game.items, ...game.actors.contents.flatMap(a => [...a.items])];
+    for (const item of all) {
+        const name = RENAMED[item.name] ?? item.name;
+        const entry = byName[name];
+        if (!entry || !(item.getFlag(MODULE_ID, "weapon") || item.getFlag(MODULE_ID, "support"))) continue;
+        const update = { name, img: entry.img, "system.description.value": entry.description };
+        const old = item.getFlag(MODULE_ID, "weapon") ?? {};
+        const keepState = !!item.parent;
+        if (entry.weapon) {
+            const w = foundry.utils.deepClone(entry.weapon);
+            if (keepState) {
+                w.loaded = Math.min(Number(old.loaded ?? w.loaded), w.capacity);
+                w.reserve = Math.min(Number(old.reserve ?? w.reserve), w.maxReserve ?? w.reserve);
+                w.stress = Number(old.stress ?? 0);
+                if (old.ammo) w.ammo = old.ammo;
+            }
+            update[`flags.${MODULE_ID}.weapon`] = w;
+            update[`flags.${MODULE_ID}.-=support`] = null;
+        }
+        if (entry.support) {
+            const sp = foundry.utils.deepClone(entry.support);
+            const oldS = item.getFlag(MODULE_ID, "support");
+            if (keepState && oldS) sp.uses = Math.min(Number(oldS.uses ?? sp.uses), sp.usesMax);
+            update[`flags.${MODULE_ID}.support`] = sp;
+            update[`flags.${MODULE_ID}.-=weapon`] = null;
+        }
+        if (!item.parent && inArsenal(item, folders)) update.folder = folders[entry.category].id;
+        await item.update(update);
+        n++;
+    }
+    return n;
 }
 
 class TraitsMenu extends foundry.applications.api.ApplicationV2 {
@@ -75,8 +162,20 @@ class CreatorMenu extends foundry.applications.api.ApplicationV2 {
 class ArsenalMenu extends foundry.applications.api.ApplicationV2 {
     static DEFAULT_OPTIONS = { id: "hunt-arsenal", window: { title: "HUNT.Arsenal.MenuName" } };
     async render() {
-        const n = await createArsenal();
-        ui.notifications.info(game.i18n.format("HUNT.Arsenal.Done", { n }));
+        const mode = await foundry.applications.api.DialogV2.wait({
+            window: { title: game.i18n.localize("HUNT.Arsenal.MenuName") },
+            content: `<p>${game.i18n.localize("HUNT.Arsenal.Choice")}</p>`,
+            buttons: [
+                { action: "missing", label: game.i18n.localize("HUNT.Arsenal.Missing"), default: true },
+                { action: "rebalance", label: game.i18n.localize("HUNT.Arsenal.Rebalance") }
+            ],
+            rejectClose: false
+        });
+        if (!mode) return this;
+        try {
+            const n = mode === "rebalance" ? await rebalanceArsenal() : await createArsenal();
+            ui.notifications.info(game.i18n.format(mode === "rebalance" ? "HUNT.Arsenal.Rebalanced" : "HUNT.Arsenal.Done", { n }));
+        } catch (e) { ui.notifications.error(e.message); console.error(e); }
         return this;
     }
 }
@@ -247,6 +346,20 @@ Hooks.once("ready", async () => {
         if (n) ui.notifications.info(game.i18n.format("HUNT.Arsenal.Done", { n }));
         const d = await createTraitDecks();
         if (d) ui.notifications.info(game.i18n.format("HUNT.Traits.Done", { n: d }));
+        // 0.10.0: full arsenal, rebalanced stats, category folders.
+        if (foundry.utils.isNewerVersion("0.10.0", installed)) {
+            const ok = await foundry.applications.api.DialogV2.confirm({
+                window: { title: game.i18n.localize("HUNT.Arsenal.MenuName") },
+                content: `<p>${game.i18n.localize("HUNT.Arsenal.UpdateBalance")}</p>`,
+                rejectClose: false
+            });
+            if (ok) {
+                try {
+                    const r = await rebalanceArsenal();
+                    ui.notifications.info(game.i18n.format("HUNT.Arsenal.Rebalanced", { n: r }));
+                } catch (e) { console.warn("Hunt arsenal:", e); }
+            }
+        }
         // 0.5.1: bosses rebalanced (Fight 3, lower attack power).
         if (foundry.utils.isNewerVersion("0.5.1", installed)) {
             const ok = await foundry.applications.api.DialogV2.confirm({

@@ -119,8 +119,12 @@ export async function throwExplosive(actor, item) {
             : v < 0 ? "lands in <strong>the thrower's own zone</strong>" : "falls <strong>short</strong>, one zone toward the thrower"}.`;
     }
 
-    // Explosives are single use: the item leaves the sheet once thrown.
-    if (item.parent) await item.delete();
+    // Explosives are single use: the item leaves the sheet once thrown. Multi-charge items (fusees) spend a charge.
+    const charges = Number(weapon.capacity ?? 1);
+    const left = Math.max(0, Number(weapon.loaded ?? 1) - 1);
+    if (charges > 1 && left > 0) await item.update({ [`flags.${MODULE_ID}.weapon.loaded`]: left });
+    else if (item.parent) await item.delete();
+    const useText = charges > 1 ? `${left}/${charges} charges left` : "single use";
 
     const attackValue = success ? total : 2;
     await ChatMessage.create({
@@ -129,7 +133,7 @@ export async function throwExplosive(actor, item) {
         content: `
           <div class="hunt-card">
             <header class="hunt-card__head"><img src="${item.img}" alt=""><div><h3>${esc(item.name)}</h3>
-              <span class="hunt-hint">${esc(actor.name)} throws · single use</span></div></header>
+              <span class="hunt-hint">${esc(actor.name)} throws · ${useText}</span></div></header>
             <div class="hunt-row">Throw ${diceHtml(roll)} ${rank >= 0 ? "+" : ""}${rank}${notes.length ? ` <span class="hunt-hint">(${notes.join(", ")})</span>` : ""} = <strong>${total}</strong> vs ${oppText}</div>
             <div class="hunt-result">${success ? `<span class="hunt-hit">Success</span>` : `<span class="hunt-miss">Failure</span>`} — ${landing}</div>
             <div class="hunt-row hunt-hint">Goes off at the end of the exchange (Cooked Fuse: at once). Blast radius ${blastRadius(item.name, ex)} m. Defence: Athletics vs <strong>${attackValue}</strong>${ex.zoneAspect ? ` · the zone gains <em>${esc(ex.zoneAspect)}</em>` : ""}.</div>

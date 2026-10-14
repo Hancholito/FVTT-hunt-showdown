@@ -5,6 +5,7 @@
 
 import { throwExplosive, resolveMulti, blastRadius } from "./explosives.js";
 import { usesSlot, isEquipped, loadoutSummary } from "./loadout.js";
+import { getSupport, useSupport, configureSupport, supportSummary } from "./support.js";
 
 export const MODULE_ID = "hunt-showdown-fco";
 const SYSTEM_ID = "fate-core-official";
@@ -17,6 +18,7 @@ export const ACTIONS = {
     bolt: { label: "Bolt action", extra: 0 },
     lever: { label: "Lever action", extra: 1 },
     pump: { label: "Pump action", extra: 1 },
+    double: { label: "Double barrel / multiple barrels", extra: 1 },
     sa_revolver: { label: "Single-action revolver", extra: 1 },
     da_revolver: { label: "Double-action revolver", extra: 2 },
     semi: { label: "Semi-automatic", extra: 2 },
@@ -48,12 +50,16 @@ export const DEFAULT_WEAPON = {
     capacity: 1,
     loaded: 1,
     reserve: 0,
+    maxReserve: null,
     ammo: "standard",
     reliability: 3,
     stress: 0,
     slot: "Large",
     conditions: [],
-    shape: "single"
+    shape: "single",
+    notes: "",
+    tool: false,
+    recoverable: false
 };
 
 export const SHAPES = {
@@ -386,6 +392,14 @@ export async function reload(actor, item) {
     if (!w || NO_AMMO.includes(w.action)) return;
     const need = w.capacity - w.loaded;
     if (need <= 0) return ui.notifications.info(`${item.name} is already full.`);
+    if (w.reserve <= 0 && (w.recoverable || w.action === "thrown")) {
+        // Thrown weapons are picked up again after the fight.
+        await item.update({ [`flags.${MODULE_ID}.weapon.loaded`]: w.capacity });
+        return ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor }),
+            content: `<div class="hunt-card"><div class="hunt-row">Recovers <strong>${esc(item.name)}</strong>: ${w.capacity} ready again.</div></div>`
+        });
+    }
     if (w.reserve <= 0) return ui.notifications.warn(`No spare ammunition for ${item.name}.`);
     const taken = Math.min(need, w.reserve);
     await item.update({
@@ -432,6 +446,7 @@ export async function configureWeapon(item) {
         <label>Capacity <input type="number" name="capacity" value="${w.capacity}" min="0" step="1"></label>
         <label>Loaded <input type="number" name="loaded" value="${w.loaded}" min="0" step="1"></label>
         <label>Spare rounds <input type="number" name="reserve" value="${w.reserve}" min="0" step="1"></label>
+        <label>Spare rounds when full <input type="number" name="maxReserve" value="${w.maxReserve ?? w.reserve}" min="0" step="1"> <span class="hunt-hint">what an ammo box refills to</span></label>
         <label>Ammo <select name="ammo">${opt(AMMO, w.ammo)}</select></label>
         <label>Reliability <input type="number" name="reliability" value="${w.reliability}" min="1" max="4" step="1"> <span class="hunt-hint">weapon stress boxes</span></label>
         <label>Weapon stress <input type="number" name="stress" value="${w.stress}" min="0" step="1"></label>
@@ -440,6 +455,8 @@ export async function configureWeapon(item) {
             : `<label>Shape <select name="shape">${opt(SHAPES, w.shape ?? "single")}</select></label>`}
         <label>Conditions on hit <input type="text" name="conditions" value="${esc((w.conditions ?? []).join(", "))}" placeholder="Bleeding, Poisoned…"></label>
         <label>Slot <select name="slot">${["Small", "Medium", "Large"].map(s => `<option ${s === w.slot ? "selected" : ""}>${s}</option>`).join("")}</select></label>
+        <label>Tool <input type="checkbox" name="tool" ${w.tool ? "checked" : ""}> <span class="hunt-hint">no weapon slot, counts as a tool (derringer, flare pistol, melee)</span></label>
+        <label>Notes <input type="text" name="notes" value="${esc(w.notes ?? "")}" placeholder="shown on the sheet"></label>
         ${getWeapon(item) ? `<label>Not a weapon <input type="checkbox" name="remove"> <span class="hunt-hint">remove the weapon data</span></label>` : ""}
       </div>`;
 
@@ -459,6 +476,8 @@ export async function configureWeapon(item) {
                     weapon: {
                         skill: f.skill.value, action: f.action.value, power, best: f.best.value,
                         capacity: num(f.capacity.value), loaded: num(f.loaded.value), reserve: num(f.reserve.value),
+                        maxReserve: num(f.maxReserve.value), tool: f.tool.checked, notes: f.notes.value.trim(),
+                        recoverable: w.recoverable ?? false,
                         ammo: f.ammo.value, reliability: Math.max(1, num(f.reliability.value, 3)),
                         stress: num(f.stress.value), slot: f.slot.value,
                         conditions: f.conditions.value.split(",").map(c => c.trim()).filter(Boolean),
@@ -473,6 +492,7 @@ export async function configureWeapon(item) {
     if (!data) return;
     if (data.remove) return item.unsetFlag(MODULE_ID, "weapon");
     if (w.explosive) data.weapon.explosive = { ...w.explosive, radius: data.weapon.radius || blastRadius(item.name, w.explosive) };
+    if (w.explosive) data.weapon.shape = "area";
     delete data.weapon.radius;
     if (data.weapon.power[data.weapon.best] === null) {
         const first = BANDS.find(b => data.weapon.power[b] !== null);
@@ -488,7 +508,8 @@ function weaponSummary(w) {
     if (w.explosive) {
         const power = Object.values(w.power ?? {}).find(v => v !== null && v !== undefined && v !== "") ?? 0;
         const tags = [w.explosive.sticky ? "sticky" : "", w.explosive.fire ? "fire" : "", ...(w.conditions ?? []), w.explosive.zoneAspect].filter(Boolean);
-        return `Throw · power ${power} · radius ${blastRadius("", w.explosive)} m${tags.length ? ` · ${tags.join(", ")}` : ""} · single use`;
+        const uses = w.capacity > 1 ? `${w.loaded}/${w.capacity} charges` : "single use";
+        return `Throw · power ${power} · radius ${blastRadius("", w.explosive)} m${tags.length ? ` · ${tags.join(", ")}` : ""} · ${uses}${w.notes ? ` · ${w.notes}` : ""}`;
     }
     const bands = BANDS.filter(b => w.power?.[b] !== null && w.power?.[b] !== undefined)
         .map(b => `${b[0]}${b === w.best ? "*" : ""}:${w.power[b]}`).join(" ");
@@ -497,7 +518,8 @@ function weaponSummary(w) {
         ` · ${"■".repeat(Math.min(w.stress, w.reliability))}${"□".repeat(Math.max(0, w.reliability - w.stress))}${w.stress >= w.reliability ? " JAMMED" : ""}`;
     const conds = (w.conditions ?? []).length ? ` · ${w.conditions.join(", ")}` : "";
     const shapeTag = w.shape && w.shape !== "single" ? ` · ${w.shape}` : "";
-    return `${w.skill}${shapeTag} · ${bands}${ammo}${stress}${conds}`;
+    const notes = w.notes ? ` · ${w.notes}` : "";
+    return `${w.skill}${shapeTag} · ${bands}${ammo}${stress}${conds}${notes}`;
 }
 
 export function decorateSheet(app, html) {
@@ -527,6 +549,7 @@ function decorateSheetInner(app, html) {
         const row = header.querySelector(".fate-extras__row-header");
         if (!row || row.querySelector(".hunt-weapon-tools")) continue;
         const weapon = getWeapon(item);
+        const support = weapon ? null : getSupport(item);
 
         const tools = document.createElement("span");
         tools.className = "hunt-weapon-tools";
@@ -553,9 +576,17 @@ function decorateSheetInner(app, html) {
             }
             if (weapon.stress > 0) btn("fa-wrench", "Clear jam (Crafts vs Fair)", () => clearJam(actor, item));
         }
-        if (editable) btn("fa-gun", weapon ? "Weapon settings" : "Make this extra a weapon", () => configureWeapon(item));
+        if (support && editable) btn("fa-hand-holding-medical", "Use", () => useSupport(actor, item));
+        if (editable && !support) btn("fa-gun", weapon ? "Weapon settings" : "Make this extra a weapon", () => configureWeapon(item));
+        if (editable && !weapon) btn("fa-kit-medical", support ? "Support item settings" : "Make this extra a support item", () => configureSupport(item));
         row.append(tools);
 
+        if (support) {
+            const line = document.createElement("div");
+            line.className = "hunt-weapon-summary";
+            line.textContent = supportSummary(support);
+            row.after(line);
+        }
         if (weapon) {
             const line = document.createElement("div");
             line.className = "hunt-weapon-summary";

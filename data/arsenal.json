@@ -1,0 +1,2300 @@
+[
+  {
+    "name": "Nagant M1895",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Double-action seven-shot revolver. Light round, quick trigger.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "da_revolver",
+      "power": {
+        "Close": 2,
+        "Medium": 2,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 7,
+      "loaded": 7,
+      "reserve": 14,
+      "maxReserve": 14,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Nagant M1895 Officer",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Lightened Nagant with a crisp trigger: fires as fast as you can pull.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "da_revolver",
+      "power": {
+        "Close": 2,
+        "Medium": 2,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 7,
+      "loaded": 7,
+      "reserve": 14,
+      "maxReserve": 14,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Caldwell Conversion",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Single-action six-shooter converted to cartridges. Heavier round than the Nagant.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "sa_revolver",
+      "power": {
+        "Close": 3,
+        "Medium": 2,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 6,
+      "loaded": 6,
+      "reserve": 12,
+      "maxReserve": 12,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Caldwell Conversion Uppercut",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Conversion chambered for rifle rounds. Kicks hard, carries far.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "sa_revolver",
+      "power": {
+        "Close": 3,
+        "Medium": 3,
+        "Long": 2,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 6,
+      "loaded": 6,
+      "reserve": 12,
+      "maxReserve": 12,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Caldwell Pax",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Big single-action revolver in medium calibre. The frontier peacemaker.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "sa_revolver",
+      "power": {
+        "Close": 3,
+        "Medium": 3,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 6,
+      "loaded": 6,
+      "reserve": 12,
+      "maxReserve": 12,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Scottfield Model 3",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Break-action revolver: reloading is a free action once per exchange.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "sa_revolver",
+      "power": {
+        "Close": 3,
+        "Medium": 2,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 6,
+      "loaded": 6,
+      "reserve": 12,
+      "maxReserve": 12,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Reload is a free action (once per exchange)"
+    }
+  },
+  {
+    "name": "Bornheim No. 3",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Semi-automatic pistol. Weak round, lots of them, quickly.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "semi",
+      "power": {
+        "Close": 2,
+        "Medium": 1,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 5,
+      "loaded": 5,
+      "reserve": 15,
+      "maxReserve": 15,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Dolch 96",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Ten-round semi-automatic with a stripper clip. Rare, precise, expensive.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "semi",
+      "power": {
+        "Close": 3,
+        "Medium": 3,
+        "Long": 2,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 10,
+      "loaded": 10,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "LeMat Mark II",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Nine-shot revolver with a shotgun barrel under the cylinder.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "da_revolver",
+      "power": {
+        "Close": 2,
+        "Medium": 2,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 9,
+      "loaded": 9,
+      "reserve": 9,
+      "maxReserve": 9,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Once per load, fire the shotgun barrel instead: Close 3, cone"
+    }
+  },
+  {
+    "name": "Sparks Pistol",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>A Sparks action cut down to a pistol. One rifle round in the palm of your hand.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 4,
+        "Medium": 3,
+        "Long": 2,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Romero 77 Handcannon",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Sawn-off Romero. Fits in a holster, fills a doorway with lead.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 3,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 8,
+      "maxReserve": 8,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "cone"
+    }
+  },
+  {
+    "name": "Caldwell Rival 78 Handcannon",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Sawn-off double barrel. Two shells, no range.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "double",
+      "power": {
+        "Close": 3,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 2,
+      "loaded": 2,
+      "reserve": 8,
+      "maxReserve": 8,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Medium",
+      "conditions": [],
+      "shape": "cone"
+    }
+  },
+  {
+    "name": "Specter 1882 Compact",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Cut-down pump shotgun. Three shells.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "pump",
+      "power": {
+        "Close": 3,
+        "Medium": 1,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 3,
+      "loaded": 3,
+      "reserve": 9,
+      "maxReserve": 9,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Medium",
+      "conditions": [],
+      "shape": "cone"
+    }
+  },
+  {
+    "name": "Quad Derringer",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Four tiny barrels, a tool rather than a weapon. For the last word.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "double",
+      "power": {
+        "Close": 2,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 4,
+      "loaded": 4,
+      "reserve": 8,
+      "maxReserve": 8,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Tool: does not use a weapon slot",
+      "tool": true
+    }
+  },
+  {
+    "name": "Flare Pistol",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Fires a burning flare: sets whatever it hits alight and lights up the zone.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 1,
+        "Medium": 1,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 2,
+      "maxReserve": 2,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Burning"
+      ],
+      "shape": "single",
+      "notes": "Tool: does not use a weapon slot. The zone gets the aspect Lit Up",
+      "tool": true
+    }
+  },
+  {
+    "name": "Hand Crossbow",
+    "category": "handgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-short.svg",
+    "description": "<p>Silent, slow, and its bolts can be poisoned.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 2,
+        "Medium": 2,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 4,
+      "maxReserve": 4,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Tool: does not use a weapon slot. Silent: no Notice roll to hear it",
+      "tool": true
+    }
+  },
+  {
+    "name": "Winfield M1873",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Lever-action rifle. Light round, fifteen of them.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "lever",
+      "power": {
+        "Close": 2,
+        "Medium": 2,
+        "Long": 1,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 15,
+      "loaded": 15,
+      "reserve": 15,
+      "maxReserve": 15,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Winfield M1873C",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Carbine Winfield: shorter, eight rounds, fits a medium slot.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "lever",
+      "power": {
+        "Close": 2,
+        "Medium": 2,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 8,
+      "loaded": 8,
+      "reserve": 16,
+      "maxReserve": 16,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Medium",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Winfield 1876 Centennial",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Lever-action in medium calibre. The Winfield that hits.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "lever",
+      "power": {
+        "Close": 3,
+        "Medium": 3,
+        "Long": 2,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 10,
+      "loaded": 10,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Springfield 1866",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Trapdoor single-shot carbine. Simple, reliable, medium calibre.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 3,
+        "Medium": 3,
+        "Long": 2,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 12,
+      "maxReserve": 12,
+      "ammo": "standard",
+      "reliability": 4,
+      "stress": 0,
+      "slot": "Medium",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Vetterli 71 Karabiner",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Bolt-action carbine, six rounds, medium calibre. Does everything well enough.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "bolt",
+      "power": {
+        "Close": 3,
+        "Medium": 3,
+        "Long": 3,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 6,
+      "loaded": 6,
+      "reserve": 12,
+      "maxReserve": 12,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Medium",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Mosin-Nagant M1891",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Bolt-action rifle, five long rounds. Deadly at range.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "bolt",
+      "power": {
+        "Close": 3,
+        "Medium": 4,
+        "Long": 4,
+        "Extreme": 3
+      },
+      "best": "Long",
+      "capacity": 5,
+      "loaded": 5,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Lebel 1886",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Tube-fed bolt-action, eight long rounds. Slow to top up.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "bolt",
+      "power": {
+        "Close": 3,
+        "Medium": 4,
+        "Long": 4,
+        "Extreme": 3
+      },
+      "best": "Long",
+      "capacity": 8,
+      "loaded": 8,
+      "reserve": 8,
+      "maxReserve": 8,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Krag 1896",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Smooth bolt-action, side-loading magazine. Reloads fast.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "bolt",
+      "power": {
+        "Close": 3,
+        "Medium": 4,
+        "Long": 4,
+        "Extreme": 3
+      },
+      "best": "Long",
+      "capacity": 5,
+      "loaded": 5,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Reload is a free action (once per exchange)"
+    }
+  },
+  {
+    "name": "Martini-Henry IC1",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Falling-block single shot. A heavy round, a slow reload.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 3,
+        "Medium": 4,
+        "Long": 4,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 12,
+      "maxReserve": 12,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Sparks LRR",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Single-shot long-range rifle. One round, one chance, a lot of noise.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 4,
+        "Medium": 5,
+        "Long": 5,
+        "Extreme": 5
+      },
+      "best": "Long",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Mosin-Nagant Avtomat",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Semi-automatic Mosin, fifteen rounds. Jams if you look at it wrong.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "semi",
+      "power": {
+        "Close": 3,
+        "Medium": 4,
+        "Long": 3,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 15,
+      "loaded": 15,
+      "reserve": 15,
+      "maxReserve": 15,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Nitro Express",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Elephant gun. Two rounds that stop anything that walks, bosses included.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "double",
+      "power": {
+        "Close": 6,
+        "Medium": 6,
+        "Long": 5,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 2,
+      "loaded": 2,
+      "reserve": 4,
+      "maxReserve": 4,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Ignores 1 point of armour"
+    }
+  },
+  {
+    "name": "Drilling",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Two shotgun barrels over a rifle barrel.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "double",
+      "power": {
+        "Close": 3,
+        "Medium": 3,
+        "Long": 3,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Also carries 2 shotgun shells: Close 4, cone; swap barrels as a free action"
+    }
+  },
+  {
+    "name": "Bomb Lance",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Whaling harpoon launcher. Fires one explosive lance, then it is a spear.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 5,
+        "Medium": 2,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 3,
+      "maxReserve": 3,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "single",
+      "notes": "Melee with Fight: Close 3"
+    }
+  },
+  {
+    "name": "Hunting Bow",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Silent and quick to draw. Arrows can be recovered.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 3,
+        "Medium": 3,
+        "Long": 2,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 4,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Silent. Arrows are recovered after the fight (Bolt Seer: always)"
+    }
+  },
+  {
+    "name": "Crossbow",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Silent, slow, heavy bolts. Explosive and poison bolts exist.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 4,
+        "Medium": 4,
+        "Long": 3,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 6,
+      "maxReserve": 6,
+      "ammo": "standard",
+      "reliability": 4,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Silent. Bolts are recovered after the fight (Bolt Seer: always)"
+    }
+  },
+  {
+    "name": "Romero 77",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Single-barrel shotgun. Its spread hits everyone in front of the shooter (cone).</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "single",
+      "power": {
+        "Close": 4,
+        "Medium": 1,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "cone"
+    }
+  },
+  {
+    "name": "Caldwell Rival 78",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Double-barrel shotgun. Both barrels in one exchange if you like.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "double",
+      "power": {
+        "Close": 4,
+        "Medium": 1,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 2,
+      "loaded": 2,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "cone"
+    }
+  },
+  {
+    "name": "Specter 1882",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Pump-action shotgun, five shells.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "pump",
+      "power": {
+        "Close": 4,
+        "Medium": 1,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 5,
+      "loaded": 5,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "cone"
+    }
+  },
+  {
+    "name": "Terminus",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Lever-action shotgun, six shells. Fast and loud.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "lever",
+      "power": {
+        "Close": 4,
+        "Medium": 1,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 6,
+      "loaded": 6,
+      "reserve": 12,
+      "maxReserve": 12,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "cone"
+    }
+  },
+  {
+    "name": "Crown & King",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Semi-automatic shotgun. Five shells as fast as you can pull.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "semi",
+      "power": {
+        "Close": 3,
+        "Medium": 1,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 5,
+      "loaded": 5,
+      "reserve": 10,
+      "maxReserve": 10,
+      "ammo": "standard",
+      "reliability": 2,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "cone"
+    }
+  },
+  {
+    "name": "Slate",
+    "category": "longgun",
+    "img": "modules/hunt-showdown-fco/assets/weapon-long.svg",
+    "description": "<p>Heavy double-barrel with tight choke. Reaches further than other shotguns.</p>",
+    "weapon": {
+      "skill": "Shoot",
+      "action": "double",
+      "power": {
+        "Close": 5,
+        "Medium": 2,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 2,
+      "loaded": 2,
+      "reserve": 8,
+      "maxReserve": 8,
+      "ammo": "standard",
+      "reliability": 3,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "cone"
+    }
+  },
+  {
+    "name": "Knife",
+    "category": "melee",
+    "img": "modules/hunt-showdown-fco/assets/weapon-melee.svg",
+    "description": "<p>Short blade. Quiet and quick.</p>",
+    "weapon": {
+      "skill": "Fight",
+      "action": "melee",
+      "power": {
+        "Close": 2,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 0,
+      "loaded": 0,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Dusters",
+    "category": "melee",
+    "img": "modules/hunt-showdown-fco/assets/weapon-melee.svg",
+    "description": "<p>Brass knuckles. Blunt, fast, silent.</p>",
+    "weapon": {
+      "skill": "Fight",
+      "action": "melee",
+      "power": {
+        "Close": 2,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 0,
+      "loaded": 0,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Blunt (Hornskin applies)"
+    }
+  },
+  {
+    "name": "Heavy Knife",
+    "category": "melee",
+    "img": "modules/hunt-showdown-fco/assets/weapon-melee.svg",
+    "description": "<p>A big blade with a heavy spine.</p>",
+    "weapon": {
+      "skill": "Fight",
+      "action": "melee",
+      "power": {
+        "Close": 3,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 0,
+      "loaded": 0,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Medium",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Combat Axe",
+    "category": "melee",
+    "img": "modules/hunt-showdown-fco/assets/weapon-melee.svg",
+    "description": "<p>Hatchet with a spike on the back.</p>",
+    "weapon": {
+      "skill": "Fight",
+      "action": "melee",
+      "power": {
+        "Close": 3,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 0,
+      "loaded": 0,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Medium",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "single",
+      "notes": "Can be thrown with Tomahawk"
+    }
+  },
+  {
+    "name": "Machete",
+    "category": "melee",
+    "img": "modules/hunt-showdown-fco/assets/weapon-melee.svg",
+    "description": "<p>Long cane blade. Wide arcs.</p>",
+    "weapon": {
+      "skill": "Fight",
+      "action": "melee",
+      "power": {
+        "Close": 3,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 0,
+      "loaded": 0,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Medium",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "single"
+    }
+  },
+  {
+    "name": "Cavalry Saber",
+    "category": "melee",
+    "img": "modules/hunt-showdown-fco/assets/weapon-melee.svg",
+    "description": "<p>Curved steel. Reach and speed.</p>",
+    "weapon": {
+      "skill": "Fight",
+      "action": "melee",
+      "power": {
+        "Close": 3,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 0,
+      "loaded": 0,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Medium",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "single",
+      "notes": "+1 to Fight defence against melee"
+    }
+  },
+  {
+    "name": "Railroad Hammer",
+    "category": "melee",
+    "img": "modules/hunt-showdown-fco/assets/weapon-melee.svg",
+    "description": "<p>A sledge found by the tracks. Slow, heavy, blunt.</p>",
+    "weapon": {
+      "skill": "Fight",
+      "action": "melee",
+      "power": {
+        "Close": 4,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 0,
+      "loaded": 0,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Large",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Blunt (Hornskin applies). Found in the world, not bought"
+    }
+  },
+  {
+    "name": "Shovel",
+    "category": "melee",
+    "img": "modules/hunt-showdown-fco/assets/weapon-melee.svg",
+    "description": "<p>A tool first, a weapon when it has to be.</p>",
+    "weapon": {
+      "skill": "Fight",
+      "action": "melee",
+      "power": {
+        "Close": 2,
+        "Medium": null,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 0,
+      "loaded": 0,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Medium",
+      "conditions": [],
+      "shape": "single",
+      "notes": "Blunt. Found in the world"
+    }
+  },
+  {
+    "name": "Throwing Knives",
+    "category": "thrown",
+    "img": "modules/hunt-showdown-fco/assets/weapon-thrown.svg",
+    "description": "<p>Four balanced blades. Silent.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 2,
+        "Medium": 1,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 4,
+      "loaded": 4,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "single",
+      "recoverable": true,
+      "notes": "Silent. Recovered after the fight"
+    }
+  },
+  {
+    "name": "Throwing Axes",
+    "category": "thrown",
+    "img": "modules/hunt-showdown-fco/assets/weapon-thrown.svg",
+    "description": "<p>Two heavy axes. Loud when they land.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 3,
+        "Medium": 2,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 2,
+      "loaded": 2,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "single",
+      "recoverable": true,
+      "notes": "Recovered after the fight"
+    }
+  },
+  {
+    "name": "Throwing Spear",
+    "category": "thrown",
+    "img": "modules/hunt-showdown-fco/assets/weapon-thrown.svg",
+    "description": "<p>One long spear. Pins what it hits.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 4,
+        "Medium": 3,
+        "Long": null,
+        "Extreme": null
+      },
+      "best": "Close",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "single",
+      "recoverable": true,
+      "notes": "Recovered after the fight"
+    }
+  },
+  {
+    "name": "Lantern",
+    "category": "thrown",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>An oil lantern taken off a hook. Shatters and spreads fire where it lands.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 1,
+        "Medium": 1,
+        "Long": 1,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Burning"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": true,
+        "zoneAspect": "Burning Ground",
+        "radius": 3
+      },
+      "notes": "Found in the world"
+    }
+  },
+  {
+    "name": "Fusee",
+    "category": "thrown",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>A road flare. Lights the zone and sets fire to whatever it lands on. Three per pack.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 0,
+        "Medium": 0,
+        "Long": 0,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 3,
+      "loaded": 3,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Burning"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": true,
+        "zoneAspect": "Lit Up",
+        "radius": 2
+      },
+      "notes": "Tool. Three charges"
+    }
+  },
+  {
+    "name": "Dynamite Stick",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>A short fuse and a big bang. Destroys light cover in the zone.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 4,
+        "Medium": 4,
+        "Long": 4,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "Light Cover Blown Away",
+        "radius": 5
+      }
+    }
+  },
+  {
+    "name": "Dynamite Bundle",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>Three sticks tied together. Takes the walls with it.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 5,
+        "Medium": 5,
+        "Long": 5,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "Cover Blown Away",
+        "radius": 7
+      }
+    }
+  },
+  {
+    "name": "Big Dynamite Bundle",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>Enough dynamite to drop a barn.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 6,
+        "Medium": 6,
+        "Long": 6,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "Cover Blown Away",
+        "radius": 9
+      },
+      "notes": "Heavy: Throw difficulty +1"
+    }
+  },
+  {
+    "name": "Waxed Dynamite Stick",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>Waterproof fuse: can be cooked (Sapper) and lit in the rain.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 4,
+        "Medium": 4,
+        "Long": 4,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "Light Cover Blown Away",
+        "radius": 5
+      },
+      "notes": "Burns in water. Cooking the fuse never fails"
+    }
+  },
+  {
+    "name": "Frag Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>Shrapnel tears through everyone in the zone.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 3,
+        "Medium": 3,
+        "Long": 3,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "",
+        "radius": 6
+      }
+    }
+  },
+  {
+    "name": "Waxed Frag Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>A frag bomb with a waterproof fuse.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 3,
+        "Medium": 3,
+        "Long": 3,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "",
+        "radius": 6
+      },
+      "notes": "Burns in water. Cooking the fuse never fails"
+    }
+  },
+  {
+    "name": "Sticky Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>Thrown at a person (Throw vs Athletics). Whoever it sticks to gets no blast defence.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 4,
+        "Medium": 4,
+        "Long": 4,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": true,
+        "fire": false,
+        "zoneAspect": "",
+        "radius": 4
+      }
+    }
+  },
+  {
+    "name": "Concertina Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>Scatters razor wire across the zone.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 2,
+        "Medium": 2,
+        "Long": 2,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Bleeding"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "Razor Wire (Athletics overcome to cross)",
+        "radius": 4
+      }
+    }
+  },
+  {
+    "name": "Fire Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>An incendiary flask. Fire kills ordinary monsters outright; hunters catch fire.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 1,
+        "Medium": 1,
+        "Long": 1,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Burning"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": true,
+        "zoneAspect": "Burning Ground",
+        "radius": 4
+      }
+    }
+  },
+  {
+    "name": "Liquid Fire Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>Burning oil that spreads: the fire covers a wider zone and lasts longer.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 1,
+        "Medium": 1,
+        "Long": 1,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Burning"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": true,
+        "zoneAspect": "Burning Ground (lasts the scene)",
+        "radius": 6
+      }
+    }
+  },
+  {
+    "name": "Hellfire Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>A heavy incendiary charge. Fire kills ordinary monsters outright; hunters catch fire.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 2,
+        "Medium": 2,
+        "Long": 2,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Burning"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": true,
+        "zoneAspect": "Burning Ground",
+        "radius": 6
+      }
+    }
+  },
+  {
+    "name": "Hive Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>A nest of hive insects. The swarm hunts whoever is in the zone.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 1,
+        "Medium": 1,
+        "Long": 1,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Poisoned"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "Hive Swarm (−1 to all rolls until you leave)",
+        "radius": 5
+      }
+    }
+  },
+  {
+    "name": "Poison Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>A cloud of poison gas. No damage, but it lingers.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 0,
+        "Medium": 0,
+        "Long": 0,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Poisoned"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "Poison Cloud (Poisoned each exchange you stay)",
+        "radius": 5
+      }
+    }
+  },
+  {
+    "name": "Choke Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>Thick choking smoke: −2 to all rolls in the zone, no Dark Sight. Puts out fires.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 0,
+        "Medium": 0,
+        "Long": 0,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Blinded"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "Choking Smoke (−2 to all rolls, no Dark Sight)",
+        "radius": 5
+      },
+      "notes": "Extinguishes Burning Ground and Burning hunters in the zone"
+    }
+  },
+  {
+    "name": "Flash Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>A blinding burst. No damage; everyone in the zone is Blinded.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 0,
+        "Medium": 0,
+        "Long": 0,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [
+        "Blinded"
+      ],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "",
+        "radius": 5
+      }
+    }
+  },
+  {
+    "name": "Chaos Bomb",
+    "category": "grenade",
+    "img": "modules/hunt-showdown-fco/assets/explosive.svg",
+    "description": "<p>A string of firecrackers and gunshot sounds. Everyone hears a gunfight that isn't there.</p>",
+    "weapon": {
+      "skill": "Throw",
+      "action": "thrown",
+      "power": {
+        "Close": 0,
+        "Medium": 0,
+        "Long": 0,
+        "Extreme": null
+      },
+      "best": "Medium",
+      "capacity": 1,
+      "loaded": 1,
+      "reserve": 0,
+      "maxReserve": 0,
+      "ammo": "standard",
+      "reliability": 1,
+      "stress": 0,
+      "slot": "Small",
+      "conditions": [],
+      "shape": "area",
+      "explosive": {
+        "blast": true,
+        "sticky": false,
+        "fire": false,
+        "zoneAspect": "Gunfire Over There (Notice to tell it from a real fight)",
+        "radius": 1
+      },
+      "notes": "No damage: used to draw monsters and hunters"
+    }
+  },
+  {
+    "name": "First Aid Kit",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Bandages, needle and thread. Three uses per mission.</p>",
+    "support": {
+      "kind": "tool",
+      "uses": 3,
+      "usesMax": 3,
+      "target": "ally",
+      "effect": {
+        "heal": 2,
+        "cure": [
+          "Bleeding",
+          "Heavy Bleeding"
+        ],
+        "text": "Clears 2 Health boxes and stops the bleeding. Takes your action (Physician: free once per exchange; Doctor: 4 boxes)."
+      }
+    }
+  },
+  {
+    "name": "Vitality Shot",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>A syringe of something that works. Instant.</p>",
+    "support": {
+      "kind": "consumable",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "heal": 2,
+        "text": "Clears 2 Health boxes at once. Free action."
+      }
+    }
+  },
+  {
+    "name": "Weak Vitality Shot",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Half a dose. Better than nothing.</p>",
+    "support": {
+      "kind": "consumable",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "heal": 1,
+        "text": "Clears 1 Health box. Free action."
+      }
+    }
+  },
+  {
+    "name": "Regeneration Shot",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Knits burned flesh back together. Restores a lost Health chunk over the scene.</p>",
+    "support": {
+      "kind": "consumable",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "heal": 1,
+        "unburn": 1,
+        "text": "Restores 1 Burned chunk and clears 1 Health box. For the rest of the scene, clear 1 more Health box at the end of each exchange."
+      }
+    }
+  },
+  {
+    "name": "Antidote Shot",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Neutralises poison and keeps it out for a while.</p>",
+    "support": {
+      "kind": "consumable",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "cure": [
+          "Poisoned"
+        ],
+        "text": "Cures Poisoned. Immune to Poisoned until the end of the scene (Hive swarms, poison clouds, Spider spit)."
+      }
+    }
+  },
+  {
+    "name": "Weak Antidote Shot",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Cures the poison, nothing more.</p>",
+    "support": {
+      "kind": "consumable",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "cure": [
+          "Poisoned"
+        ],
+        "text": "Cures Poisoned."
+      }
+    }
+  },
+  {
+    "name": "Stamina Shot",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Adrenaline and coca. You stop feeling your legs.</p>",
+    "support": {
+      "kind": "consumable",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "text": "Until the end of the scene: sprinting is a free action (move twice and still act), +1 to Athletics overcome rolls."
+      }
+    }
+  },
+  {
+    "name": "Ammo Box",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>A crate of common calibres. Refills spare rounds.</p>",
+    "support": {
+      "kind": "consumable",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "ammo": true,
+        "text": "Spare rounds of every firearm you carry are refilled (Decoy Supply: decoys too)."
+      }
+    }
+  },
+  {
+    "name": "Special Ammo Box",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Hand-loaded rounds: incendiary, poison, FMJ, high velocity or dumdum.</p>",
+    "support": {
+      "kind": "consumable",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "ammo": true,
+        "text": "Refills spare rounds and lets you switch one weapon's ammo type (weapon settings)."
+      }
+    }
+  },
+  {
+    "name": "Spyglass",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Brass telescope. Reads the far bank.</p>",
+    "support": {
+      "kind": "tool",
+      "uses": 0,
+      "usesMax": 0,
+      "target": "self",
+      "effect": {
+        "text": "+2 to Notice to spot hunters or monsters at Long and Extreme range."
+      }
+    }
+  },
+  {
+    "name": "Decoys",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Stones, bottles and bits of tin. Thrown to make noise somewhere else.</p>",
+    "support": {
+      "kind": "tool",
+      "uses": 3,
+      "usesMax": 3,
+      "target": "self",
+      "effect": {
+        "text": "Throw into a zone up to two zones away: the zone gets the aspect Noise Over There (free invoke). Monsters and hunters without Notice turn toward it."
+      }
+    }
+  },
+  {
+    "name": "Decoy Fuses",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Sparkling fuses that sound like lit dynamite.</p>",
+    "support": {
+      "kind": "tool",
+      "uses": 2,
+      "usesMax": 2,
+      "target": "self",
+      "effect": {
+        "text": "Throw into a zone: everyone there must pass Will vs Fair (+2) or leave the zone this exchange."
+      }
+    }
+  },
+  {
+    "name": "Concertina Trap",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>A coil of razor wire that springs open when stepped on.</p>",
+    "support": {
+      "kind": "tool",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "text": "Place in your zone (Crafts, free action; Poacher: silent). The first to enter without Notice vs Fair (+2) takes 2 damage and Bleeding; the zone gets Razor Wire."
+      }
+    }
+  },
+  {
+    "name": "Poison Trap",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>A hive-insect jar rigged to shatter.</p>",
+    "support": {
+      "kind": "tool",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "text": "Place in your zone (Crafts, free action; Poacher: silent). The first to enter without Notice vs Fair (+2) is Poisoned; the zone gets Poison Cloud."
+      }
+    }
+  },
+  {
+    "name": "Alert Trip Mine",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>A tripwire that fires a flare and a shriek.</p>",
+    "support": {
+      "kind": "tool",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "text": "Place in a zone exit (Crafts, free action). When triggered: everyone within three zones hears it, the zone is Lit Up."
+      }
+    }
+  },
+  {
+    "name": "Bear Trap",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>Iron jaws. Loud, slow, cruel.</p>",
+    "support": {
+      "kind": "tool",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "text": "Place in your zone (Crafts, free action). The first to enter without Notice vs Good (+3) takes 3 damage, Bleeding, and is Pinned until an Athletics overcome at Fair (+2)."
+      }
+    }
+  },
+  {
+    "name": "Choke Beetle",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>A beetle you guide by Dark Sight. Bursts into choking smoke on command.</p>",
+    "support": {
+      "kind": "tool",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "text": "Send it up to three zones away (Lore overcome vs Fair +2 to guide it past hunters). Detonate: the zone gets Choking Smoke (−2 to all rolls, no Dark Sight) and fires there go out."
+      }
+    }
+  },
+  {
+    "name": "Stalker Beetle",
+    "category": "support",
+    "img": "modules/hunt-showdown-fco/assets/support.svg",
+    "description": "<p>A beetle you guide by Dark Sight. Shows you what it sees.</p>",
+    "support": {
+      "kind": "tool",
+      "uses": 1,
+      "usesMax": 1,
+      "target": "self",
+      "effect": {
+        "text": "Send it up to three zones away (Lore overcome vs Fair +2). You see what it sees: Notice as if you were in its zone. Burst it to mark one hunter (free invoke on Spotted)."
+      }
+    }
+  }
+]

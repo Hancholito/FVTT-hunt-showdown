@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.10.0
+- Full arsenal: 85 items in six folders under Hunt Arsenal — Handguns (16), Long Guns (22), Grenades & Bombs (16), Thrown Weapons (5), Melee Weapons (8), Support Items (18). Existing items are sorted into the folders; Mosin-Nagant and Martini-Henry get their full names.
+- Support items: First Aid Kit, Vitality / Regeneration / Antidote / Stamina shots, ammo boxes, spyglass, decoys, traps, beetles. A Use button applies the effect (Health boxes, Burned chunks, conditions, spare rounds), spends the charge and posts it; consumables leave the sheet. The First Aid Kit can be used on a targeted ally; Doctor doubles it. Any Extra can be made a support item (kit button).
+- Rebalance: power per band, rounds, reliability and slots reviewed with a damage simulation (tools/balance.py); tables in the README. On update the GM is asked to rewrite the world's weapons to the new stats (characters keep their rounds and stress). Game Settings → Hunt arsenal can create missing items or rebalance everything later.
+- Melee and thrown weapons (Fight / Throw). Thrown weapons are recovered with the Reload button when nothing is spare. Tools (melee, thrown, derringer, flare pistol, hand crossbow, kits, traps) and consumables (explosives, shots, ammo boxes) don't use weapon slots: 4 of each, counted on the loadout line.
+- Weapons: "double barrel / multiple barrels" action (one extra shot), spare rounds when full (what an ammo box refills), tool flag and notes shown on the sheet. Multi-charge thrown items (Fusee) spend a charge instead of vanishing.
+
 ## 0.9.1
 - Biography tab: Description and Biography side by side, so the Arsenal panel gets more room.
 - The Extras panel is renamed Arsenal.
