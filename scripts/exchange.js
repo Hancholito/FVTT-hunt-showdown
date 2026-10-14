@@ -8,6 +8,7 @@
 import { MODULE_ID, monsterData } from "./weapons.js";
 import { hasTrait } from "./support.js";
 import { ageBeetles, beetleData } from "./beetles.js";
+import { deathBurst } from "./damage.js";
 
 const TICKS = [
     { name: "Bleeding", damage: 1 },
@@ -119,6 +120,10 @@ export async function tickActor(actor) {
     if (conds.has("Downed")) {
         if (monster) {
             try { await actor.toggleStatusEffect("dead", { active: true, overlay: true }); } catch (e) { console.warn(e); }
+            if (monster.deathBurst && !killed) {
+                const tokenDoc = actor.token ?? actor.getActiveTokens?.(true, true)?.[0] ?? null;
+                try { await deathBurst(actor, tokenDoc); } catch (e) { console.warn("Hunt death burst:", e); }
+            }
             lines.push(`<strong class="hunt-damage">KILLED</strong>`);
         } else {
             lines.push(`<strong class="hunt-damage">DOWNED</strong>`);

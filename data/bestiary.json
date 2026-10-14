@@ -309,6 +309,82 @@
     "startPhase": 0
   },
   {
+    "name": "Myconid",
+    "category": "elite",
+    "img": "modules/hunt-showdown-fco/assets/monster-myconid.svg",
+    "aspect": "A Man Gone to Mould",
+    "description": "What is left of a man under a heap of fungus, shelf caps and grey mould. It moves slowly and breathes out spores. Kill it and it bursts — unless it burns.",
+    "skills": {
+      "Fight": 2,
+      "Athletics": -1,
+      "Notice": 1,
+      "Will": 3
+    },
+    "health": 10,
+    "armor": 2,
+    "vitalPierces": true,
+    "dread": 2,
+    "immune": [
+      "Poisoned"
+    ],
+    "attacks": [
+      {
+        "name": "Slam",
+        "skill": "Fight",
+        "power": 2,
+        "range": [
+          "Close"
+        ]
+      },
+      {
+        "name": "Spore Breath",
+        "skill": "Fight",
+        "power": 0,
+        "range": [
+          "Close",
+          "Medium"
+        ],
+        "shape": "cone",
+        "conditions": [
+          "Poisoned"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Slow",
+        "text": "Moves one zone every other exchange and never runs. Athletics −1: easy to hit."
+      },
+      {
+        "name": "Spongy",
+        "text": "Armour 2: bullets go through the mould. A Vital hit reaches the core and ignores the armour."
+      },
+      {
+        "name": "Spore Breath",
+        "text": "Cone, Close and Medium: no damage, everyone caught is Poisoned (1 damage each exchange, no healing until an antidote)."
+      },
+      {
+        "name": "Spore Cloud",
+        "text": "When it dies, a spore cloud bursts 4 m around it: Athletics vs Good (+3) or Poisoned, and the zone becomes a Spore Cloud."
+      },
+      {
+        "name": "Burn It",
+        "text": "Fire kills it outright, and a Myconid that burns releases no cloud."
+      }
+    ],
+    "deathBurst": {
+      "label": "Spore Cloud",
+      "radius": 4,
+      "attack": 3,
+      "power": 0,
+      "conditions": [
+        "Poisoned"
+      ],
+      "zoneAspect": "Spore Cloud (Poisoned each exchange you stay)",
+      "notFire": true
+    }
+  },
+  {
     "name": "The Butcher",
     "category": "boss",
     "aspect": "The Flayer of Stillwater",

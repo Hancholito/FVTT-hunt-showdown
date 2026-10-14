@@ -136,6 +136,7 @@ export function buildMonster(spec, folderId = null) {
             fireproof: !!spec.fireproof,
             volatile: !!spec.volatile,
             vitalPierces: !!spec.vitalPierces,
+            deathBurst: spec.deathBurst ?? null,
             immune: spec.immune ?? [],
             phases,
             phase: phases.length ? Math.min(phases.length - 1, Number(spec.startPhase ?? (category === "boss" ? 1 : 0))) : 0
@@ -337,6 +338,7 @@ export function decorateMonsterSheet(app, html) {
         m.category !== "boss" && !m.fireproof && !(m.immune ?? []).includes("Burning") ? "Fire kills" : "",
         m.fireproof ? "Fireproof" : "",
         m.volatile ? (m.ignited ? "ABLAZE" : "Volatile: bullets and blades set it ablaze") : "",
+        m.deathBurst ? `${m.deathBurst.label || "Death burst"} when it dies${m.deathBurst.notFire ? " (not if burned)" : ""}` : "",
         m.immune?.length ? `Immune: ${m.immune.join(", ")}` : ""
     ].filter(Boolean);
 

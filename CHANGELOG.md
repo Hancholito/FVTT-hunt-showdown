@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.13.2
+- New monster: the **Myconid** (Elite), a man gone to mould. Health 10, armour 2 (a Vital hit ignores it), Athletics −1, slow. Slam (Fight 2, power 2) and Spore Breath (cone, no damage, Poisoned). When it dies, a spore cloud bursts 4 m around it (Athletics vs Good +3 or Poisoned, Spore Cloud zone) — unless fire killed it: fire kills it outright and leaves no cloud.
+- Monsters can have a death burst (any monster data: label, radius, attack, power, conditions, zone aspect, not when burned); it also goes off when bleeding or poison kill the monster at the end of the exchange.
+
 ## 0.13.1
 - New monster: the **Flayed** (Elite). Skinless, blind, forearms ending in bone spikes. Health 2, Athletics +2, Fight +3, Notice +4 (hearing), dread 3, immune to Blinded. Wandering phase (slow, moaning, defence −1), Triggered phase (+1 attack, charges two zones and attacks; Will vs dread for hunters in the zone). Bone Spikes: power 1, every hit Bleeding — about 3.4 damage per attack, it dies in one or two hits. Added to the world's bestiary on update and to the compendium.
 - Any monster can now have phases (not only bosses); a monster can start in a given phase.

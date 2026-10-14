@@ -9,6 +9,30 @@ import { supersededBy } from "./fatepoints.js";
 
 const IGNITE = { power: 2, radius: 4, attack: 3 };
 
+/* A monster with a death burst (the Myconid's spore cloud) releases it when it dies — unless fire killed it. */
+export async function deathBurst(actor, tokenDoc) {
+    const b = monsterData(actor)?.deathBurst;
+    if (!b) return false;
+    const radius = Number(b.radius) || 4;
+    let targets = [];
+    const perTarget = {};
+    let header = `<div class="hunt-row"><strong>${esc(actor.name)}</strong> collapses: ${esc(b.label || "a cloud bursts out")}.</div>`;
+    const token = tokenDoc?.object;
+    if (canvas?.ready && token) {
+        const px = radiusPixels(radius);
+        flashBlast(token.center, px, false);
+        targets = tokensInBlast(token.center, px).filter(t => t.document.uuid !== tokenDoc.uuid);
+        for (const t of targets) if (t._huntBlastEdge) perTarget[t.document.uuid] = { powerMod: -2, note: "edge of the cloud" };
+        header += `<div class="hunt-row hunt-hint">${radius} m around it: ${targets.length} caught. Defence: Athletics vs ${Number(b.attack ?? 3)}.</div>`;
+    }
+    await resolveMulti({
+        actor, targets, title: `${actor.name} — ${b.label || "Death burst"}`, img: actor.img,
+        attackValue: Number(b.attack ?? 3), power: Number(b.power ?? 0), conditions: b.conditions ?? [], fire: false,
+        zoneAspect: b.zoneAspect ?? "", dread: 0, missLabel: "Holds their breath", perTarget, headerRows: header
+    });
+    return true;
+}
+
 /* A volatile monster (the Immolator) hit by a bullet, blade, arrow or blast that doesn't kill it bursts into flame:
  * a fire blast centred on it catches everyone around, its zone gains Burning Ground, and it stays ablaze. */
 export async function igniteVolatile(actor, tokenDoc) {
@@ -98,11 +122,11 @@ export async function applyFromMessage(message, index = null) {
     const monster = monsterData(actor);
     let damage = data.damage;
     const notes = [];
-    let instantKill = false;
+    let instantKill = false, burned = false;
     if (monster) {
         if (monster.vitalKills && data.vital) { instantKill = true; notes.push("Vital hit: killed outright"); }
         else if ((data.fire || (data.conditions ?? []).includes("Burning")) && monster.category !== "boss" && !monster.fireproof && !(monster.immune ?? []).includes("Burning")) {
-            instantKill = true; notes.push("fire: burned to death");
+            instantKill = true; burned = true; notes.push("fire: burned to death");
         }
         else if (monster.armor && damage > 0 && data.vital && monster.vitalPierces) {
             notes.push("Vital: armour pierced");
@@ -253,6 +277,7 @@ export async function applyFromMessage(message, index = null) {
     if (downed && monster) {
         try { await actor.toggleStatusEffect("dead", { active: true, overlay: true }); } catch (e) { console.warn(e); }
     }
+    const deathTokenDoc = target?.documentName === "Token" ? target : actor.token;
     await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor }),
         content: `<div class="hunt-card">
@@ -265,6 +290,11 @@ export async function applyFromMessage(message, index = null) {
         </div>`,
         rolls
     });
+
+    // Death burst (spore cloud), unless fire killed it.
+    if (downed && monster?.deathBurst && !burned && !(monster.deathBurst.notFire && (data.fire || (data.conditions ?? []).includes("Burning")))) {
+        await deathBurst(actor, deathTokenDoc);
+    }
 
     // Volatile monsters: a piercing or cutting hit that leaves them standing sets them ablaze.
     const firey = data.fire || (data.conditions ?? []).includes("Burning");
