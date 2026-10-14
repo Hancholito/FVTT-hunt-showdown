@@ -159,6 +159,7 @@ When damage is applied:
 | Armored | Elite | 10 | 4 | 2 | A Vital hit pierces the armour (pistols barely scratch it) |
 | Meathead | Elite | 18 | 1 | 3 | Blind (+2 Stealth against it), leeches, fireproof |
 | Immolator | Elite | 4 | – | 2 | Vital hit kills; immune to Burning; **volatile**: bullets, blades, arrows and blasts that don't kill it set it ablaze |
+| Flayed | Elite | 2 | – | 3 | Blind (immune to Blinded), fine hearing; wanders, then charges screaming; Bone Spikes (Fight 3, power 1, Bleeding) |
 | Hellhound | Elite | 3 | – | 2 | Moves two zones; pack bonus |
 | Water Devil | Elite | 4 | – | 2 | Deep Water only, submerged |
 | The Butcher | Boss | 13 + consequences | – | 4 | Fight 3; Meat Hook (2), Burning Hammer (1), Fire Breath |

@@ -125,6 +125,7 @@ export async function searchNearby(actor) {
 
 /* The key's own button: the matching door or container in reach. */
 export async function useKey(actor, item) {
+    if (!game.users.activeGM) return ui.notifications.warn("A GM must be connected.");
     const lore = getLore(item);
     const tok = hunterToken(actor);
     if (!tok) return ui.notifications.warn(`${actor.name} has no token on this scene.`);

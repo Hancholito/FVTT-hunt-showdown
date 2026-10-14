@@ -88,7 +88,7 @@ export function buildMonster(spec, folderId = null) {
         [b64("Nature")]: { name: "Nature", description: "What this creature is.", value: spec.aspect ?? "", notes: "" }
     };
 
-    const phases = category === "boss"
+    const phases = (category === "boss" || spec.phases?.length)
         ? (spec.phases?.length ? spec.phases : DEFAULT_PHASES).map(p => ({
             name: p.name, attack: Number(p.attack) || 0, defence: Number(p.defence) || 0, note: p.note ?? "" }))
         : [];
@@ -138,7 +138,7 @@ export function buildMonster(spec, folderId = null) {
             vitalPierces: !!spec.vitalPierces,
             immune: spec.immune ?? [],
             phases,
-            phase: phases.length ? 1 : 0
+            phase: phases.length ? Math.min(phases.length - 1, Number(spec.startPhase ?? (category === "boss" ? 1 : 0))) : 0
         } } }
     };
 }

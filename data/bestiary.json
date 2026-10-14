@@ -245,6 +245,70 @@
     ]
   },
   {
+    "name": "Flayed",
+    "category": "elite",
+    "img": "modules/hunt-showdown-fco/assets/monster-flayed.svg",
+    "aspect": "Skinless, Blind and Screaming",
+    "description": "A man with no skin left, his forearms hacked off and the bones whittled to points. It shuffles and moans, blind, listening. When it hears you, it screams and comes.",
+    "skills": {
+      "Fight": 3,
+      "Athletics": 2,
+      "Notice": 4,
+      "Will": 1
+    },
+    "health": 2,
+    "dread": 3,
+    "immune": [
+      "Blinded"
+    ],
+    "attacks": [
+      {
+        "name": "Bone Spikes",
+        "skill": "Fight",
+        "power": 1,
+        "range": [
+          "Close"
+        ],
+        "conditions": [
+          "Bleeding"
+        ]
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Blind",
+        "text": "Immune to Blinded: smoke, flash bombs and darkness don't hinder it. It only notices what it hears: a hunter who stays still or moves crouched is not noticed."
+      },
+      {
+        "name": "Fine Hearing",
+        "text": "Notice +4 against noise. A gunshot, a sprint, an explosion or a fight within two zones triggers it (Phase: Triggered)."
+      },
+      {
+        "name": "Charge",
+        "text": "Triggered: it screams and moves two zones, then attacks in the same exchange. Every hunter in the zone it reaches rolls Will against its dread."
+      },
+      {
+        "name": "Bone Spikes",
+        "text": "Every hit makes the target bleed; a second hit turns it into Heavy Bleeding."
+      }
+    ],
+    "phases": [
+      {
+        "name": "Wandering",
+        "attack": 0,
+        "defence": -1,
+        "note": "Shuffles and moans, one zone every other exchange. A hunter can slip past or ambush it."
+      },
+      {
+        "name": "Triggered",
+        "attack": 1,
+        "defence": 0,
+        "note": "Screaming charge: two zones and an attack in the same exchange. It stays triggered until it loses its prey for a whole exchange."
+      }
+    ],
+    "startPhase": 0
+  },
+  {
     "name": "The Butcher",
     "category": "boss",
     "aspect": "The Flayer of Stillwater",

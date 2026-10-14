@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.1
+- New monster: the **Flayed** (Elite). Skinless, blind, forearms ending in bone spikes. Health 2, Athletics +2, Fight +3, Notice +4 (hearing), dread 3, immune to Blinded. Wandering phase (slow, moaning, defence −1), Triggered phase (+1 attack, charges two zones and attacks; Will vs dread for hunters in the zone). Bone Spikes: power 1, every hit Bleeding — about 3.4 damage per attack, it dies in one or two hits. Added to the world's bestiary on update and to the compendium.
+- Any monster can now have phases (not only bosses); a monster can start in a given phase.
+- The key button warns when no GM is connected (the unlock needs the GM's client).
+
 ## 0.13.0
 - Lore items: newspaper clipping, handwritten note, book (pages to turn), photograph (turn it over), child's toy, wax cylinder (transcript and audio: Listen, or Play for the table), Pony Express missive (envelope, open the letter), key. Period handouts; Read button on the sheet; Show to everyone; Lore Creator in the Items directory. No slot, no limit.
 - Locks: door walls get a Lock ID and a pick difficulty (Wall configuration). Containers (chest, desk, footlocker, safe) are actors on the map with a lock and contents. A key opens the matching door or container; without it, Burglary vs the difficulty (Fair +2 by default). Search button on the hunter's loadout line; Take or Take everything moves items to the hunter. The GM's client does the unlocking and moving through the module socket.
