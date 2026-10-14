@@ -256,6 +256,10 @@ Damage over time marks Health from the last unburned chunk backward; what cannot
 
 The Immolator is **volatile**: when a bullet, blade, arrow or blast hits it **without killing it**, it bursts into flame. A fire burst (power 2, radius 4 m, Athletics vs Good +3) catches everyone around it, friend or foe, with Burning; its zone gains Burning Ground; it stays **ablaze**, and at each end of exchange it sets fire to everyone within 2 m. Blunt weapons (dusters, hammer, shovel), fire and choke smoke don't set it off. A Vital hit kills it cleanly — aim for the head. Any monster can be made volatile in the Monster Creator; any weapon can be marked **blunt** in its settings.
 
+## Lore, keys and containers
+
+Lore items (clipping, note, book, photograph, toy, wax cylinder with audio, Pony Express missive, key) are read from the sheet as period handouts and can be shown to everyone. Door walls take a Lock ID and pick difficulty; containers (chest, desk, footlocker, safe) are actors on the map with a lock and contents. Keys open the matching lock; Burglary picks it. The **Search** button on the hunter's loadout line opens the container in reach. GM tools: **Lore Creator** (Items directory), the **Hunt: Lore** and **Hunt: Containers** compendiums.
+
 ## Attack shapes
 
 Every weapon and monster attack has a **Shape**: Single target (default), **Area** (everyone in a zone) or **Cone** (everyone in front of the attacker, in range). **Shotguns fire in a cone** (the Romero 77). Explosives have no shape setting: they always blast their zone. Area and Cone attacks make one roll; every targeted token defends with Athletics, a tie leaves them Pinned, and each hit has its own Apply button. Spread attacks don't roll the ballistic die. Extra shots work as for single shots (second barrel, pump, lever): each + adds 1 power for everyone hit, each − adds weapon stress. Set the shape in the weapon settings (gun button) or in the Monster Creator; the Butcher's Fire Breath is a cone too.

@@ -2,7 +2,7 @@
   "id": "hunt-showdown-fco",
   "title": "Hunt: Showdown RPG (Fate Core)",
   "description": "Unofficial Hunt: Showdown tabletop RPG for Fate Core Official: skills, health, dread and conditions, archetypes, full arsenal, bestiary, trait cards and a dark bayou theme. Made with the authorization of the rights holder, free of charge.",
-  "version": "0.12.2",
+  "version": "0.13.0",
   "authors": [
     {
       "name": "Hannibal (Hancholito)"
@@ -88,6 +88,28 @@
         "PLAYER": "NONE",
         "ASSISTANT": "OWNER"
       }
+    },
+    {
+      "name": "hunt-lore",
+      "label": "Hunt: Lore",
+      "type": "Item",
+      "system": "fate-core-official",
+      "path": "packs/hunt-lore",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "hunt-containers",
+      "label": "Hunt: Containers",
+      "type": "Actor",
+      "system": "fate-core-official",
+      "path": "packs/hunt-containers",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
     }
   ],
   "packFolders": [
@@ -100,7 +122,9 @@
         "hunt-arsenal",
         "hunt-bestiary",
         "hunt-traits",
-        "hunt-macros"
+        "hunt-macros",
+        "hunt-lore",
+        "hunt-containers"
       ]
     }
   ],

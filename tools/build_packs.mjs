@@ -15,6 +15,7 @@ const arsenal = read("data/arsenal.json");
 const bestiary = read("data/bestiary.json");
 const traits = read("data/traits.json");
 const archetypes = read("data/archetypes.json");
+const lore = read("data/lore.json");
 
 // ---------------------------------------------------------------- Foundry stubs for the module's builders
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -100,6 +101,40 @@ for (const tier of [1, 2, 3]) {
     put("hunt-traits", deck);
 }
 
+// ---------------------------------------------------------------- Lore (Items) and Containers (Actors)
+const LORE_IMG = { clipping: "clipping", note: "note", book: "book", photo: "photo", toy: "toy", cylinder: "cylinder", missive: "missive", key: "key" };
+const loreItem = (e, folderId, i, prefix = "lore") => {
+    const _id = id(`${prefix}:${e.name}`);
+    return { _id, name: e.name, type: "Extra", img: `modules/${MODULE_ID}/assets/lore/${LORE_IMG[e.lore.kind]}.svg`, folder: folderId, sort: i * 100,
+        system: { description: { value: `<p>${esc(e.lore.title || e.name)}</p>` } }, effects: [], ownership: { default: 0 },
+        flags: { [MODULE_ID]: { lore: e.lore } }, _stats: STATS };
+};
+const lTpl = folder("hunt-lore", "Item", "Templates", "#6b5a2a", 100000);
+const lEx = folder("hunt-lore", "Item", "Stillwater Examples", "#4a3b1e", 200000);
+lore.templates.forEach((e, i) => { const d = loreItem(e, lTpl, i, "lore-tpl"); d._key = `!items!${d._id}`; put("hunt-lore", d); });
+lore.examples.forEach((e, i) => { const d = loreItem(e, lEx, i); d._key = `!items!${d._id}`; put("hunt-lore", d); });
+const CONT_IMG = { chest: "chest", desk: "desk", footlocker: "footlocker", safe: "safe" };
+const CONT_LABEL = { chest: "Chest", desk: "Desk", footlocker: "Footlocker", safe: "Safe" };
+const cTpl = folder("hunt-containers", "Actor", "Templates", "#6b5a2a", 100000);
+const cEx = folder("hunt-containers", "Actor", "Stillwater Examples", "#4a3b1e", 200000);
+const addContainer = (c, folderId, i, prefix) => {
+    const _id = id(`${prefix}:${c.name}`);
+    const img = `modules/${MODULE_ID}/assets/lore/${CONT_IMG[c.type]}.svg`;
+    const items = (c.contents ?? []).map((n, j) => {
+        const e = lore.examples.find(x => x.name === n);
+        const it = loreItem(e, null, j, `${prefix}:${c.name}:item`);
+        return { ...it, _key: `!actors.items!${_id}.${it._id}` };
+    });
+    put("hunt-containers", {
+        _id, _key: `!actors!${_id}`, name: c.name, type: "fate-core-official", img, folder: folderId, sort: i * 100,
+        system: {}, items, effects: [], ownership: { default: 1 }, _stats: STATS,
+        flags: { [MODULE_ID]: { container: { type: c.type, label: CONT_LABEL[c.type], lockId: c.lockId ?? "", difficulty: c.difficulty ?? 2, locked: !!c.locked } } },
+        prototypeToken: { name: c.name, actorLink: true, width: 1, height: 1, texture: { src: img }, disposition: 0, displayName: 30, sight: { enabled: false } }
+    });
+};
+lore.containers.templates.forEach((c, i) => addContainer(c, cTpl, i, "cont-tpl"));
+lore.containers.examples.forEach((c, i) => addContainer(c, cEx, i, "cont"));
+
 // ---------------------------------------------------------------- Macros
 for (const [name, cmd, img, flag, sort] of [
     ["Start of Mission", "game.hunt.startOfMission();", `modules/${MODULE_ID}/assets/logo.svg`, "mission", 100],
@@ -173,7 +208,8 @@ const pages = [
     ["Monsters", file("09-monsters.html")],
     ["Bestiary", bestiaryPage],
     ["Traits", traitsPage],
-    ["Arsenal", arsenalPage]
+    ["Arsenal", arsenalPage],
+    ["Lore, keys and containers", file("13-lore.html")]
 ];
 const jid = id("journal:rules");
 put("hunt-rules", {

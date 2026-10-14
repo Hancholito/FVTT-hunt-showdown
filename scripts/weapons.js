@@ -6,6 +6,8 @@
 import { throwExplosive, resolveMulti, blastRadius } from "./explosives.js";
 import { usesSlot, isEquipped, loadoutSummary } from "./loadout.js";
 import { getSupport, useSupport, configureSupport, supportSummary } from "./support.js";
+import { getLore, readItem, configureLore, loreSummary } from "./lore.js";
+import { searchNearby, useKey } from "./locks.js";
 
 export const MODULE_ID = "hunt-showdown-fco";
 const SYSTEM_ID = "fate-core-official";
@@ -581,12 +583,21 @@ function decorateSheetInner(app, html) {
 
     // Loadout line at the top of the Extras panel (hunters only).
     const body = root.querySelector('[name="extras_body"]');
+    const isProp = !!(actor.getFlag(MODULE_ID, "container") || actor.getFlag(MODULE_ID, "beetle"));
     let summary = "";
-    try { summary = loadoutSummary(actor); } catch (e) { console.error("Hunt loadout:", e); }
+    try { if (!isProp) summary = loadoutSummary(actor); } catch (e) { console.error("Hunt loadout:", e); }
     if (body && summary && !body.querySelector(".hunt-loadout")) {
         const div = document.createElement("div");
         div.className = "hunt-loadout";
         div.textContent = summary;
+        if (editable && !monsterData(actor)) {
+            const b = document.createElement("button");
+            b.type = "button"; b.className = "hunt-btn fu_button hunt-search-btn";
+            b.innerHTML = `<i class="fas fa-magnifying-glass"></i> Search`;
+            b.title = "Search the chest, desk or locked door within reach (targeted first)";
+            b.addEventListener("click", ev => { ev.preventDefault(); ev.stopPropagation(); searchNearby(actor); });
+            div.append(" ", b);
+        }
         body.prepend(div);
     }
 
@@ -597,6 +608,7 @@ function decorateSheetInner(app, html) {
         if (!row || row.querySelector(".hunt-weapon-tools")) continue;
         const weapon = getWeapon(item);
         const support = weapon ? null : getSupport(item);
+        const lore = weapon || support ? null : getLore(item);
 
         const tools = document.createElement("span");
         tools.className = "hunt-weapon-tools";
@@ -623,11 +635,22 @@ function decorateSheetInner(app, html) {
             }
             if (weapon.stress > 0) btn("fa-wrench", "Clear jam (Crafts vs Fair)", () => clearJam(actor, item));
         }
+        if (lore) {
+            btn("fa-book-open", "Read", () => readItem(item));
+            if (lore.kind === "key" && editable) btn("fa-key", "Use the key on a lock within reach", () => useKey(actor, item));
+            if (game.user.isGM) btn("fa-feather-pointed", "Lore settings", () => configureLore(item));
+        }
         if (support && editable) btn("fa-hand-holding-medical", "Use", () => useSupport(actor, item));
-        if (editable && !support) btn("fa-gun", weapon ? "Weapon settings" : "Make this extra a weapon", () => configureWeapon(item));
-        if (editable && !weapon) btn("fa-kit-medical", support ? "Support item settings" : "Make this extra a support item", () => configureSupport(item));
+        if (editable && !support && !lore) btn("fa-gun", weapon ? "Weapon settings" : "Make this extra a weapon", () => configureWeapon(item));
+        if (editable && !weapon && !lore) btn("fa-kit-medical", support ? "Support item settings" : "Make this extra a support item", () => configureSupport(item));
         row.append(tools);
 
+        if (lore) {
+            const line = document.createElement("div");
+            line.className = "hunt-weapon-summary hunt-lore-summary";
+            line.textContent = loreSummary(lore);
+            row.after(line);
+        }
         if (support) {
             const line = document.createElement("div");
             line.className = "hunt-weapon-summary";

@@ -1,0 +1,248 @@
+{
+  "templates": [
+    {
+      "name": "Newspaper clipping",
+      "lore": {
+        "kind": "clipping",
+        "author": "The Stillwater Courier",
+        "date": "Month Day, 1895",
+        "title": "Headline",
+        "text": "First paragraph of the article.\n\nSecond paragraph."
+      }
+    },
+    {
+      "name": "Handwritten note",
+      "lore": {
+        "kind": "note",
+        "date": "",
+        "author": "Signature",
+        "text": "What the note says."
+      }
+    },
+    {
+      "name": "Book",
+      "lore": {
+        "kind": "book",
+        "title": "Book title",
+        "author": "Author",
+        "date": "1890",
+        "text": "Text on the title page.",
+        "pages": [
+          {
+            "title": "Chapter I",
+            "text": "First page."
+          },
+          {
+            "title": "",
+            "text": "Second page."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Photograph",
+      "lore": {
+        "kind": "photo",
+        "image": "modules/hunt-showdown-fco/assets/lore/photo-family.svg",
+        "caption": "Caption under the print",
+        "back": "Written on the back.",
+        "date": "1894"
+      }
+    },
+    {
+      "name": "Child's toy",
+      "lore": {
+        "kind": "toy",
+        "image": "modules/hunt-showdown-fco/assets/lore/toy-horse.svg",
+        "title": "Toy",
+        "text": "What it looks like, where it was found.",
+        "inscription": "Carved words"
+      }
+    },
+    {
+      "name": "Wax cylinder",
+      "lore": {
+        "kind": "cylinder",
+        "title": "Label on the cylinder",
+        "author": "Who recorded it",
+        "date": "1895",
+        "audio": "",
+        "text": "Transcript of the recording."
+      }
+    },
+    {
+      "name": "Pony Express missive",
+      "lore": {
+        "kind": "missive",
+        "sender": "Sender",
+        "recipient": "Recipient",
+        "origin": "Origin station",
+        "destination": "Destination",
+        "date": "1895",
+        "seal": "Initials",
+        "text": "The letter."
+      }
+    },
+    {
+      "name": "Key",
+      "lore": {
+        "kind": "key",
+        "keyLabel": "Tag",
+        "inscription": "",
+        "text": "What the key looks like.",
+        "lockId": "lock-id"
+      }
+    }
+  ],
+  "examples": [
+    {
+      "name": "Clipping — Families Flee Alice Farm",
+      "lore": {
+        "kind": "clipping",
+        "author": "The Stillwater Courier",
+        "date": "Friday, June 14, 1895 — Price two cents",
+        "title": "Families Flee Alice Farm After Third Night of Howling",
+        "text": "The last three families working the Alice Farm tract loaded their wagons on Tuesday and took the levee road north, leaving cattle in the pens and supper on the table. Mr. Thomas Doyle, who has farmed the parcel since '88, told this paper only that \"the water has turned\" and that he would not keep his children another night within sound of the swamp.\n\nThe Reeker Fishing Company, which holds the lease on the eastern bank, denies any trouble on its property and reports its catch \"as fine as any season.\" Company men were nonetheless seen burning nets at the landing on Sunday.\n\nThe parish physician, Dr. Elias Marrow, has asked that any person showing the fever, the black gums or the sleeplessness described in his notice of the 2nd present themselves at the Lawson clinic at once. The doctor declined to say whether the sickness and the departures are related.\n\nOne child of the Doyle household, a girl of six, is said not to have left with the family. Inquiries at the sheriff's office were met with silence."
+      }
+    },
+    {
+      "name": "Note — Ruth, Stay in the Loft",
+      "lore": {
+        "kind": "note",
+        "date": "Sunday night",
+        "author": "Mama",
+        "text": "Ruth —\n\nIf you come back and we are not here, go up to the loft and pull the ladder after you, like we practised. Do not answer anyone who calls your name from the yard, not even if it sounds like Papa. Papa will knock three and then two.\n\nThere is bread in the tin and your horse is under the pillow. We are coming back for you. I promise on everything."
+      }
+    },
+    {
+      "name": "Ledger of the Reeker Fishing Co.",
+      "lore": {
+        "kind": "book",
+        "title": "Ledger of the Reeker Fishing Co.",
+        "author": "Kept by H. Pell, clerk",
+        "date": "1894 – 1895",
+        "text": "Catch, wages and stores. Property of the Company. Not to leave the office.",
+        "pages": [
+          {
+            "title": "March 1895",
+            "text": "Mar 3 — catfish 410 lb, gar 60 lb. Wages paid in full.\nMar 10 — catfish 455 lb. New nets from Lawson, $14.\nMar 17 — catfish 470 lb. Best week since we came. Mr. Reeker very pleased."
+          },
+          {
+            "title": "April 1895",
+            "text": "Apr 7 — catfish 610 lb. Fish very large, very pale. Two men refused to gut them.\nApr 14 — catfish 690 lb. Replaced the two men.\nApr 21 — no count. The fish came up already dead and warm."
+          },
+          {
+            "title": "May 1895",
+            "text": "May 5 — paid Dr. Marrow $20 for his silence on the matter of Jessup.\nMay 12 — nets burned on Mr. Reeker's order.\nMay 19 — the water at the landing does not reflect the lamps any more. I have written it here so that someone knows."
+          },
+          {
+            "title": "",
+            "text": "June — I have locked this book in the desk and taken the key to Alice Farm, to the only family that still speaks to me. If you are reading this, Doyle did not burn it. God keep them."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Photograph — The Doyles, Spring 1894",
+      "lore": {
+        "kind": "photo",
+        "image": "modules/hunt-showdown-fco/assets/lore/photo-family.svg",
+        "date": "Spring 1894",
+        "caption": "The Doyles, Alice Farm, 1894",
+        "back": "Thomas, Margaret, little Ruth and baby John, before the water turned.\n\nRuth is the one who would not hold still."
+      }
+    },
+    {
+      "name": "Carved Wooden Horse",
+      "lore": {
+        "kind": "toy",
+        "image": "modules/hunt-showdown-fco/assets/lore/toy-horse.svg",
+        "title": "Carved Wooden Horse",
+        "text": "A child's horse whittled from cypress, its mane worn smooth by small hands. It was found under a pillow in the loft of the Doyle house, still warm.",
+        "inscription": "For Ruth — Pa — 1893"
+      }
+    },
+    {
+      "name": "Wax Cylinder — Case Notes, Recording 7",
+      "lore": {
+        "kind": "cylinder",
+        "title": "Case notes — Recording 7",
+        "author": "Dr. Elias Marrow",
+        "date": "June 9, 1895",
+        "audio": "modules/hunt-showdown-fco/assets/audio/cylinder-crackle.ogg",
+        "text": "[Hiss. A chair creaks.]\n\nMARROW: Recording seven. The Jessup boy again. Temperature has not fallen in four days, yet he says he is cold. Gums blackened as in the others. He does not sleep. He hums.\n\n[A child humming, three notes, over and over.]\n\nMARROW: He says the girl from the farm taught him the tune. The Doyle girl. I have told no one that she was here, in my clinic, the night the family left. I have told no one where she went after.\n\n[A long silence. The humming stops.]\n\nMARROW: …Reeker will want this cylinder destroyed. I am putting it with the ledger."
+      }
+    },
+    {
+      "name": "Missive — From Lawson Station",
+      "lore": {
+        "kind": "missive",
+        "sender": "Sister Agnes Doyle",
+        "recipient": "Mr. Thomas Doyle",
+        "origin": "Lawson Station",
+        "destination": "Alice Farm, Stillwater",
+        "date": "June 1, 1895",
+        "seal": "AD",
+        "text": "Dear brother,\n\nI have your letter and I will not pretend I understood all of it. You say the fish are wrong, that the men at the landing hum in their sleep, that Ruth wakes speaking of a lady in the water. Thomas, you must leave. Not next week. Now.\n\nThere is room at the mission for all of you. Bring the children and whatever fits in the wagon and nothing more. Do not bring anything from the Company. Do not let that doctor near Ruth again.\n\nI will meet the stage at Lawson every day until you come.\n\nYour sister in Christ,"
+      }
+    },
+    {
+      "name": "Small Iron Key",
+      "lore": {
+        "kind": "key",
+        "keyLabel": "Reeker office — desk",
+        "inscription": "No. 3",
+        "text": "A small iron key on a loop of tarred string, with a paper tag in a clerk's careful hand. Found in the Doyle kitchen, in the bread tin.",
+        "lockId": "reeker-desk"
+      }
+    }
+  ],
+  "containers": {
+    "templates": [
+      {
+        "type": "chest",
+        "name": "Chest",
+        "locked": false
+      },
+      {
+        "type": "desk",
+        "name": "Desk",
+        "locked": false
+      },
+      {
+        "type": "footlocker",
+        "name": "Footlocker",
+        "locked": false
+      },
+      {
+        "type": "safe",
+        "name": "Safe",
+        "locked": true,
+        "lockId": "safe",
+        "difficulty": 4
+      }
+    ],
+    "examples": [
+      {
+        "type": "desk",
+        "name": "Reeker Office Desk",
+        "locked": true,
+        "lockId": "reeker-desk",
+        "difficulty": 3,
+        "contents": [
+          "Ledger of the Reeker Fishing Co.",
+          "Wax Cylinder — Case Notes, Recording 7"
+        ]
+      },
+      {
+        "type": "footlocker",
+        "name": "Doyle Footlocker",
+        "locked": false,
+        "contents": [
+          "Photograph — The Doyles, Spring 1894",
+          "Missive — From Lawson Station"
+        ]
+      }
+    ]
+  }
+}

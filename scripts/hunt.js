@@ -15,6 +15,8 @@ import "./support.js";
 import { endOfExchange, createExchangeMacro, registerExchangeHooks } from "./exchange.js";
 import { startOfMission, createMissionMacro, registerFateHooks } from "./fatepoints.js";
 import { registerBeetleHooks } from "./beetles.js";
+import { registerLoreHooks, openLoreCreator } from "./lore.js";
+import { registerLockHooks } from "./locks.js";
 
 const MODULE_ID = "hunt-showdown-fco";
 const SYSTEM_ID = "fate-core-official";
@@ -298,9 +300,11 @@ registerLoadoutHooks();
 registerExchangeHooks();
 registerFateHooks();
 registerBeetleHooks();
+registerLoreHooks();
+registerLockHooks();
 
 Hooks.once("init", () => {
-    game.hunt = { endOfExchange, startOfMission };
+    game.hunt = { endOfExchange, startOfMission, openLoreCreator };
 });
 
 // Fate Core Official decorates every 4dF roll message and expects a ".dice-total" element.

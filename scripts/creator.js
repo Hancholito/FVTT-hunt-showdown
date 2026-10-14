@@ -281,7 +281,7 @@ function _replaceOrSet(obj) {
 
 export function decorateHunterSheet(app, html) {
     const actor = app.document;
-    if (!actor?.isOwner || actor.getFlag(MODULE_ID, "monster")) return;
+    if (!actor?.isOwner || actor.getFlag(MODULE_ID, "monster") || actor.getFlag(MODULE_ID, "container") || actor.getFlag(MODULE_ID, "beetle")) return;
     const root = html instanceof HTMLElement ? html : html[0];
     if (root.querySelector(".hunt-hunter-banner")) return;
     const host = root.querySelector(".mfate-sheet") ?? root.querySelector(".window-content") ?? root;

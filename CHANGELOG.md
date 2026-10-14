@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.0
+- Lore items: newspaper clipping, handwritten note, book (pages to turn), photograph (turn it over), child's toy, wax cylinder (transcript and audio: Listen, or Play for the table), Pony Express missive (envelope, open the letter), key. Period handouts; Read button on the sheet; Show to everyone; Lore Creator in the Items directory. No slot, no limit.
+- Locks: door walls get a Lock ID and a pick difficulty (Wall configuration). Containers (chest, desk, footlocker, safe) are actors on the map with a lock and contents. A key opens the matching door or container; without it, Burglary vs the difficulty (Fair +2 by default). Search button on the hunter's loadout line; Take or Take everything moves items to the hunter. The GM's client does the unlocking and moving through the module socket.
+- Compendiums Hunt: Lore (a template of each kind and eight Stillwater examples that tell one story) and Hunt: Containers (templates, the locked Reeker Office Desk and the Doyle Footlocker, filled). Rules journal: Lore, keys and containers page.
+
 ## 0.12.2
 - Beetles are played as tokens: Use the Stalker or Choke Beetle, click where it lands (up to 40 m), and a beetle token owned by the player appears with its own sight through the fog of war (Stalker 15 m, Choke 8 m), to find rival hunters. The player moves it; it lives 3 exchanges (counted down by End of Exchange). Burst (Stalker): targeted hunters within its sight are Spotted (eye icon). Release (Choke): Blinded and Choking Smoke 5 m around it. Recall. The GM's client creates the token through the module socket.
 - Existing beetle items are updated on load.
